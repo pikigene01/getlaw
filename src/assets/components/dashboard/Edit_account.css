@@ -1,0 +1,12 @@
+.account_info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:636px){
+
+    .account_info{
+        width: 300px;
+    }
+}

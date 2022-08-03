@@ -1,0 +1,308 @@
+.header{
+    top: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    /* background:linear-gradient(360deg, var(--first-color-second), var(--first-color-lighter)); */
+    background: var(--first-color-second);
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    box-shadow: 0 4px 30px rgba(20, 20, 20);
+    z-index: var(--z-modal);
+  }
+  .side_menu{
+    height: 400px;
+    width: 300px;
+    position: fixed;
+    top: 9%;
+    right: 5px;
+    background: var(--first-color-lighter);
+    box-shadow: 2px 5px 15px #000000;
+    border-radius: 10px;
+    transition: height 0.3s;
+    z-index: var(--z-modal);
+  }
+  .menu_header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+  }
+  .menu_body li{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+    border-bottom: 0.5px solid var(--first-color-second);
+    cursor: pointer;
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .head_logo {
+   
+    /* background: var(--first-color-lighter); */
+    border-radius: 12rem 12rem 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--first-color-second);
+  
+  
+  }
+  .head_logo:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  .logo_bold{
+    font-size: var(--h1-font-size);
+    font-weight: 900;
+    font-style: normal;
+    color: var(--first-color-lighter);
+
+  }
+  .logo_italic{
+    font-size: var(--h5-font-size);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    color: var(--first-color-lighter);
+  }
+  .head_logo .logo_wrapper h1{
+    color: var(--first-color-alt);
+    font-size: var(--h1-font-size);
+    transform: translateY(8px); 
+  }
+  .head_search{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .head_search input{
+   
+    width: 100%;
+   
+  }
+  .head_search .flex_search{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    border-radius: 5px;
+  background: rgb(234, 228, 228);
+  align-items: center;
+ 
+  }
+  .flex_search input{
+    background: transparent;
+   
+  }
+  .head_search{
+    display: inline;
+  }
+  .link{
+    margin: 0px 5px;
+    width: 100px;
+  }
+ .search_results{
+    position: absolute;
+    margin-top: 0px;
+    width: 400px;
+    height: 300px;
+    background: var(--first-color-lighter);
+    overflow: hidden;
+  }
+  
+  .lawyer_funds{
+    display: block;
+    justify-content: '';
+    color: #fff;
+    border-right: 5px solid var(--first-color-lighter);
+   
+  }
+  .lawyer_funds .money{
+    margin-right: 4px;
+  }
+  
+#canvas{
+  margin-left: 5px;
+}
+.withdrawal_btn, .btn_gene{
+    justify-content: center;
+    background: var(--first-color-alt);
+    padding: 5px;
+    border-radius: 0px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.money-btn{
+    justify-content: center;
+    background: var(--first-color-alt);
+    padding: 5px;
+    border-radius: 0px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+.logout_btn{
+    display: inline;
+    align-items: center;
+    margin-right: 10px;
+    justify-content: center;
+    text-decoration: none;
+    background: var(--first-color-alt);
+    padding: 5px;
+    border-radius: 0px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+.first_btn{
+  border-radius: 0px 10px 0px 10px;
+
+}
+.last_btn{
+  border-radius: 0px 10px 0px 10px;
+
+}
+.search:focus + .search_results {
+    display: block;
+}
+.search_results.active{
+    display: block;
+}
+.search_results .search_triangle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_triangle span{
+    width: 20px;
+    height: 20px;
+    display: fixed;
+    background-color: rgb(234, 228, 228);
+    transform: rotate(45deg);
+    margin-top: -10px;
+
+}
+.toggle{
+  width: 30px;
+  cursor: pointer;
+
+}
+.toggle.active{
+  transform: rotate(90deg);
+}
+.toggle:hover{
+  transform: scale(1.1);
+}
+.toggle span{
+  background: var(--first-color-lighter);
+  margin: 4px 0;
+  height: 4px;
+  width: 100%;
+  display: block;
+}
+.search_results .searching-content{
+    background: url(../../imgs/waiting.gif);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 30px;
+  width: 30px;
+}
+.searching-none{
+    display: none;
+}
+.search_results .searching{
+  display: flex;
+  justify-content: center;
+  transition: .3s;
+}
+.search_results{
+    border-radius: 5px;
+    display: none;
+}
+.search_results:hover{
+    overflow: hidden scroll;
+}
+.search_results .gene{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--first-color-alt);
+    align-items: center;
+}
+.search_results .gene span{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: flex-end;
+   width: 20px;
+   height: 20px;
+   margin: 5px 10px;
+   font-weight: bolder;
+   background: var(--first-color-alt);
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+.search_card{
+    width: 100%;
+border-bottom: 3px solid #333;
+}
+.search_card .head{
+    display: flex;
+    justify-content: center;
+    font-size: var(--h2-font-size);
+    font-weight: bolder;
+}
+.search_card .body{
+    padding: 0px 10px;
+}
+.search_card .flex_wrap{
+    display: flex;
+}
+.search_card .search_img{
+    width: 50px;
+    height: 50px;
+}
+.search_card .price_footer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px solid black;
+}
+.right_info button{
+   margin: 2px 20px;
+}
+
+@media screen and (max-width:890px){
+  .lawyer_funds{
+    display: none;
+  }
+  .app_auth{
+    display: none;
+  }
+  .header{
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:501px){
+ .head_search{
+  display: none;
+ }
+ .search_results{
+  width: 70%;
+  overflow: scroll;
+ }
+ .responsive_img{
+  width: 80%;
+  margin-left: 10px;
+ }
+ .header{
+  justify-content: space-around;
+  width: 100%;
+
+}
+}

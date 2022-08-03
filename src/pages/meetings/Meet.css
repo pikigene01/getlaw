@@ -1,0 +1,402 @@
+.meeting_rooms{
+   padding: 30px;
+   flex: 1;
+   display: flex;
+   justify-content: center;
+
+}
+.abs{
+    position: absolute;
+}
+.rel{
+    position: relative;
+}
+.meet_header{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   background: var(--first-color-lighter);
+}
+.search_icon{
+    color: var(--first-color);
+    font-size: var(--h3-font-size);
+    font-weight: 600;
+    cursor: pointer;
+}
+.icon:hover{
+    transform: scale(1.1);
+}
+.search_lawyers input{
+    padding: 10px 5px;
+    width: 100%;
+    outline: none;
+}
+.search_lawyers{
+    display: flex;
+    align-items: center;
+    background: #ccc;
+    width: 300px;
+}
+.lawyers_all_wrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 2;
+    padding: 20px;
+}
+.enter_meeting_btn{
+    padding: 10px 5px;
+    color: #ccc;
+    background: var(--first-color);
+    cursor: pointer;
+}
+.lawyer_profile{
+width: 200px;
+margin-bottom: 15px;
+}
+.lawyer_profile .lawyer_pic{
+width: 100px;
+height: 100px;
+}
+.lawyer_profile h2{
+   font-size: 20px;
+}
+.lawyer_profile p{
+    font-size: 15px;
+    color: var(--first-color-second);
+    word-wrap: break-word;
+}
+.main_video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 760px;
+    height: 450px;
+    border-radius: 35px;
+    box-shadow: 0px 0px 0px 15px #dadada;
+}
+.phone_screen{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    padding: 20px;
+    width: 80%;
+    height: 100%;
+}
+
+.main_video .notch{
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    background-color: #ccc;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    cursor: pointer;
+    z-index: 988;
+
+}
+.notch.active{
+    width: 7px;
+    height: 7px;
+    animation: camera_active 5s infinite;
+}
+@keyframes camera_active {
+    0%   {background-color: rgb(234, 16, 16);}
+    25%  {background-color: rgb(251, 251, 11);}
+    50%  {background-color: rgb(12, 12, 245);}
+    100% {background-color: rgb(6, 159, 6);}
+  }
+.header_phone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 30px;
+    top: 4%;
+    background-color: #ccc;
+    transform: translateY(-50%);
+    right: 20%;
+    cursor: pointer;
+    z-index: 900;
+}
+.get_use_token{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.get_use_token input{
+    margin-top: 40%;
+    display: block;
+    padding: 10px 5px;
+}
+.get_use_token button{
+    padding: 10px 30px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+.phone_notificats{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    top: 8%;
+    background-color: #ccc;
+    right: 20%;
+    cursor: pointer;
+    z-index: 900;
+}
+.my_video{
+    width: 100px;
+    height: 100px;
+    top: 5%;
+    left: 5%;
+    cursor: pointer;
+    z-index:600;
+}
+.user_video{
+    width: 500px;
+    height: 500px;
+    top: -6%;
+    left: 20%;
+    cursor: pointer;
+    z-index: 1;
+}
+.sent_text_input{
+    width: 100%;
+    height: 80px;
+    bottom: -5%;
+}
+.sent_text_input textarea{
+    width: 100%;
+    height: 30px;
+    resize: none;
+    display: block;
+    background: none;
+}
+.messages_dis{
+    display: flex;
+    flex-direction: column;
+    height: 235px;
+    width: 300px;
+    background: var(--first-color);
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+.messages_dis:hover{
+    overflow: hidden scroll;
+}
+.sent_text_input button{
+    width: 100%;
+    padding: 10px 0;
+    cursor: pointer;
+    background: var(--first-color);
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 30px;
+    bottom: -3%;
+    background-color: #ccc;
+    transform: translateY(-50%);
+    right: 25%;
+    cursor: pointer;
+    z-index: 908;
+}
+.btns button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 20px;
+    margin: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btns button.active{
+    background: var(--first-color);
+    color: var(--first-color-lighter);
+}
+.btns button:hover{
+    transform: scale(1.1);
+}
+.logo_inline{
+    display: flex;
+    flex-direction: column;
+}
+.main_video .hbtn{
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    background-color: #ccc;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    cursor: pointer;
+    z-index: 998;
+}
+.hbtn.offline{
+    border: 2px solid rgb(226, 19, 19);
+}
+.hbtn.online{
+    border: 2px solid rgb(15, 208, 15);
+}
+@media screen and (max-width: 700px){
+    .my_video{
+        width: 100px;
+        height: 100px;
+        top: 5%;
+        left: 20%;
+        cursor: pointer;
+        z-index:600;
+    }
+
+    .user_video{
+        width: 300px;
+        height: 500px;
+        top: -6%;
+        left: 20%;
+        cursor: pointer;
+        z-index: 1;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .lawyers_all_wrapper{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 2;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 800px){
+    .lawyers_all_wrapper{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 2;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 300px){
+    .btns{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 30px;
+        bottom: -3%;
+        background-color: #ccc;
+        transform: translateY(-50%);
+        right: 5%;
+        cursor: pointer;
+        z-index: 908;
+    }
+
+    .header_phone{
+        right: 5%;
+    }
+    .phone_notificats{
+        right: 5%;
+        z-index: 1000;
+    }
+    .lawyers_all_wrapper{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 2;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 460px){
+    .my_video{
+        width: 100px;
+        height: 100px;
+        top: 11%;
+        left: 20%;
+        cursor: pointer;
+        z-index:600;
+    }
+    .lawyer_profile{
+        width: 100%;
+        margin-bottom: 15px;
+        }
+        .lawyer_profile .lawyer_pic{
+            width: 100%;
+            height: 50%;
+            }
+    .user_video{
+        width: 200px;
+        height: 500px;
+        top: -6%;
+        left: 20%;
+        cursor: pointer;
+        z-index:600;
+        opacity: 1;
+    }
+    .phone_notificats{
+        width: 200px;
+    }
+    .messages_dis{
+        display: flex;
+        flex-direction: column;
+        height: 235px;
+        width: 200px;
+        background: var(--first-color);
+        overflow: hidden;
+        z-index: 9999;
+        opacity: 1;
+
+    }
+    .btns{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 30px;
+        bottom: -3%;
+        background-color: #ccc;
+        transform: translateY(-50%);
+        right: 15%;
+        cursor: pointer;
+        z-index: 908;
+    }
+    .btns button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1px 5px;
+        margin: 0 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
+
+
+@media screen and (max-width: 400px){
+    .lawyers_all_wrapper{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 2;
+        padding: 20px;
+    }
+    .lawyer_profile{
+        width: 100%;
+        margin-bottom: 15px;
+        }
+        .lawyer_profile .lawyer_pic{
+            width: 100%;
+            height: 50%;
+            }
+}
+

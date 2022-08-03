@@ -1,0 +1,83 @@
+
+.centered-login{
+    height: 100vh;
+    width: 100%;
+    background: rgb(184, 178, 178);
+    display: flex;
+    position: absolute;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  
+  }
+  .form-input{
+      width: 100%;
+      height: 30px;
+      margin-bottom: 10px;
+      outline: none;
+      border-radius: 5px;
+      background: rgb(199, 190, 190);;
+  }
+  ::placeholder{
+      font-size: 15px;
+  }
+  .form form{
+      height: 500px;
+      overflow-y: scroll;
+  }
+  .form form .error-txt{
+      color: #721c24;
+      background: #f8d7da;
+      padding: 8px 10px;
+      text-align: center;
+      border-radius: 5px;
+      border: 1px solid #f5c6cb;
+  }
+  .form form .name-details{
+      display: flex;
+  }
+  form .name-details .field:first-child{
+      margin-right: 10px;
+  }
+  .form form .field{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+  }
+  .form form input{
+      height: 30px;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+      padding: 0 10px;
+      border: 1px solid #ccc;
+  }
+  .form form textarea{
+    height: 40px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    padding: 0 10px;
+    resize: none;
+    border: 1px solid #ccc;
+}
+ .form form .field label{
+     margin-bottom: 2px;
+ }
+ .loading{
+     display: '';
+ }
+@media screen and (max-width: 600px) {
+    .centered-login{
+        height: 100vh;
+        width: 100%;
+        background: rgb(184, 178, 178);
+        display: flex;
+        position: absolute;
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+}

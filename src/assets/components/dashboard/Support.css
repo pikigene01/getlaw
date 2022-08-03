@@ -1,0 +1,10 @@
+.support_wrapper{
+    width: 80%;
+    height: 400px;
+    display: flex;
+    text-align: center;
+    margin-left: 100px;
+    box-shadow: 2px 5px 15px #000000;
+    border-radius: 10px;
+    overflow: hidden;
+}

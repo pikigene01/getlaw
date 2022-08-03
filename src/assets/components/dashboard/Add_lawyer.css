@@ -1,0 +1,108 @@
+.form_wrapper form{
+    width: 400px;
+    display: flex;
+    margin: 0 5rem;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 2px 5px 15px #000000;
+    border-radius: 10px;
+}
+.grid_for_law{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+.lawyers_available_dash{
+    height: 400px;
+    display: flex;
+    margin: 0 5rem;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 5px 15px #000000;
+    border-radius: 10px;
+}
+.lawyer_dash_card{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    word-wrap: break-word;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 5px 15px #000000;
+    border-radius: 10px;
+}
+.lawyer_dash_card:hover{
+    transform: scale(1.1);
+}
+.lawyer_dash_card h3{
+    display: block;
+    font-size: 10px;
+}
+.lawyer_dash_card button{
+outline: none;
+padding: 5px 10px;
+background: var(--first-color);
+cursor: pointer;
+}
+.form_wrapper form input,.form_wrapper form textarea{
+    padding: 10px 5px;
+    background: #ccc;
+    outline: none;
+    width: 50%;
+    margin-left: 10px;
+}
+.form_wrapper form .input{
+    margin-top: 10px;
+}
+.save_lawyer_btn{
+    width: 200px;
+    padding: 10px 20px;
+    outline: none;
+    color: #fff;
+    background: var(--first-color);
+    cursor: pointer;
+}
+.next_view{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 50%;
+}
+.next_btn{
+    padding: 10px 20px;
+    background: var(--first-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.prev_btn{
+    padding: 10px 20px;
+    background: #ccc;
+    border-radius: 10px;
+     cursor: pointer;
+}
+.grid_dash{
+    display: grid;
+    grid-template-columns: 40% 50%;
+    gap: 20px;
+}
+@media screen and (max-width: 1000px){
+    .grid_dash{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 20px;
+    }  
+
+    .lawyers_available_dash{
+        height: 280px;
+        display: flex;
+        margin: 0 5rem;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 2px 5px 15px #000000;
+        border-radius: 10px;
+    }
+}

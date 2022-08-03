@@ -1,0 +1,406 @@
+.reviews-star{
+    cursor:pointer;
+}
+.users-reviews{
+    margin-top: 10px;
+}
+.liked-heart{
+color: var(--first-color);
+}
+.liked-heart .like:hover,.like-heart .like:hover{
+    transform: scale(1.2);
+}
+.token-input{
+    height: 30px;
+    background: none;
+    outline: none;
+    border-bottom: 3px solid var(--first-color);
+    width: 40%;
+    margin-bottom: 10px;
+}
+.inputs:focus{
+    border-bottom: 3px solid black;
+}
+.available-lawyers{
+    overflow: hidden;
+}
+.available-lawyers:hover{
+    overflow: hidden scroll;
+}
+.reviews_all{
+    border-bottom: 2px solid var(--first-color);
+   height: 420px;
+   overflow: hidden hidden;
+   
+}
+.reviews_all:hover{
+
+   overflow: hidden scroll;
+   
+}
+.review{
+    display: flex;
+    border-bottom: 2px solid var(--first-color);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.review p{
+   word-wrap: break-word;
+   color: var(--title-color);
+}
+.reviews_all::-webkit-scrollbar{
+    width: 7px;
+}
+.reviews_all::-webkit-scrollbar-track{
+    background: #ccc;
+    border-radius: 50px;
+}
+.reviews_all::-webkit-scrollbar-thumb{
+    background: #666;
+    border-radius: 50px;
+}
+.count-lawyers,.buy_btn_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--h5-font-size);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 900;
+    font-style: italic;
+    border-bottom: 0.5px solid #333;
+}
+.btns_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.ecocash_btn{
+    color: #fff;
+    padding: 10px 50px;
+    border-radius: 99px;
+    background: var(--first-color-alt);
+    margin-top: 10px;
+}
+.paypal_btn{
+  background:linear-gradient(45deg, blueviolet, deeppink);
+  margin-top: 20px;
+  padding: 10px 50px;
+  color:#fff;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: .2s linear;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    z-index: 1001;
+    opacity: 5;
+    transition: .3s;
+    overflow:  hidden scroll;
+}
+.modal_container{
+    height: 400px;
+    width: 500px;
+    background: var(--container-color);
+    border-radius: 10px;
+}
+.modal_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 10px;
+    border-bottom: 2px solid #333;
+}
+.modal_body h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 10px;
+}
+.close_modal_btn{
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--h2-font-size);
+    border-radius: 50%;
+    background: var(--first-color);
+    cursor: pointer;
+    margin-left: 10px;
+}
+.input{
+    outline: none;
+    background: none;
+    border-bottom: 2px solid var(--first-color);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.input:focus{
+    border-bottom: 2px solid #333;
+}
+.buy_hours{
+    padding: 20px 10px;
+    outline: none;
+    background-color: var(--first-color);
+    width: 80%;
+
+}
+.phone_wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.phone_wrapper input{
+  width: 200px;
+}
+.close_modal_btn:hover{
+    transform: scale(1.1);
+}
+.modal_body {
+    position: relative;
+    background-color: var(--container-color);
+}
+.lawyer-wrappper{
+    width: 200px;
+    height: 50px;
+    background: rgb(199, 190, 190);
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 120px 12 rgb(20, 20, 20);
+    cursor: pointer;
+  }
+  .lawyer-wrappper-body{
+    margin: 8px;
+    display: flex;
+  }
+  /* .lawyer-imgs{
+    margin-left: -20px;
+    border-radius: 50%;
+    margin-right: 10px;
+  } */
+  .story{
+    flex-basis: 18%;
+    padding-top: 32%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    width: 200px;
+    height: 260px;
+    margin: 10px 20%;
+    margin-bottom: 20px;
+    color: #fff;
+    cursor: pointer;
+    word-wrap: break-word;
+  }
+  .story img{
+    position: absolute;
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    border: 2px solid green;
+  }
+  .token_input{
+    position: relative;
+    margin: 40px 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #dddd;
+    border-radius: 10px;
+    display: flex;
+  }
+  .token_input span{
+    padding: 10px;
+    background: var(--first-color);
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .token_input span:active{
+    background: #889ce2;
+  }
+  .token_input span::before{
+    content: "Copied";
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    background: var(--first-color);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 15px;
+    display: none;
+  }
+  .token_input input{
+    width: 300px;
+  }
+  .token_input input[value]{
+    font-size: var(--h5-font-size);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    padding: 10px;
+  }
+  .profile{
+    z-index: 1000;
+    transform: translateY(-40px);
+  }
+  .lawyer_modal::after{
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 1/2;
+    width: 100px;
+    height: 100px;
+    background: var(--container-color);
+    border-radius: 50%;
+    z-index: 500;
+    display: none;
+
+  }
+  .token_input span::after{
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 30px;
+    width: 10px;
+    height: 10px;
+    background: var(--first-color);
+    transform: rotate(45deg);
+    display: none;
+
+  }
+ 
+  .token_input.active span:before,
+  .token_input.active span:after{
+    display: block;
+  }
+  .schedule_description{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 800;
+  }
+  .scheduled_dis,.schedule_dis,.available_dis{
+    width: 20px;
+    height: 20px;
+    display: block;
+    cursor: pointer;
+  }
+  .scheduled_dis{
+   border: 1px solid var(--first-color);
+  }
+  .schedule_dis{
+    background: var(--first-color);
+  }
+  .available_dis{
+    background: var(--first-color);
+  }
+.gene_profile{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--container-color);
+  border: 5px solid var(--first-color);
+  transform: translateY(-3px);
+}
+.justify_center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--h5-font-size);
+  font-weight: 400;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--first-color-second);
+}
+.profile{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.grid_lawyer_btns{
+  display: flex;
+  flex: row;
+}
+.law_prof_btn{
+  margin: 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  background: var(--first-color);
+  color: var(--first-color-lighter);
+  cursor: pointer;
+}
+.law_prof_btn.active::after{
+  content: "link copied GetLaw Powered";
+  position: absolute;
+  width: 100px;
+  color: var(--first-color);
+  transform: translateX(80px) translateY(-8px) rotate(45deg);
+ 
+}
+.lawyer_url_input{
+  padding: 10px;
+  border: 1px solid var(--first-color);
+  background: none;
+}
+.law_prof_btn.active::after{
+display: block;
+}
+.law_profile_body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+@media screen and (max-width: 700px){
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+    .left-side{
+        height: 100%;
+        /* background: rgb(184, 178, 178); */
+        background: rgb(234, 228, 228);
+        border-radius: 10px;
+      
+      }
+      .right-side{
+        height: 100%;
+        /* background: rgb(184, 178, 178); */
+        background: rgb(234, 228, 228);
+        border-radius: 10px;
+      
+      }
+}
