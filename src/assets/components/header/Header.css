@@ -258,6 +258,16 @@ border-bottom: 3px solid #333;
 .search_card .body{
     padding: 0px 10px;
 }
+.flex_wrap_lawyer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flex_wrap_lawyer .search_img{
+  border-radius: 50%;
+  border: 2px solid var(--first-color);
+}
 .search_card .flex_wrap{
     display: flex;
 }

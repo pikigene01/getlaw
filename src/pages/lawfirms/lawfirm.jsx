@@ -487,8 +487,8 @@ const BuyTokenVisa = (e) => {
     </div>
   </div>
   <div className="law_profile_body">
-  <input type="text" id="lawyer_url_input" className="lawyer_url_input" value=
-  {window.location} readonly/>
+  <input type="text" id="lawyer_url_input" onChange={null} className="lawyer_url_input" value=
+  {window.location} readOnly/>
    {skeletonLoader && (
     <>
   <p className="justify_center">{lawyerviewing?.description}</p>
@@ -713,9 +713,18 @@ const BuyTokenVisa = (e) => {
     scheduled_time = e.target.dataset.event;
  
    available_user.push({week_day: week_day,schedule_time: scheduled_time});
-   
-    var button = document.querySelector(`button[data-week="${week_day}"][data-event="${scheduled_time}"]`).classList.toggle('scheduled-btn');
+   if(!isYourBookings){
+    const all_scheduled_btns = document.querySelectorAll('.scheduled-btn');
+    for(var i = 0;i<all_scheduled_btns.length;i++ ){
+     all_scheduled_btns[i].classList.remove('scheduled-btn');
+     all_scheduled_btns[i].classList.add('schedule-btn');
+     
+    }
+   }
+  
+   var button = document.querySelector(`button[data-week="${week_day}"][data-event="${scheduled_time}"]`).classList.toggle('scheduled-btn');
     var buttons = document.querySelector(`button[data-week="${week_day}"][data-event="${scheduled_time}"]`).classList.toggle('schedule-btn');
+    
     
     setBookingsForm({...bookingsForm,data_week: week_day,data_event:scheduled_time});
     // var button = document.querySelector(`button[data-week="${week_day}"][data-event="${scheduled_time}"]`).classList.remove('schedule-btn');

@@ -407,10 +407,10 @@ Gene_menu = (
               <div className="search_card">
                 <div className="head"> {post.name}</div>
                 <div className="body">
-                  <div className="flex_wrap">
+                  <div className="flex_wrap_lawyer">
                     <img src={post.picture} className="search_img" alt="img" />
                     <div className="right_info">{post.description}...
-                    <br/><Link to={"/lawfirm/"+post.name.toLowerCase()+"/"+post.belongs}><button style={{"width":"200px"}} onClick={()=> navigate("/lawfirm/"+post.belongs)} className="app-btn schedule-sent">View Lawyers Available</button></Link>
+                    <br/><Link to={"/lawfirm/"+post.name.toLowerCase()+"/"+post.belongs}><button style={{"width":"200px"}} onClick={()=> navigate("/lawfirm/"+post.belongs)} className="app-btn schedule-sent">View More Info</button></Link>
                     </div>
                   </div>
                   <div className="price_footer">

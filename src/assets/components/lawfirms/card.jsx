@@ -44,7 +44,7 @@ export default function Card() {
     threeStar = "",
     twoStar = "",
     oneStar = "";
-let loaderkey = 1;
+let [loaderkey, setLoaderkey] = useState('100');
   useEffect(() => {
      const data = {
       role: "1",
@@ -201,7 +201,8 @@ let loaderkey = 1;
                   );
 
                   return (
-                    <div key={data?.id}>
+                    
+                    <div key={i}>
                       <SwiperSlide>
                         <Link to={"/lawfirm/" + data.id}>
                           <div className="card">
@@ -307,12 +308,12 @@ let loaderkey = 1;
             {!skeletonLoader && (
               <>
               {[...Array(4)].map(()=>{
-              loaderkey++;
+              i++;
                 return (
-                  <div key={key}>
+                  <div key={i}>
                   {Skeleton_loader}
                  
-                </div>
+                   </div>
                 )
               })}
               </>

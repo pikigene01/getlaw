@@ -17,7 +17,7 @@ export default function Blog() {
   const [skeletonLoader, setSkeletonLoader] = useState(false);
   const [skeletonLoaderBlogs, setSkeletonLoaderBlogs] = useState(false);
   const [localStorageData,setLocalStorageData] = useState(localStorage.getItem('user_blogs'));
-
+let i = 0;
 
     const updatePage = () => {
        var update_url = window.location.pathname;
@@ -119,7 +119,7 @@ export default function Blog() {
                     <>
                 {blogs.map((data)=>{
                     return (
-                    <div className='blog_post'>
+                    <div className='blog_post' key={data.id}>
                         <div className='blog_img'>
                             <img src={data.image} style={{width:"100%",height: "50%"}} alt="blog image" />
                         </div>
@@ -142,8 +142,9 @@ export default function Blog() {
             {!skeletonLoaderBlogs && (
               <>
               {[...Array(8)].map(()=>{
+                i++;
                 return (
-                  <div className='blog_post'>
+                  <div className='blog_post' key={i}>
                   <div className='blog_img skeleton' style={{width:"100%",height: "150px"}}>
                   </div>
                   <div className='blog_body'>
@@ -168,7 +169,7 @@ export default function Blog() {
                 <>
                  {blogsLatest.map((data)=>{
                return (
-                <div className='blog_post_lat'>
+                <div className='blog_post_lat' key={data.id}>
                 <div className='lat_body'>
                  <div>
                 <img src={data.image} style={{width:"60px",height: "60px"}} alt="blog image" />
@@ -187,8 +188,9 @@ export default function Blog() {
                {!skeletonLoader && (
                 <>
                 {[...Array(6)].map(()=>{
+                  i++;
                   return (
-                    <div className='blog_post_lat'>
+                    <div className='blog_post_lat' key={i}>
                     <div className='lat_body'>
                      <div>
                     <div className='skeleton' style={{width:"60px",height: "60px"}} />

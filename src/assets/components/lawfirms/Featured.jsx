@@ -105,8 +105,9 @@ let i =0;
           {skeletonLoader && (
               <>
             {allFeatured.map((row) => {
+              i++;
               return (
-                <div className="lawfirm_flex" key={row.id}>
+                <div className="lawfirm_flex" key={i}>
                 <div className="lawfirm_card">
                   <div className="top">
                     <div className="left">

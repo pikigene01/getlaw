@@ -5,6 +5,8 @@ import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../assets/components/footer/footer";
+import support_svg from '../../assets/imgs/support.svg';
+
 
 export default function Auth() {
   document.title = "Lawfirms Register | GetLaw";
@@ -129,7 +131,9 @@ export default function Auth() {
       <div className="body-wrapper">
         <div className="left-side">
         <div className="head-title">Become A Member Of Lawyers' Site</div>
-          <div className="body-info">
+          <div className="body-info" style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+            <img draggable={false} src={support_svg} alt="support_getlaw" style={{width:"50%"}} />
+            <p>Register your lawfirm with just <b>40usd</b> paid once and for all and receive a token....</p>
             </div>
         </div>
         <div className="right-side">

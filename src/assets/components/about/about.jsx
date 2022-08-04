@@ -4,7 +4,7 @@ import Footer from '../footer/footer'
 import './About.css'
 import { ArchiveRounded, ConfirmationNumber, RemoveRedEye, ViewStream } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
-import about_img from '../../imgs/gene_law.svg';
+import about_img from '../../imgs/msg.svg';
 import about_img_2 from '../../imgs/video-creation.jpg';
 import video_img from '../../imgs/build-audience.jpg'
 
@@ -35,7 +35,7 @@ export default function About() {
       </div>
       <div className='about_container'>
         <div className='about_img'>
-          <img src={about_img} alt="lawyers' site" />
+          <img draggable={false} src={about_img} alt="lawyers' site" />
         </div>
 
         <div className='about_cards'>
