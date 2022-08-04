@@ -123,6 +123,8 @@ useEffect(()=>{
     })
     });
   };
+  var gene = 'getlaw';
+
   socket.on('getNotification', (data) => 
 
  setMessagesUser(data),
