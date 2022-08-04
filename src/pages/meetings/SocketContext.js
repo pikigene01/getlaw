@@ -11,6 +11,7 @@ const SocketContext = createContext();
 const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [socket,setSocket] = useState(io('http://localhost:5000'));
+  // const [socket,setSocket] = useState(io('https://getlaw.herokuapp.com'));
   const [messagesUser,setMessagesUser] = useState([]);
 
   const user_id = localStorage.getItem('auth_user_id');
