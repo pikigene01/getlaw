@@ -18,7 +18,11 @@ export default function About() {
       <h2>GetLaw</h2>
 
       <div className='about_info'>
-          <p>GetLaw is where you will find lawyers and create rooms with them.</p>
+          <p>GetLaw is where you will find lawyers and create rooms with them.
+          GetLaw is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
+
+We are not a law firm, do not provide any legal services, legal advice or "Lawyer referral services" and do not provide or participate in any legal representation.
+          </p>
           <div className='four_grid'>
             <div className='inner inner_img'> <img draggable={false} src={video_img} alt="" style={{"width": "200px"}} /></div>
             <div className='inner inner_text'>GetLaw allows clients to schedule meetings with available lawyers and secure your video and chat we provide you in our meeting space.</div>
