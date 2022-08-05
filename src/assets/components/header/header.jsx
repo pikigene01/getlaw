@@ -44,45 +44,46 @@ function Header() {
     second: second,
     day: weekday[day],
   });
-  
-  useEffect(()=>{
    // clock render start
    const drawTime =() =>{
-       var now = new Date();
-       var hour = now.getHours();
-       let new_hour = hour;
+    var now = new Date();
+    var hour = now.getHours();
+    let new_hour = hour;
 
-       if(hour == '00'){
-        new_hour = '23';
-       }
-       var minute = now.getMinutes();
-       var second = now.getSeconds();
-       var day = now.getDay();
-       //days are like this 0 up to 6; when its 0 its Sunday
-       const get_calendar_btn = document.querySelectorAll(`button[data-day="${day}"][data-event="${hour}"].scheduled-btn`);
-       let ext = 'AM';
-       if(hour > 12){
-         ext = 'PM';
-       }else{
-        ext = 'AM';
-       }
-       for(var i = 0; i<get_calendar_btn.length;i++){
+    if(hour == '00'){
+     new_hour = '23';
+    }
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var day = now.getDay();
+    //days are like this 0 up to 6; when its 0 its Sunday
+    const get_calendar_btn = document.querySelectorAll(`button[data-day="${day}"][data-event="${hour}"].scheduled-btn`);
+    let ext = 'AM';
+    if(hour > 12){
+      ext = 'PM';
+    }else{
+     ext = 'AM';
+    }
+    for(var i = 0; i<get_calendar_btn.length;i++){
 
-       var onmeeting = get_calendar_btn[i].dataset.event;
-         if(onmeeting == time.hour){
-      get_calendar_btn[i].disabled = false
-      get_calendar_btn[i].innerHTML = 'Current';
-      get_calendar_btn[i].setAttribute("data-meeting", "yes");
-           }else{
-        get_calendar_btn[i].disabled = true
-        get_calendar_btn[i].innerHTML = `${new_hour}-${hour} ${ext}`;
-      get_calendar_btn[i].setAttribute("data-meeting", "no");
+    var onmeeting = get_calendar_btn[i].dataset.event;
+      if(onmeeting == time.hour){
+   get_calendar_btn[i].disabled = false
+   get_calendar_btn[i].innerHTML = 'Current';
+   get_calendar_btn[i].setAttribute("data-meeting", "yes");
+        }else{
+     get_calendar_btn[i].disabled = true
+     get_calendar_btn[i].innerHTML = `${new_hour}-${hour} ${ext}`;
+     get_calendar_btn[i].setAttribute("data-meeting", "no");
 
 
-           }
-       };
-       setTime({...time,time_html: `${hour}:${minute}:${second}`,hour:hour,minute:minute,second:second,day: weekday[day]});
-   }
+        }
+    };
+    setTime({...time,time_html: `${hour}:${minute}:${second}`,hour:hour,minute:minute,second:second,day: weekday[day]});
+  
+  }
+  useEffect(()=>{
+  
    setInterval(()=>{
      drawTime();
    },1000);
@@ -90,7 +91,7 @@ function Header() {
   
 
    //end of clock render
-  },[]);
+  },[drawTime,time]);
 const ecocashHandle = (e) => {
   setWithdrawmoneyform({...withdrawmoneyform,[e.target.name]: e.target.value});
 }
@@ -146,7 +147,7 @@ menu_toggle = (
 <div className="modal_header">
   <h3>You want to withdraw ({money.user_funds}) 💕 <button className="close_modal_btn" onClick={()=> setWithdrawMoney(false)}>&times;</button></h3>
 </div>
-<div className="modal_body">
+<div className="modal_body" style={{padding: "15px"}}>
 <form onSubmit={withdrawMoneyForm}>
 <div className="grid">
   <input type="text" name="name" value={withdrawmoneyform.name} onChange={ecocashHandle} className="name_input input" placeholder="Your Name"/>
@@ -155,7 +156,7 @@ menu_toggle = (
 <div className="phone_wrapper">
   <label>If its <b>PayPal</b> enter your email or <b>Ecocash</b> enter your ecocash number</label>
   <input type="phone" name="phone" value={withdrawmoneyform.phone} onChange={ecocashHandle} className="phone_input input" placeholder="Enter you number / email"/>
-  <input type="password" name="otp" className="phone_input input" placeholder="Enter your OTP" />
+  <input type="number" maxlength="6" name="otp" className="phone_input input" placeholder="Enter your OTP" />
   <button type="submit" className="btn buy_hours">Withdraw Your Money</button>
  
 </div>
