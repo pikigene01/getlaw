@@ -350,7 +350,7 @@ Gene_menu = (
  onChange={searchLawfirms}
  onFocus={onFocus}
  type="search"
- placeholder="Search Gene Law..."
+ placeholder="Search GetLaw..."
  className="search"
 />
 
@@ -381,7 +381,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Search Lawfirms Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Get<LayersTwoTone/>Law Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (

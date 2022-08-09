@@ -200,7 +200,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
  
   axios.post("/api/set/availability", data).then((res) => {
     setLoading({ ...loading, isLoading: false });
-    if(res.data.status == 200){
+    if(res.data.status === 200){
       swal('Success',res.data.message,'success');
 
     }else{
@@ -291,7 +291,7 @@ const resetAvailability = (e) => {
  
   axios.post("/api/reset/availability", data).then((res) => {
     setLoading({ ...loading, isLoading: false });
-    if(res.data.status == 200){
+    if(res.data.status === 200){
       swal('Success',res.data.message,'success');
       load_lawyer_bokings(lawyertoview.id,lawyertoview.name);
       setLawyerToView({...lawyertoview,view:true});
@@ -317,7 +317,7 @@ const Schedule_sent = (e)=> {
 
   axios.post("/api/schedule/sent", data).then((res) => {
     setLoading({ ...loading, isLoading: false });
- if(res.data.status == 200){
+ if(res.data.status === 200){
     setBookingsForm({...bookingsForm, token: ""});
     swal("Success", res.data.message, "success");
  }else{
@@ -342,7 +342,7 @@ const Schedule_sent = (e)=> {
     
     axios.post("/api/get/token/eco", data).then((res) => {
       setLoading({ ...loading, isLoading: false });
-      if(res.data.status == '200'){
+      if(res.data.status === 200){
       setUserReceivedToken({token:res.data.token})
       }else{
         swal('Warning', 'Something Went Wrong', 'warning');
@@ -647,7 +647,7 @@ const BuyTokenVisa = (e) => {
     };
     axios.post("/api/post/review", data).then((res) => {
       setLoading({ ...loading, isLoading: false });
-      if(res.data.status == 200){
+      if(res.data.status === 200){
       setLoadReviews({ load: true });
       setReviewInput({ token: "", rated_index: "", review: "" });
       swal("Success", res.data.message, "success");
@@ -904,6 +904,8 @@ scheduled_btn.forEach((btn)=>{
               <div className="schedule_description">
                  <span className="scheduled_dis"></span>
                  <span className="scheduled_text">Scheduled</span>
+                 <span className="scheduled_dis"></span>
+                 <span className="scheduled_text">Not Available</span>
                  <span className="schedule_dis"></span>
                  <span className="schedule_text">Not Scheduled</span>
                  <span className="available_dis"></span>
