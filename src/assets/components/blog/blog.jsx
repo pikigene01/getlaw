@@ -1,13 +1,17 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import Footer from '../footer/footer'
 import Header from '../header/header'
 import './Blog.css'
 import img from '../../imgs/gene_law.svg'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { HomeContext } from '../lawfirms/HomeContext'
+import { Refresh } from '@material-ui/icons'
 
 
 export default function Blog() {
+  const {refresh,setRefresh} = useContext(HomeContext);
+
   document.title = "Welcome to GetLaw Blogs | GetLaw";
 
    const [url,setUrl] = useState('');
@@ -55,16 +59,24 @@ let i = 0;
            
           }
         blog_get();
+        if(refresh){
+          setLocalStorageData(null);
+         }
+         else{
+          setLocalStorageData(blogsLatest);
+         
+         }
         const blog_get_lat = () =>{
           const data = {
             category: page
           }
-         
+          
           if(!localStorageData){
+
             axios.post("api/blog/get/all/latest", data).then((res) => {
               setSkeletonLoader(true);
-       
-          setBlogsLatest(res.data.blogs);
+              setRefresh(false)
+              setBlogsLatest(res.data.blogs);
          });
           }
           else{
@@ -88,9 +100,10 @@ let i = 0;
        
       });
     };
-      },[url,page])
+      },[refresh,url,page])
 
       useEffect(()=>{
+        
         if(!localStorageData){
           localStorage.setItem("user_blogs",JSON.stringify(blogsLatest));
         }
@@ -99,6 +112,9 @@ let i = 0;
   return (
     <div>
         <Header/>
+  <div className='refresh' onClick={()=>setRefresh(true)}>
+  <span title='Refresh....'><Refresh className={refresh?'icon active':'icon'} /></span>
+ </div>
         <div className='blog_wrapper'>
          <div className='blog_header'>
             <h2 className='blog_header_text'>Our Blog Posts</h2>

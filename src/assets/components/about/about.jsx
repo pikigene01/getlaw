@@ -7,33 +7,51 @@ import { Link } from 'react-router-dom'
 import about_img from '../../imgs/msg.svg';
 import about_img_2 from '../../imgs/video-creation.jpg';
 import video_img from '../../imgs/build-audience.jpg'
+import axios from 'axios'
 
 export default function About() {
   const [about,setAbout] = useState({
 lawyers: '0',
 lawfirms: '0',
 experience:'1'
-  })
+  });
+
+  useEffect(()=>{
+
+    const more_info = () =>{
+      const data = {
+        gene: 'genepiki'
+      }
+
+      axios.post("api/lawfirms/more_info", data).then((res) => {
+         if(res.data.status === 200){
+          setAbout({...about,lawyers:res.data.lawyers,lawfirms:res.data.lawfirms})
+         }
+      });
+     
+    }
+    more_info();
+  },[])
   return (
     <>
     <Header/>
     <section className='about'>
       <div className='about_head'>
       <h5>Get to know</h5>
-      <h2>GetLaw</h2>
+      <h2>LAwCurb</h2>
 
       <div className='about_info'>
-          <p>GetLaw is where you will find lawyers and create rooms with them.
-          GetLaw is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
+          <p>LAwCurb is where you will find lawyers and create rooms with them.
+          LAwCurb is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
 
 We are not a law firm, do not provide any legal services, legal advice or "Lawyer referral services" and do not provide or participate in any legal representation.
           </p>
           <div className='four_grid'>
             <div className='inner inner_img'> <img draggable={false} src={video_img} alt="" style={{"width": "200px"}} /></div>
-            <div className='inner inner_text'>GetLaw allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
+            <div className='inner inner_text'>LAwCurb allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
             <div className='inner inner_img_2'><img draggable={false} src={about_img_2} alt="" style={{"width": "200px"}} /></div>
             <div className='inner inner_text_2'> 
-            <p>GetLaw have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
+            <p>LAwCurb have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
             <Link to="/meetings" title='browse our lawfirms available'><button>Enter Meetings</button></Link>
             
             </div>

@@ -1,10 +1,5 @@
 import React, { useState, useEffect,useContext } from "react";
-import Logo from "../../imgs/logo.jfif";
-import img1 from "../../imgs/4.jpg";
-import img2 from "../../imgs/5.jpg";
-import img3 from "../../imgs/6.jpg";
 import { AiOutlineStar } from "react-icons/ai";
-import { render } from "@testing-library/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";

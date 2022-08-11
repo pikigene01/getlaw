@@ -70,7 +70,7 @@ export default function Welcome_Meet() {
                 <input type="search" className="search_input" onChange={liveSearch} placeholder='Search lawyer here using your token'/><Search className="icon search_icon"/> 
             </div>
             <div className='right_header'>
-                Welcome to GetLaw meeting Rooms
+                Welcome to LawCurb meeting Rooms
             </div>
         </div>
 

@@ -29,6 +29,7 @@ export default function Auth() {
      role: '1',
      confirm_password: '',
      password: '',
+     token: '',
      picture: file,
      error_list: [],
   });
@@ -99,6 +100,7 @@ export default function Auth() {
       role: registerInput.role,
       confirm_password: registerInput.confirm_password,
       password: registerInput.password,
+      token: registerInput.token,
      formData,
     }).then(res => {
       if(res.data.status === 200){
@@ -133,7 +135,10 @@ export default function Auth() {
         <div className="head-title">Become A Member Of Lawyers' Site</div>
           <div className="body-info" style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
             <img draggable={false} src={support_svg} alt="support_getlaw" style={{width:"50%"}} />
+           
             <p>Register your lawfirm with just <b>40usd</b> paid once and for all and receive a token....</p>
+           <br/>
+           <p>Get Offer Token Today <b className="highlighted">getlawtok</b> use the token highlighted</p>
             </div>
         </div>
         <div className="right-side">

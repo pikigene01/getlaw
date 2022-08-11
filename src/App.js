@@ -26,6 +26,7 @@ import Lawfirm_info from "./assets/components/dashboard/Edit_account";
 import Welcome_Meet from "./pages/meetings/Welcome_Meet";
 import Notfound from "./assets/components/notfound/notfound";
 import WholeApp from "./assets/components/home/WholeApp";
+import BlogApp from "./assets/components/blog/BlogApp";
 
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
@@ -56,8 +57,8 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/support" element={<Support/>} />
         <Route exact path="/pricing" element={<Pricing/>} />
-        <Route exact path="/blog" element={<Blog/>} />
-        <Route exact path="/blog/:id" element={<Blog/>} />
+        <Route exact path="/blog" element={<BlogApp/>} />
+        <Route exact path="/blog/:id" element={<BlogApp/>} />
         
         {/* <Route exact path="/auth" element={<Login />} /> */}
         <Route path="/lawfirm/auth" element=

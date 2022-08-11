@@ -332,7 +332,7 @@ Gene_menu = (
           <div className="logo_wrapper">
             <Link to="/">
               {" "}
-              <span><span className="logo_bold">Get</span><><LayersTwoTone/></><span className="logo_italic">Law</span></span>
+              <span><span className="logo_bold">Law</span><><LayersTwoTone/></><span className="logo_italic">Curb</span></span>
               {/* <h1 >title="gene law">GL</h1> */}
               {/* <img src={Logo} alt="GeneLaw logo" style={{height: "100%"}} /> */}
             </Link>
