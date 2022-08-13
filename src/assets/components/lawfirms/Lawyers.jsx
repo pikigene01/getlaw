@@ -62,6 +62,9 @@ export default function Lawyers() {
     useEffect(()=>{
      if(!localStorageData){
       localStorage.setItem('all_lawyers', JSON.stringify(allLawyers));
+     }else{
+      localStorage.removeItem('all_lawyers');
+
      }
     },[allLawyers])
 
@@ -95,7 +98,7 @@ export default function Lawyers() {
      <div className='lawyers_body centered'>
      {skeletonLoader && (
               <>
-        {allLawyers.map((row)=>{
+        {allLawyers?.map((row)=>{
           i++;
             return (
              

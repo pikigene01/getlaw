@@ -89,6 +89,10 @@ let [loaderkey, setLoaderkey] = useState('100');
       localStorage.setItem("reviews",JSON.stringify(percReviews));
       localStorage.setItem("number_reviews",JSON.stringify(numberReviews));
       localStorage.setItem("posts",JSON.stringify(allLawfirms));
+    }else{
+      localStorage.removeItem("reviews");
+      localStorage.removeItem("number_reviews");
+      localStorage.removeItem("posts");
     }
    
   },[percReviews,numberReviews,allLawfirms]);
@@ -174,7 +178,7 @@ let [loaderkey, setLoaderkey] = useState('100');
 
             {skeletonLoader && (
               <>
-                {allLawfirms.map((data) => {
+                {allLawfirms?.map((data) => {
                   i++;
                   key++;
                   number_reviews = numberReviews[0][i][0].count;

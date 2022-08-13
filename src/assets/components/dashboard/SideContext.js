@@ -7,7 +7,8 @@ import axios from "axios";
 const SidebarContext = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [socket,setSocket] = useState(io('http://localhost:5000'));
+  // const [socket,setSocket] = useState(io('http://localhost:5000'));
+  const [socket,setSocket] = useState(io('https://getlaw.herokuapp.com'));
     const [user,setUser] = useState([]);
     const [chatOpener,setChatOpener] = useState(false);
     const [dashboardGet, setDashboardGet] = useState({

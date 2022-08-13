@@ -280,7 +280,7 @@ Gene_menu = (
   <>
   <div className="side_menu">
     <div className="menu_header">
-      <h2>Get<LayersTwoTone/>Law</h2>
+      <h2>Law<LayersTwoTone/>Curb</h2>
     </div>
     <div className="menu_body">
      <ul>
@@ -381,7 +381,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Get<LayersTwoTone/>Law Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Law<LayersTwoTone/>Curb Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (

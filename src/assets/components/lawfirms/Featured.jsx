@@ -59,6 +59,9 @@ let i =0;
       localStorage.setItem("numberReviews",JSON.stringify(numberReviews));
       localStorage.setItem("featured_lawfirms",JSON.stringify(allFeatured));
       
+    }else{
+      localStorage.removeItem("numberReviews");
+      localStorage.removeItem("featured_lawfirms");
     }
    
   },[numberReviews,allFeatured]);
@@ -104,7 +107,7 @@ let i =0;
           <div className="card_three">
           {skeletonLoader && (
               <>
-            {allFeatured.map((row) => {
+            {allFeatured?.map((row) => {
               i++;
               return (
                 <div className="lawfirm_flex" key={i}>

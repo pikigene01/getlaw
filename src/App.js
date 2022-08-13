@@ -31,7 +31,7 @@ import BlogApp from "./assets/components/blog/BlogApp";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
 axios.defaults.headers.post["content-type"] = "application/json";
-axios.defaults.headers.post["content-type"] = "multipart/form-data: boundary=add-random-characters";
+// axios.defaults.headers.post["content-type"] = "multipart/form-data: boundary=add-random-characters";
 axios.defaults.headers.post["Accept"] = "application/json";
 
 axios.defaults.withCredentials = true;

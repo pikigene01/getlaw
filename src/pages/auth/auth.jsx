@@ -64,6 +64,7 @@ export default function Auth() {
       setLoggedIn(false)
      
     }
+    // alert(file?.name)
     let fileReader= false;
     if (file) {
       fileReader = new FileReader();
@@ -86,27 +87,35 @@ export default function Auth() {
  
   const registerSubmit = (e) => {
     e.preventDefault();
+   
+        const dataSent =  {
+          email: registerInput.email,
+          name: registerInput.name,
+          phone: registerInput.phone,
+          description: registerInput.description,
+          price: registerInput.price,
+          role: registerInput.role,
+          confirm_password: registerInput.confirm_password,
+          password: registerInput.password,
+          token: registerInput.token,
+          picture_law: file,
+        
+        };
     const formData = new FormData();
-    formData.append('picture', file);
+    formData.append('picture_law', file);
     setLoading({...loading, isLoading:true});
     // let settings = { headers: { 'content-type': 'multipart/form-data' } };
     axios.get('/sanctum/csrf-cookie').then(response => {
-    axios.post('/api/register', {
-      email: registerInput.email,
-      name: registerInput.name,
-      phone: registerInput.phone,
-      description: registerInput.description,
-      price: registerInput.price,
-      role: registerInput.role,
-      confirm_password: registerInput.confirm_password,
-      password: registerInput.password,
-      token: registerInput.token,
-     formData,
-    }).then(res => {
+     
+    axios.post('/api/register',dataSent,{
+      headers: {
+        'Content-Type': file?.type
+      }}).then(res => {
       if(res.data.status === 200){
      
         localStorage.setItem('auth_token', res.data.token);
         localStorage.setItem('auth_name', res.data.username);
+        localStorage.setItem('auth_user_id', res.data.user_id);
          swal("Success", res.data.message,"success");
         navigate('/');
         setLoading({...loading, isLoading:false});
