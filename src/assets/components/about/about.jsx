@@ -38,7 +38,7 @@ experience:'1'
     <section className='about'>
       <div className='about_head'>
       <h5>Get to know</h5>
-      <h2>LAwCurb</h2>
+      <h2>LawCurb</h2>
 
       <div className='about_info'>
           <p>LAwCurb is where you will find lawyers and create rooms with them.

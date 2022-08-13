@@ -17,9 +17,9 @@ export default function Home() {
   return (
     <>
  <Header/>
- <div className='refresh' onClick={()=>setRefresh(true)}>
+ {/* <div className='refresh' onClick={()=>setRefresh(true)}>
   <span title='Refresh....'><Refresh className={refresh?'icon active':'icon'} /></span>
- </div>
+ </div> */}
  <Welcome/>
  <Cards/>
  <Featured/>

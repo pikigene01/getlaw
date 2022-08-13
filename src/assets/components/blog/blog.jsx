@@ -66,26 +66,7 @@ let i = 0;
           setLocalStorageData(blogsLatest);
          
          }
-        const blog_get_lat = () =>{
-          const data = {
-            category: page
-          }
-          
-          if(!localStorageData){
-
-            axios.post("api/blog/get/all/latest", data).then((res) => {
-              setSkeletonLoader(true);
-              setRefresh(false)
-              setBlogsLatest(res.data.blogs);
-         });
-          }
-          else{
-          setSkeletonLoader(true);
-          setBlogsLatest(JSON.parse(localStorage.getItem('user_blogs')))
-
-          }
-        }
-        blog_get_lat();
+        
           if(page){
     
         const links  = document.querySelectorAll('button');
@@ -100,21 +81,49 @@ let i = 0;
        
       });
     };
-      },[refresh,url,page])
+      },[url,page])
+
+      useEffect(()=>{
+        const blog_get_lat = () =>{
+          const data = {
+            category: page
+          }
+          
+
+            axios.post("api/blog/get/all/latest", data).then((res) => {
+              setSkeletonLoader(true);
+              setRefresh(false)
+              setBlogsLatest(res.data.blogs);
+         });
+          }
+          
+          if(!localStorageData){
+            blog_get_lat();
+          }else{
+            setSkeletonLoader(true);
+            setBlogsLatest(JSON.parse(localStorage.getItem('user_blogs')))
+  
+            }
+        
+      },[localStorageData]);
 
       useEffect(()=>{
         
         if(!localStorageData){
-          localStorage.setItem("user_blogs",JSON.stringify(blogsLatest));
+          localStorage.setItem("user_blogs", JSON.stringify(blogsLatest));
+         
+        }else{
+          localStorage.removeItem("user_blogs");
+
         }
 
       },[blogsLatest])
   return (
     <div>
         <Header/>
-  <div className='refresh' onClick={()=>setRefresh(true)}>
+  {/* <div className='refresh' onClick={()=>setRefresh(true)}>
   <span title='Refresh....'><Refresh className={refresh?'icon active':'icon'} /></span>
- </div>
+ </div> */}
         <div className='blog_wrapper'>
          <div className='blog_header'>
             <h2 className='blog_header_text'>Our Blog Posts</h2>
