@@ -34,12 +34,16 @@ export default function Add_lawyer() {
   },[]);
   const [lawyerform,setLawyerForm] = useState({
     name: '',
+    email: '',
     surname: '',
     phone: '',
+    price: 'null',
     description: '',
     location: '',
     password: '',
-    confirm_password: '',
+    role: '2',
+    belongs: localStorage.getItem('auth_user_id'),
+    token: 'getlawtok',
     picture: file
   });
  
@@ -88,8 +92,8 @@ export default function Add_lawyer() {
   const nextView = (e) => {
     let id= view.id;
     id++;
-    if(id >= 8){
-      id = 8;
+    if(id >= 9){
+      id = 9;
      }
     setView({id:id})
   }
@@ -136,6 +140,46 @@ export default function Add_lawyer() {
 // let imagedata = document.querySelector('input[type="file"]').files[0];
 
   }
+
+  const AddNewLawyer = (e) => {
+    e.preventDefault();
+   
+    const formData = new FormData();
+    formData.append('token', lawyerform.token);
+    formData.append('email', lawyerform.email);
+    formData.append('name', lawyerform.name);
+    formData.append('surname', lawyerform.surname);
+    formData.append('belongs', lawyerform.belongs);
+    formData.append('phone', lawyerform.phone);
+    formData.append('description', lawyerform.description);
+    formData.append('location', lawyerform.location);
+    formData.append('price', lawyerform.price);
+    formData.append('role', lawyerform.role);
+    formData.append('confirm_password', lawyerform.confirm_password);
+    formData.append('password', lawyerform.password);
+    formData.append('picture_law', file);
+    setLoading({...loading, isLoading:true});
+    let settings = { headers: { 'content-type': 'multipart/form-data' } };
+    axios.get('/sanctum/csrf-cookie').then(response => {
+     
+    axios.post('/api/register',formData,settings).then(res => {
+      if(res.data.status === 200){
+     
+         swal("Success", res.data.message,"success");
+      
+        setLoading({...loading, isLoading:false});
+      }else if(res.data.status === 401){
+        setLoading({...loading, isLoading:false});
+        swal("Warning", res.data.message,"warning");
+
+      }else{
+        setLoading({...loading, isLoading:false});
+        setLawyerForm({...lawyerform, error_list: res.data.message});
+      }
+    });
+    
+  });
+  }
   return (
     <ContextProvider>
     <div>
@@ -154,7 +198,7 @@ export default function Add_lawyer() {
       </div>
       <div className="grid_dash">
       <div className="form_wrapper">
-        <form>
+        <form onSubmit={AddNewLawyer}>
           {view.id === 1 && (
             <>
           <label>Lawyer Name</label>
@@ -175,30 +219,36 @@ export default function Add_lawyer() {
           )}
           {view.id === 4 && (
             <>
+          <label>Email</label>
+          <input className="input" type="email" value={lawyerform.email} onChange={handleLSubmit} placeholder="enter lawyer email" name="email" />
+          </>
+          )}
+          {view.id === 5 && (
+            <>
           <label>Description</label>
           <textarea className="input" rows="5" type="text" value={lawyerform.description} onChange={handleLSubmit} placeholder="enter lawyer description" name="description" />
           </>
           )}
-          {view.id === 5 && (
+          {view.id === 6 && (
             <>
           <label>Location</label>
           <textarea className="input" rows="5" type="text" value={lawyerform.location} onChange={handleLSubmit} placeholder="enter lawyer location" name="location" />
           </>
           )}
-          {view.id === 6 && (
+          {view.id === 7 && (
             <>
           <label>Password : He/she can change using the specified credentials</label>
           <input className="input" type="password" placeholder="enter lawyer password" onChange={handleLSubmit} value={lawyerform.password} name="password" />
           </>
           )}
-          {view.id === 7 && (
+          {view.id === 8 && (
             <>
           <label>Confirm Password</label>
           <input className="input" type="password" placeholder="enter lawyer password" onChange={handleLSubmit} value={lawyerform.confirm_password} name="confirm_password" />
         
           </>
           )}
-          {view.id === 8 && (
+          {view.id === 9 && (
             <>
         
               <label>Lawyer Profile Picture</label>

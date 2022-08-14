@@ -88,28 +88,37 @@ export default function Auth() {
   const registerSubmit = (e) => {
     e.preventDefault();
    
-        const dataSent =  {
-          email: registerInput.email,
-          name: registerInput.name,
-          phone: registerInput.phone,
-          description: registerInput.description,
-          price: registerInput.price,
-          role: registerInput.role,
-          confirm_password: registerInput.confirm_password,
-          password: registerInput.password,
-          token: registerInput.token,
-          picture_law: file,
+        // const dataSent =  {
+        //   email: registerInput.email,
+        //   name: registerInput.name,
+        //   phone: registerInput.phone,
+        //   description: registerInput.description,
+        //   price: registerInput.price,
+        //   role: registerInput.role,
+        //   confirm_password: registerInput.confirm_password,
+        //   password: registerInput.password,
+        //   token: registerInput.token,
+        //   picture_law: file,
         
-        };
+        // };
     const formData = new FormData();
+    formData.append('token', registerInput.token);
+    formData.append('email', registerInput.email);
+    formData.append('name', registerInput.name);
+    formData.append('phone', registerInput.phone);
+    formData.append('description', registerInput.description);
+    formData.append('price', registerInput.price);
+    formData.append('role', registerInput.role);
+    formData.append('confirm_password', registerInput.confirm_password);
+    formData.append('password', registerInput.password);
     formData.append('picture_law', file);
     setLoading({...loading, isLoading:true});
     // let settings = { headers: { 'content-type': 'multipart/form-data' } };
     axios.get('/sanctum/csrf-cookie').then(response => {
      
-    axios.post('/api/register',dataSent,{
+    axios.post('/api/register',formData,{
       headers: {
-        'Content-Type': file?.type
+        'content-type': 'multipart/form-data'
       }}).then(res => {
       if(res.data.status === 200){
      
@@ -125,7 +134,7 @@ export default function Auth() {
 
       }else{
         setLoading({...loading, isLoading:false});
-        setRegister({...registerInput, error_list: res.validation_errors});
+        setRegister({...registerInput, error_list: res.data.validation_errors});
       }
     });
     

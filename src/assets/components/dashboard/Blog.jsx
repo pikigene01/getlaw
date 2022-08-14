@@ -24,7 +24,9 @@ export default function Blog_dash() {
     description: '',
     picture: file
   });
-
+  const [loading, setLoading] = useState({
+    isLoading: false,
+  });
   const [loggedIn,setLoggedIn] = useState(false);
   useEffect(()=>{
     const logged_in = localStorage.getItem('auth_token');
@@ -111,7 +113,11 @@ export default function Blog_dash() {
       isAuthenticated: loggedIn,
       post_id: post_id
     }
+    setLoading({...loading, isLoading:true});
+
     axios.post("api/blog/delete", data).then((res) => {
+      setLoading({...loading, isLoading:false});
+
       if(res.data.status == 200){
     swal('Success',res.data.message,'success');
     blog_get();
@@ -125,6 +131,8 @@ export default function Blog_dash() {
 
   const add_blog = (e) => {
     e.preventDefault();
+    setLoading({...loading, isLoading:true});
+
     const data = {
       category: blogform.category,
       description: blogform.description,
@@ -132,7 +140,17 @@ export default function Blog_dash() {
       image: '',
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("api/blog/add", data).then((res) => {
+    const formData = new FormData();
+    formData.append('category', blogform.category);
+    formData.append('description', blogform.description );
+    formData.append('title', blogform.title);
+    formData.append('image', file);
+    formData.append('user_id', localStorage.getItem('auth_user_id'));
+    let settings = { headers: { 'content-type': 'multipart/form-data' } };
+
+    axios.post("api/blog/add", formData,settings).then((res) => {
+      setLoading({...loading, isLoading:false});
+
       if(res.data.status == 200){
     swal('Success',res.data.message,'success');
     setView({...view,id:'1'});
@@ -147,6 +165,19 @@ export default function Blog_dash() {
     <ContextProvider>
     <div>
         <Header/>
+        <div
+          className={
+            loading.isLoading ? "auth-body page-loading" : "page-loading-false"
+          }
+        >
+          <div
+            className={
+              loading.isLoading
+                ? "auth-body page-loading-content"
+                : "page-loading-content-false"
+            }
+          ></div>
+        </div>
         <div className="dashboard">
             <Sidebar/>
             <div className='dashboard_body'>

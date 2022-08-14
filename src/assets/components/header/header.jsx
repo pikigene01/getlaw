@@ -350,7 +350,7 @@ Gene_menu = (
  onChange={searchLawfirms}
  onFocus={onFocus}
  type="search"
- placeholder="Search GetLaw..."
+ placeholder="Search LawCurb..."
  className="search"
 />
 

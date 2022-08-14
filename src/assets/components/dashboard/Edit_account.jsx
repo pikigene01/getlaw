@@ -118,6 +118,8 @@ export default function Edit_account() {
   }
   const updateAccount = (e) => {
     e.preventDefault();
+    setLoading({ ...loading, isLoading: true });
+
     const data = {
       user_id: localStorage.getItem('auth_user_id'),
       name: lawyerform.name,
@@ -144,6 +146,19 @@ export default function Edit_account() {
     <div>
       {" "}
       <Header />
+      <div
+          className={
+            loading.isLoading ? "auth-body page-loading" : "page-loading-false"
+          }
+        >
+          <div
+            className={
+              loading.isLoading
+                ? "auth-body page-loading-content"
+                : "page-loading-content-false"
+            }
+          ></div>
+        </div>
       <div className="dashboard">
         <Sidebar />
         <div className="dashboard_body">

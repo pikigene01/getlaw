@@ -96,14 +96,15 @@ let i = 0;
               setBlogsLatest(res.data.blogs);
          });
           }
+          blog_get_lat();
           
-          if(!localStorageData){
-            blog_get_lat();
-          }else{
-            setSkeletonLoader(true);
-            setBlogsLatest(JSON.parse(localStorage.getItem('user_blogs')))
+          // if(!localStorageData){
+           
+          // }else{
+          //   setSkeletonLoader(true);
+          //   setBlogsLatest(JSON.parse(localStorage.getItem('user_blogs')))
   
-            }
+          //   }
         
       },[localStorageData]);
 

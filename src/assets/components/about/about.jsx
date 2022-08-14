@@ -48,10 +48,10 @@ We are not a law firm, do not provide any legal services, legal advice or "Lawye
           </p>
           <div className='four_grid'>
             <div className='inner inner_img'> <img draggable={false} src={video_img} alt="" style={{"width": "200px"}} /></div>
-            <div className='inner inner_text'>LAwCurb allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
+            <div className='inner inner_text'>LawCurb allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
             <div className='inner inner_img_2'><img draggable={false} src={about_img_2} alt="" style={{"width": "200px"}} /></div>
             <div className='inner inner_text_2'> 
-            <p>LAwCurb have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
+            <p>LawCurb have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
             <Link to="/meetings" title='browse our lawfirms available'><button>Enter Meetings</button></Link>
             
             </div>

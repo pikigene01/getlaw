@@ -1221,7 +1221,7 @@ scheduled_btn.forEach((btn)=>{
               </div>
               <div className="lawfirm_extented">
               {skeletonLoader ? (
-                <div className="grid" style={{height: "20px"}}>
+                <div className="grid">
                   <div>
                 <h3>$ {posts.price} per 1 hour</h3>
                 </div>

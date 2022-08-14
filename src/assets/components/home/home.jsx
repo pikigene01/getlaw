@@ -8,6 +8,7 @@ import Welcome from '../lawfirms/Welcome';
 import { Refresh } from '@material-ui/icons';
 import { HomeContext } from '../lawfirms/HomeContext';
 import './Home.css';
+import Sponsors from '../lawfirms/Sponsors';
 
 export default function Home() {
   const {refresh,setRefresh} = useContext(HomeContext);
@@ -24,6 +25,7 @@ export default function Home() {
  <Cards/>
  <Featured/>
  <Lawyers/>
+ <Sponsors/>
  <Footer/>
     </>
   )

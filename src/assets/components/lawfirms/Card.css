@@ -93,7 +93,7 @@
    align-items: center;
    flex-direction: column;
   }
-  .featured .featured_head,.lawyers .lawyers_head{
+  .featured .featured_head, .lawyers_head{
     font-size: var(--h1-font-size);
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 900;
@@ -154,6 +154,10 @@
     border-radius: 50%;
     animation: move 10s ease infinite;
   }
+ .one_grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+ }
   @keyframes move{
     0%,100%{
       transform: scale(1) translateY(-15px);
@@ -298,6 +302,11 @@ gap: 10px;
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
     gap: 5px;
+    }
+    .one_grid{
+      display: grid;
+      grid-template-columns: repeat(1,1fr);
+      gap: 1rem;
     }
     .lawyer{
       height: 100%;
