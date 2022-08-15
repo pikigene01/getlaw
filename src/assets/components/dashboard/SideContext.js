@@ -10,6 +10,8 @@ const ContextProvider = ({ children }) => {
   // const [socket,setSocket] = useState(io('http://localhost:5000'));
   const [socket,setSocket] = useState(io('https://getlaw.herokuapp.com'));
     const [user,setUser] = useState([]);
+const [role,setRole] = useState('');
+
     const [chatOpener,setChatOpener] = useState(false);
     const [dashboardGet, setDashboardGet] = useState({
       getpage: 'dashboard'
@@ -57,7 +59,6 @@ const ContextProvider = ({ children }) => {
           setLoading({ ...loading, isLoading: false });
     
           setUser(res.data.user_profile);
-        
           setSkeletonLoader(true);
         
         });
@@ -215,7 +216,7 @@ const ContextProvider = ({ children }) => {
       break;
     }
   });
-  },[url])
+  },[url,role])
   const switchPages = (e) => {
 
    let page = url.substring(url.lastIndexOf('/') + 1);
@@ -272,7 +273,7 @@ const ContextProvider = ({ children }) => {
         notification,user,skeletonLoader,dashboardGet,loading,
         switchPages,
     sendText,
-    setChatOpener,chatOpener,msg,setMsg,lawyers_msg,connectSocket,deleteMsg
+    setChatOpener,chatOpener,msg,setMsg,lawyers_msg,connectSocket,deleteMsg,role,setRole
     }} >
       {children}
     </SidebarContext.Provider>

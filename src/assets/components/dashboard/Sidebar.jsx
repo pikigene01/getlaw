@@ -9,9 +9,8 @@ import { SidebarContext } from './SideContext';
 
 
 export default function Sidebar() {
-  const { setChatOpener,chatOpener,notification,user,skeletonLoader,dashboardGet,loading, switchPages,sendText,msg,setMsg,lawyers_msg,deleteMsg } = useContext(SidebarContext);
+  const { setChatOpener,role,setRole,chatOpener,notification,user,skeletonLoader,dashboardGet,loading, switchPages,sendText,msg,setMsg,lawyers_msg,deleteMsg } = useContext(SidebarContext);
   // const [getMsg,setGetMsg] = useState([]);
-
 const [toggleNav,setToggleNav] = useState(localStorage.getItem('toggleNav'));
 
   useEffect(()=>{
@@ -23,7 +22,6 @@ const [toggleNav,setToggleNav] = useState(localStorage.getItem('toggleNav'));
     localStorage.removeItem('toggleNav');
   }
   },[toggleNav]);
-
 
   return (
    <>
@@ -140,6 +138,8 @@ const [toggleNav,setToggleNav] = useState(localStorage.getItem('toggleNav'));
   <>
   {
   user?.map((data)=>{
+    setRole(data.role);
+  
   return (
     <>
   <div className='user_profile' key={data.id}>
@@ -173,7 +173,10 @@ const [toggleNav,setToggleNav] = useState(localStorage.getItem('toggleNav'));
     <Link data-href="/dashboard/notification" to="/dashboard/notification" onClick={switchPages}><li key="dash2" className='dashboard_link /dashboard/notification'><Notifications className='dash_icon'/><span className="badge">{notification.length}</span> <span className="nottt">Notification </span></li></Link>
     <Link data-href="/dashboard/notes" to="/dashboard/notes" onClick={switchPages}><li key="dash3" className='dashboard_link /dashboard/notes'><NoteAdd className='dash_icon'/> <span>Notes</span></li></Link>
     <Link data-href="/dashboard/lawfirm_info" to="/dashboard/lawfirm_info" onClick={switchPages}><li key="dash3" className='dashboard_link /dashboard/lawfirm_info'><BookmarkBorderTwoTone className='dash_icon'/> <span>Account Info</span></li></Link>
+    {role == '1' &&(
     <Link data-href="/dashboard/add_lawyer" to="/dashboard/add_lawyer"  onClick={switchPages}><li key="dash4" className='dashboard_link /dashboard/add_lawyer'><EditRounded className='dash_icon'/> <span>Add Lawyer</span></li></Link>
+
+    )}
     <Link data-href="/dashboard/money" to="/dashboard/money"  onClick={switchPages}><li key="dash5" className='dashboard_link /dashboard/money'><Money className='dash_icon'/> <span>Money Stats</span></li></Link>
     <Link data-href="/dashboard/add/blog" to="/dashboard/add/blog"  onClick={switchPages}><li key="dash6" className='dashboard_link /dashboard/add/blog'><NewReleases className='dash_icon'/><span>Add Blog</span></li></Link>
     <Link data-href="/dashboard/developers_support" to="/dashboard/developers_support"  onClick={switchPages}><li key="dash7" className='dashboard_link /dashboard/developers_support'><ContactSupport className='dash_icon'/><span> Support</span></li></Link>

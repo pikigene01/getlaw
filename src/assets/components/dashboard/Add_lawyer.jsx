@@ -17,6 +17,7 @@ export default function Add_lawyer() {
   const [fileDataURL, setFileDataURL] = useState(null);
   const [lawyers,setLawyers] = useState([]);
   const [skeletonLoader, setSkeletonLoader] = useState(false);
+  const [update,setUpdate] = useState(true);
   const [loading,setLoading] = useState({
     isLoading: false
   });
@@ -63,7 +64,7 @@ export default function Add_lawyer() {
      
     });
    
-  },[]);
+  },[update]);
 
   const [view,setView]= useState({
     id: 1
@@ -112,12 +113,13 @@ export default function Add_lawyer() {
 
    const data = {
     user_id: user_id,
-    isAuthenticated: false
+    belongs: localStorage.getItem('auth_user_id'),
+    isAuthenticated: true
    }
 
     axios.post("/api/user/delete", data).then((res) => {
       setLoading({ ...loading, isLoading: false });
-
+      setUpdate(!update);
       if(res.data.status == 200){
      swal('Success',res.data.message,'success');
       }else{
@@ -147,7 +149,7 @@ export default function Add_lawyer() {
     const formData = new FormData();
     formData.append('token', lawyerform.token);
     formData.append('email', lawyerform.email);
-    formData.append('name', lawyerform.name);
+    formData.append('name', lawyerform.name.replace(/\s/g, ""));
     formData.append('surname', lawyerform.surname);
     formData.append('belongs', lawyerform.belongs);
     formData.append('phone', lawyerform.phone);
@@ -163,6 +165,7 @@ export default function Add_lawyer() {
     axios.get('/sanctum/csrf-cookie').then(response => {
      
     axios.post('/api/register',formData,settings).then(res => {
+      setUpdate(!update);
       if(res.data.status === 200){
      
          swal("Success", res.data.message,"success");

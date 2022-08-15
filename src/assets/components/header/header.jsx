@@ -84,11 +84,13 @@ function Header() {
   }
   useEffect(()=>{
   
-   setInterval(()=>{
+  const interval= setInterval(()=>{
      drawTime();
    },1000);
    
-  
+  return ()=>{
+    clearInterval(interval);
+  }
 
    //end of clock render
   },[drawTime,time]);
