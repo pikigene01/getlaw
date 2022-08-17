@@ -1,5 +1,5 @@
 import { Email, Message, WhatsApp } from '@material-ui/icons'
-import React,{useRef} from 'react'
+import React,{useRef,useState} from 'react'
 import Footer from '../footer/footer'
 import Header from '../header/header'
 import './Contact.css'
@@ -8,16 +8,22 @@ import swal from 'sweetalert'
 
 export default function Contact() {
   const form = useRef();
-
+  const [loading, setLoading] = useState({
+    isLoading: false,
+  });
   const sentEmail = (e) => {
     e.preventDefault();
+    setLoading({...loading,isLoading:true});
     emailjs.sendForm('service_g69iq3f', 'template_n4wgrlu', form.current, 'mR69KpPUPXOU0bVdM')
     .then((result) => {
+    setLoading({...loading,isLoading:false});
+
       swal("Success", result.text+" Message have been sent successfully","success");
         console.log(result.text);
         e.target.reset();
     }, (error) => {
       swal("Warning", error.text+" Message not sent...","warning");
+    setLoading({...loading,isLoading:false});
       
         console.log(error.text);
       
@@ -27,6 +33,19 @@ export default function Contact() {
   return (
     <>
     <Header/>
+    <div
+          className={
+            loading.isLoading ? "auth-body page-loading" : "page-loading-false"
+          }
+        >
+          <div
+            className={
+              loading.isLoading
+                ? "auth-body page-loading-content"
+                : "page-loading-content-false"
+            }
+          ></div>
+        </div>
     <div className='contact_wrapper'>
       <div className='contact_body'>
         <div className='contact_header'>

@@ -106,3 +106,30 @@ cursor: pointer;
         border-radius: 10px;
     }
 }
+@media screen and (max-width: 300px){
+    .grid_dash{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 20px;
+    }  
+
+    .lawyers_available_dash{
+        height: 280px;
+        display: flex;
+        margin: 0 5rem;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 2px 5px 15px #000000;
+        border-radius: 10px;
+    }
+    .lawyers_available_dash{
+        width: 80%;
+        height: 280px;
+        display: flex;
+        margin: 0 5rem;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 2px 5px 15px #000000;
+        border-radius: 10px;
+    }
+}
