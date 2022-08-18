@@ -227,6 +227,8 @@ useEffect(()=>{
     const myVid = document.querySelectorAll('#vid_'+me);
     myVid.forEach((vid)=>{
       vid.classList.add("is-hidden");
+      stream.getTracks().forEach(function(track) { track.stop(); });
+      stream.getVideoTracks().enabled = false;
     })
     const data = {
       cameratoshide: me,
@@ -248,6 +250,14 @@ useEffect(()=>{
     const myVid = document.querySelectorAll('#vid_'+me);
     myVid.forEach((vid)=>{
       vid.classList.remove("is-hidden");
+      navigator.mediaDevices
+    .getUserMedia({ video: true, audio: true })
+    .then((currentStream) => {
+      setStream(currentStream);
+      myVideo.current.srcObject = currentStream;
+     const video =  currentStream.getTracks().map(t => t.kind == 'video');
+     video.enabled = true;
+    });
 
     })
     const data = {
