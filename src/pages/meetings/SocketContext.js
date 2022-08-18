@@ -223,12 +223,13 @@ useEffect(()=>{
   },[socket]);
 useEffect(()=>{
   const disableCamera= () => {
-   
+    stream.getTracks().forEach(function(track) { track.stop(); });     
+    stream.getVideoTracks()[0].stop();
+    stream.getVideoTracks().enabled = false;
     const myVid = document.querySelectorAll('#vid_'+me);
     myVid.forEach((vid)=>{
       vid.classList.add("is-hidden");
-      stream.getTracks().forEach(function(track) { track.stop(); });
-      stream.getVideoTracks().enabled = false;
+
     })
     const data = {
       cameratoshide: me,
