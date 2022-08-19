@@ -112,7 +112,7 @@ let i =0;
               return (
                 <div className="lawfirm_flex" key={i}>
                 <div className="lawfirm_card">
-                  <div className="top">
+                  <div className="top grid">
                     <div className="left">
                       $ <br /> {row.price ? row.price : "0.00"}
                     </div>

@@ -193,7 +193,8 @@
     display: flex;
   }
   .top img{
-    animation: rotate 10s ease infinite;
+    /* animation: rotate 10s ease infinite; */
+    margin-left: 20%;
     /* animation-delay: 20s; */
   }
   .top .left{
@@ -272,7 +273,7 @@
   }
   @media screen and (max-width: 613px) {
     .top img{
-      margin-left: -50px;
+      margin-left: 0px;
     }
  .card{
     display: none;
@@ -327,7 +328,7 @@ gap: 10px;
   }
   @media screen and (min-width: 1115px){
     .top img{
-      margin-left: -30px;
+      margin-left: 0px;
     }
     .lawfirm_card{
       width: 300px;
@@ -338,7 +339,8 @@ gap: 10px;
   }
   @media screen and (max-width: 1114px){
     .top img{
-      margin-left: -100px;
+      margin-left: 0px;
+
     }
     .lawfirm_card{
       width: 300px;
