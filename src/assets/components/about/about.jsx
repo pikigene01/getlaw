@@ -38,20 +38,20 @@ experience:'1'
     <section className='about'>
       <div className='about_head'>
       <h5>Get to know</h5>
-      <h2>LawCurb</h2>
+      <h2>GeneLaw</h2>
 
       <div className='about_info'>
-          <p>LAwCurb is where you will find lawyers and create rooms with them.
-          LAwCurb is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
+          <p>GeneLaw is where you will find lawyers and create rooms with them.
+          GeneLaw is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
 
 We are not a law firm, do not provide any legal services, legal advice or "Lawyer referral services" and do not provide or participate in any legal representation.
           </p>
           <div className='four_grid'>
             <div className='inner inner_img'> <img draggable={false} src={video_img} alt="" style={{"width": "200px"}} /></div>
-            <div className='inner inner_text'>LawCurb allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
+            <div className='inner inner_text'>GeneLaw allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
             <div className='inner inner_img_2'><img draggable={false} src={about_img_2} alt="" style={{"width": "200px"}} /></div>
             <div className='inner inner_text_2'> 
-            <p>LawCurb have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
+            <p>GeneLaw have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
             <Link to="/meetings" title='browse our lawfirms available'><button>Enter Meetings</button></Link>
             
             </div>

@@ -1,0 +1,33 @@
+.support_wrapper{
+    overflow: hidden;
+}
+.support_wrapper:hover{
+    overflow: hidden scroll;
+}
+.a-c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.upload_area{
+   
+    width: 300px;
+    height: 300px;
+    border: 2px dotted var(--first-color);
+}
+.btn-upload{
+     padding: 20px 10px;
+     outline: none;
+     border: none;
+     background: var(--first-color);
+     color: #333;
+     border-radius: 6px;
+     cursor: pointer;
+}
+.file_name{
+    width: 100%;
+    padding: 10px 5px;
+    border-bottom: 2px solid var(--first-color);
+    cursor: pointer;
+}

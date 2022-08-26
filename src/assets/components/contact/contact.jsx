@@ -59,8 +59,8 @@ export default function Contact() {
   <Email className='card_icon'/> <div className="title">Email</div>
   </div>
   <div className='card_body'>
-    <small className='card_title'>info@lawcurb.com</small>
-    <a href="info@lawcurb.com" target="_blank">Sent a message</a>
+    <small className='card_title'>pikigene01@gmail.com</small>
+    <a href="mailto:pikigene01@gmail.com" target="_blank">Sent a message</a>
   </div>
 </div>
 <div className='card_contact'>
@@ -68,7 +68,7 @@ export default function Contact() {
   <Message className='card_icon'/> <div className="title">Messenger</div>
   </div>
   <div className='card_body'>
-    <small className='card_title'>LawCurb</small>
+    <small className='card_title'>GeneLaw</small>
     <a href="/" target="_blank">Sent a message</a>
   </div>
 </div>

@@ -19,8 +19,52 @@ export default function VideoPlayer() {
     <div className={camera?'abs notch active':'abs notch'} />
     <div className='abs hbtn offline' id={'user_'+idToCall} onClick={toggleMode} title="Home"/>
     <div className='abs btns'>
-      <button className={camera? 'active': ''}><Camera onClick={()=>setCamera(!camera)}/></button>
-      <button className={audio? 'active': ''}><MicNone onClick={()=>setAudio(!audio)}/></button>
+      <button className={camera? 'audio active': ''}><Camera onClick={()=>setCamera(!camera)}/>
+      
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+
+      </button>
+      <button className={audio? 'audio active': ''}><MicNone onClick={()=>setAudio(!audio)}/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      </button>
       {loggedIn.status && (
       <a href='/dashboard/notes' target="_blank"><button><Note/>Notes</button></a>
       )}
@@ -48,7 +92,7 @@ export default function VideoPlayer() {
               </>
           )}
     </div>
-    <div className='abs header_phone' onClick={toggleMode} ><div><Notifications/>{messagesUser.length}</div><div><Message/>{messagesUser.length}</div><div><NetworkCell/><small>LawCurb</small></div></div>
+    <div className='abs header_phone' onClick={toggleMode} ><div><Notifications/>{messagesUser.length}</div><div><Message/>{messagesUser.length}</div><div><NetworkCell/><small>GeneLaw</small></div></div>
     {!tabletHome && userToken.response && (
       <>
     <div className='abs phone_notificats'>

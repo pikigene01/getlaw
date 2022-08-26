@@ -198,34 +198,14 @@ useEffect(()=>{
   });
 },[])
   
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: audio })
-      .then((currentStream) => {
-        setStream(currentStream);
-        myVideo.current.srcObject = currentStream;
-      });
 
-    socket.on("calluser", ({ from, name: callerName, signal }) => {
-      setUserMe(from);
-      setCall({ isReceivedCall: true, from, name: callerName, signal });
-      const ringTone = document.querySelectorAll('#user_ringtone');
-      ringTone.forEach((ring)=>{
-       ring.play();
-      });
-     
-    });
-  }, []);
  
-  useEffect(()=>{
-  
-   
-  },[socket]);
+ 
 useEffect(()=>{
   const disableCamera= () => {
-    stream.getTracks().forEach(function(track) { track.stop(); });     
-    stream.getVideoTracks()[0].stop();
-    stream.getVideoTracks().enabled = false;
+    setStream(stream.getTracks().forEach(function(track) { track.stop(); }))     
+    setStream(stream.getVideoTracks()[0].stop()) 
+    setStream(stream.getVideoTracks().enabled = false);
     const myVid = document.querySelectorAll('#vid_'+me);
     myVid.forEach((vid)=>{
       vid.classList.add("is-hidden");
@@ -245,6 +225,9 @@ useEffect(()=>{
     //  const video =  currentStream.getTracks().map(t => t.kind == 'video');
     //  video.enabled = false;
     // });
+
+    
+
   }
   const showCamera= () => {
   
@@ -256,7 +239,7 @@ useEffect(()=>{
     .then((currentStream) => {
       setStream(currentStream);
       myVideo.current.srcObject = currentStream;
-     const video =  currentStream.getTracks().map(t => t.kind == 'video');
+     const video =  stream.getTracks().map(t => t.kind == 'video');
      video.enabled = true;
     });
 
@@ -281,7 +264,13 @@ useEffect(()=>{
     showCamera();
   }else{
     disableCamera();
+    return ()=>{
+      
+     
+    }
   }
+
+ 
 
 },[camera,userToken])
 useEffect(()=>{
@@ -297,7 +286,7 @@ useEffect(()=>{
     .getUserMedia({ video: camera, audio: false })
     .then((currentStream) => {
       myVideo.current.srcObject = currentStream;
-    myVideo.current.srcObject.getTracks().map(t => t.kind == 'audio' && t.stop());
+    stream.getTracks().map(t => t.kind == 'audio' && t.stop());
     setStream(currentStream);
 
     });
@@ -327,6 +316,26 @@ useEffect(()=>{
   }
 
 },[audio,userToken]);
+
+useEffect(() => {
+  navigator.mediaDevices
+    .getUserMedia({ video: true, audio: audio })
+    .then((currentStream) => {
+      setStream(currentStream);
+      myVideo.current.srcObject = currentStream;
+    });
+
+  socket.on("calluser", ({ from, name: callerName, signal }) => {
+    setUserMe(from);
+    setCall({ isReceivedCall: true, from, name: callerName, signal });
+    const ringTone = document.querySelectorAll('#user_ringtone');
+    ringTone.forEach((ring)=>{
+     ring.play();
+    });
+   
+  });
+ 
+}, []);
 
 const token_submit = (e) => {
   e.preventDefault();

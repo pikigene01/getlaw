@@ -86,16 +86,19 @@ let [loaderkey, setLoaderkey] = useState('100');
   }, [refresh,localStorageData]);
   useEffect(()=>{
     if(!localStorageData){
+      if(skeletonLoader){
+
       localStorage.setItem("reviews",JSON.stringify(percReviews));
       localStorage.setItem("number_reviews",JSON.stringify(numberReviews));
       localStorage.setItem("posts",JSON.stringify(allLawfirms));
+      }
     }else{
       localStorage.removeItem("reviews");
       localStorage.removeItem("number_reviews");
       localStorage.removeItem("posts");
     }
    
-  },[percReviews,numberReviews,allLawfirms]);
+  },[percReviews,numberReviews,allLawfirms,skeletonLoader]);
   var Skeleton_loader = "";
 
   Skeleton_loader = (

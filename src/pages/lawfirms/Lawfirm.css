@@ -357,7 +357,7 @@ color: var(--first-color);
   cursor: pointer;
 }
 .law_prof_btn.active::after{
-  content: "link copied LawCurb Powered";
+  content: "link copied Powered By GeneLaw";
   position: absolute;
   width: 100px;
   color: var(--first-color);

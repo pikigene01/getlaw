@@ -307,6 +307,7 @@ const Schedule_sent = (e)=> {
   e.preventDefault();
   const data = {
     lawyer_id: lawyertoview.id,
+    lawfirm_id: param_id,
     data_event: bookingsForm.data_event,
     data_week: bookingsForm.data_week,
     token: bookingsForm.token,
@@ -342,7 +343,7 @@ const Schedule_sent = (e)=> {
     
     axios.post("/api/get/token/eco", data).then((res) => {
       setLoading({ ...loading, isLoading: false });
-      if(res.data.status === 200){
+      if(res.data.status == 200){
       setUserReceivedToken({token:res.data.token})
       }else{
         swal('Warning', 'Something Went Wrong', 'warning');
@@ -716,9 +717,8 @@ const BuyTokenVisa = (e) => {
    if(!isYourBookings){
     const all_scheduled_btns = document.querySelectorAll('.scheduled-btn');
     for(var i = 0;i<all_scheduled_btns.length;i++ ){
-     all_scheduled_btns[i].classList.remove('scheduled-btn');
-     all_scheduled_btns[i].classList.add('schedule-btn');
-     
+        all_scheduled_btns[i].classList.remove('scheduled-btn');
+        all_scheduled_btns[i].classList.add('schedule-btn');
     }
    }
   

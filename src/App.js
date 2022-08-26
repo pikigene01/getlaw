@@ -27,6 +27,7 @@ import Welcome_Meet from "./pages/meetings/Welcome_Meet";
 import Notfound from "./assets/components/notfound/notfound";
 import WholeApp from "./assets/components/home/WholeApp";
 import BlogApp from "./assets/components/blog/BlogApp";
+import Add_files from "./assets/components/dashboard/Add_files";
 
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
@@ -77,6 +78,7 @@ function App() {
         <Route exact path="/dashboard/developers_support" element={<Support_dev />} />
         <Route exact path="/dashboard/report_bug" element={<Report_bug />} />
         <Route exact path="/dashboard/add/blog" element={<Blog_dash />} />
+        <Route exact path="/dashboard/add/document" element={<Add_files />} />
 
        
         <Route exact path="/bookings/:id" element={<Clientsbookings />} />

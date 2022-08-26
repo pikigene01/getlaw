@@ -201,6 +201,13 @@ const [role,setRole] = useState('');
 
     
       break;
+      case '/dashboard/add/document':
+        if(link.classList.contains(url)){
+          link.classList.add('active');
+        }
+
+    
+      break;
       case '/dashboard/developers_support':
         if(link.classList.contains(url)){
           link.classList.add('active');

@@ -80,7 +80,10 @@ export default function Welcome_Meet() {
             {lawyers.map((data)=>{
                 return ( 
             <div key={data.id.toString()} className='lawyer_profile'>
+              <div className='lawyer_avatar'>
               <img src={data.picture} alt={data.description.substr(0,120)} className="lawyer_pic"/>
+
+              </div>
               <h2>{data.name}</h2>
               <p>{data.description.substr(0,200)}</p>
               <a href={"/meetings/"+data.id}><button className='enter_meeting_btn'>Enter Meeting</button></a>

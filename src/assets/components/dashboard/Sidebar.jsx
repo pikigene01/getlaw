@@ -2,7 +2,7 @@ import React,{useContext,useState,useEffect} from 'react'
 
 
 import { Link } from "react-router-dom";
-import { NotInterestedSharp,ContactSupport,BookmarkBorderTwoTone,AddAPhoto,Money,Notifications,Security,EditRounded,DashboardOutlined, BlockOutlined, NewReleases, NoteAdd, Help, ArrowBack, Message } from '@material-ui/icons';
+import { NotInterestedSharp,ContactSupport,BookmarkBorderTwoTone,AddAPhoto,Money,Notifications,Security,EditRounded,DashboardOutlined, BlockOutlined, NewReleases, NoteAdd, Help, ArrowBack, Message, FilterSharp } from '@material-ui/icons';
 import "./Dashboard.css";
 import { SidebarContext } from './SideContext';
 
@@ -179,6 +179,7 @@ const [toggleNav,setToggleNav] = useState(localStorage.getItem('toggleNav'));
     )}
     <Link data-href="/dashboard/money" to="/dashboard/money"  onClick={switchPages}><li key="dash5" className='dashboard_link /dashboard/money'><Money className='dash_icon'/> <span>Money Stats</span></li></Link>
     <Link data-href="/dashboard/add/blog" to="/dashboard/add/blog"  onClick={switchPages}><li key="dash6" className='dashboard_link /dashboard/add/blog'><NewReleases className='dash_icon'/><span>Add Blog</span></li></Link>
+    <Link data-href="/dashboard/add/document" to="/dashboard/add/document"  onClick={switchPages}><li key="dash6" className='dashboard_link /dashboard/add/document'><FilterSharp className='dash_icon'/><span>Add Files</span></li></Link>
     <Link data-href="/dashboard/developers_support" to="/dashboard/developers_support"  onClick={switchPages}><li key="dash7" className='dashboard_link /dashboard/developers_support'><ContactSupport className='dash_icon'/><span> Support</span></li></Link>
     <Link data-href="/dashboard/report_bug" to="/dashboard/report_bug"  onClick={switchPages}><li key="dash8" className='dashboard_link /dashboard/report_bug'><NotInterestedSharp className='dash_icon'/><span> Report Bug</span></li></Link>
   </ul>

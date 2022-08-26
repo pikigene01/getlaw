@@ -56,15 +56,18 @@ let i =0;
 
   useEffect(()=>{
     if(!localStorageData){
-      localStorage.setItem("numberReviews",JSON.stringify(numberReviews));
-      localStorage.setItem("featured_lawfirms",JSON.stringify(allFeatured));
+      if(skeletonLoader){
+        localStorage.setItem("numberReviews",JSON.stringify(numberReviews));
+        localStorage.setItem("featured_lawfirms",JSON.stringify(allFeatured));
+      }
+     
       
     }else{
       localStorage.removeItem("numberReviews");
       localStorage.removeItem("featured_lawfirms");
     }
    
-  },[numberReviews,allFeatured]);
+  },[numberReviews,allFeatured,skeletonLoader]);
   var Skeleton_loader = "";
 
   Skeleton_loader = (

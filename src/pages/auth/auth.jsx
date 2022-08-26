@@ -131,10 +131,11 @@ export default function Auth() {
       }else if(res.data.status === 401){
         setLoading({...loading, isLoading:false});
         swal("Warning", res.data.message,"warning");
+        setRegister({...registerInput, error_list: res.data.message});
 
       }else{
         setLoading({...loading, isLoading:false});
-        setRegister({...registerInput, error_list: res.data.validation_errors});
+        setRegister({...registerInput, error_list: res.data.message});
       }
     });
     
@@ -165,7 +166,10 @@ export default function Auth() {
             <section className="form signup">
         {/* <form onSubmit={registerSubmit} encType="multipart/form-data"> */}
         <form ref={form} onSubmit={registerSubmit}>
-          <div className="error-txt">This is an error message</div>
+          {registerInput.error_list.length > 0 && (
+          <div className="error-txt">error occured whilst processing data</div>
+
+          )}
           <div className="name-details">
             <div className="field">
               <label>Enter Lawfirm Name</label>

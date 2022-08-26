@@ -61,12 +61,15 @@ export default function Lawyers() {
     }, [refresh,localStorageData]);
     useEffect(()=>{
      if(!localStorageData){
+      if(skeletonLoader){
+      
       localStorage.setItem('all_lawyers', JSON.stringify(allLawyers));
+      }
      }else{
       localStorage.removeItem('all_lawyers');
 
      }
-    },[allLawyers])
+    },[allLawyers,skeletonLoader])
 
     var Skeleton_loader = "";
 

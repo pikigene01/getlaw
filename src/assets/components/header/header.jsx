@@ -282,7 +282,7 @@ Gene_menu = (
   <>
   <div className="side_menu">
     <div className="menu_header">
-      <h2>Law<LayersTwoTone/>Curb</h2>
+      <h2>Gene<LayersTwoTone/>Law</h2>
     </div>
     <div className="menu_body">
      <ul>
@@ -334,7 +334,7 @@ Gene_menu = (
           <div className="logo_wrapper">
             <Link to="/">
               {" "}
-              <span><span className="logo_bold">Law</span><><LayersTwoTone/></><span className="logo_italic">Curb</span></span>
+              <span><span className="logo_bold">Gene</span><><LayersTwoTone/></><span className="logo_italic">Law</span></span>
               {/* <h1 >title="gene law">GL</h1> */}
               {/* <img src={Logo} alt="GeneLaw logo" style={{height: "100%"}} /> */}
             </Link>
@@ -352,7 +352,7 @@ Gene_menu = (
  onChange={searchLawfirms}
  onFocus={onFocus}
  type="search"
- placeholder="Search LawCurb..."
+ placeholder="Search GeneLaw..."
  className="search"
 />
 
@@ -383,7 +383,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Law<LayersTwoTone/>Curb Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Gene<LayersTwoTone/>Law Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (
