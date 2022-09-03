@@ -203,9 +203,9 @@ useEffect(()=>{
  
 useEffect(()=>{
   const disableCamera= () => {
-    setStream(stream.getTracks().forEach(function(track) { track.stop(); }))     
-    setStream(stream.getVideoTracks()[0].stop()) 
-    setStream(stream.getVideoTracks().enabled = false);
+    // setStream(stream.getTracks().forEach(function(track) { track.stop(); }))     
+    // setStream(stream.getVideoTracks()[0].stop()) 
+    // setStream(stream.getVideoTracks().enabled = false);
     const myVid = document.querySelectorAll('#vid_'+me);
     myVid.forEach((vid)=>{
       vid.classList.add("is-hidden");

@@ -22,7 +22,6 @@ export default function Blog() {
   const [skeletonLoaderBlogs, setSkeletonLoaderBlogs] = useState(false);
   const [localStorageData,setLocalStorageData] = useState(localStorage.getItem('user_blogs'));
 let i = 0;
-
     const updatePage = () => {
        var update_url = window.location.pathname;
         setUrl(update_url)
@@ -46,6 +45,7 @@ let i = 0;
   // }
   //       },[page]);
       useEffect(()=>{
+        setBlogs([]);
     
         const blog_get = () =>{
             const data = {

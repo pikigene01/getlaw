@@ -82,6 +82,46 @@ function Header() {
     setTime({...time,time_html: `${hour}:${minute}:${second}`,hour:hour,minute:minute,second:second,day: weekday[day]});
   
   }
+const startMoveFunction = () => {
+  const draggable = document.querySelectorAll('.draggable');
+
+
+  draggable.forEach((drag)=>{
+    drag.addEventListener('mousedown', mousedown);
+
+    function mousedown(e){
+       window.addEventListener('mousemove', mousemove);
+       window.addEventListener('mouseup', mouseup);
+  
+       let prevX = e.clientX;
+       let prevY = e.clientY;
+
+
+
+       function mousemove(e){
+      let newX = prevX - e.clientX;
+      let newY = prevX - e.clientY;
+
+      const rect = drag.getBoundingClientRect();
+
+      drag.style.position = "absolute";
+      drag.style.left = rect.left - newX + "px";
+      drag.style.top = rect.top - newY + "px";
+
+      prevX = e.clientX;
+      prevY = e.clientY;
+      
+       }
+       function mouseup(){
+  window.removeEventListener('mousemove', mousemove);
+  window.removeEventListener('mouseup', mouseup);
+
+       }
+    }
+  })
+}
+
+
   useEffect(()=>{
   
   const interval= setInterval(()=>{
@@ -280,7 +320,7 @@ menu_toggle = (
   var Gene_menu = "";
 Gene_menu = (
   <>
-  <div className="side_menu">
+  <div className="side_menu draggable" onMouseDown={startMoveFunction}>
     <div className="menu_header">
       <h2>Gene<LayersTwoTone/>Law</h2>
     </div>

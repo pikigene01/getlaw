@@ -34,8 +34,9 @@ export default function Welcome_Meet() {
    },[]);
    let i = 0;
    const liveSearch=(e)=> {
+    
     // Locate the card elements
-    let cards = document.querySelectorAll('.lawyer_profile')
+    const cards = document.querySelectorAll('.lawyer_profile')
     // Locate the search input
     let search_query = e.target.value;
     // Loop through the cards
@@ -70,7 +71,7 @@ export default function Welcome_Meet() {
                 <input type="search" className="search_input" onChange={liveSearch} placeholder='Search lawyer here using your token'/><Search className="icon search_icon"/> 
             </div>
             <div className='right_header'>
-                Welcome to LawCurb meeting Rooms
+                Welcome to GeneLaw meeting Rooms
             </div>
         </div>
 

@@ -63,6 +63,9 @@ padding: 20px;
 border-radius: 20px;
 margin-bottom: 15px;
 }
+.lawyer_profile.is-hidden{
+    display: none;
+}
 .lawyer_profile .lawyer_pic{
 width: 100px;
 height: 100px;
