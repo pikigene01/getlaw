@@ -3,9 +3,9 @@ import Header from "../../assets/components/header/header";
 import "./Auth.css";
 import axios from "axios";
 import swal from "sweetalert";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function ForgotPass() {
   document.title = "Lawyers Login Page | GetLaw";
 
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ export default function Login() {
   });
   const [loginInput, setLogin] = useState({
     email: "",
-    password: "",
     error_list: [],
   });
   const [loggedIn,setLoggedIn] = useState(false);
@@ -34,7 +33,7 @@ export default function Login() {
     e.persist();
     setLogin({ ...loginInput, [e.target.name]: e.target.value });
   };
-  const loginSubmit = (e) => {
+  const forgotpassSubmit = (e) => {
     e.preventDefault();
     setLoading({ ...loading, isLoading: true });
     const data = {
@@ -42,11 +41,9 @@ export default function Login() {
       password: loginInput.password,
     };
     axios.get("/sanctum/csrf-cookie").then((response) => {
-      axios.post("/api/login", data).then((res) => {
+      axios.post("/api/forgot-password", data).then((res) => {
         if (res.data.status === 200) {
-          localStorage.setItem("auth_token", res.data.token);
-          localStorage.setItem("auth_name", res.data.username);
-          localStorage.setItem("auth_user_id", res.data.user_id);
+          
           swal("Success", res.data.message ?? "error", "success");
           navigate("/dashboard");
         } else if (res.data.status === 401) {
@@ -82,8 +79,8 @@ export default function Login() {
           <div
             className={loading.isLoading ? "auth-body loading" : "auth-body"}
           >
-            <div className="head-title">Log In (Only For Lawyers)</div>
-            <form onSubmit={loginSubmit}>
+            <div className="head-title">Forgot your password</div>
+            <form onSubmit={forgotpassSubmit}>
               <div className="login-container">
                 <input
                   className="name-input form-input inputs"
@@ -94,32 +91,14 @@ export default function Login() {
                   placeholder="please enter your email.."
                 />
                 <span>{loginInput.error_list.email}</span>
-                <br />
-                <input
-                  className="password-input form-input inputs"
-                  name="password"
-                  onChange={handleInput}
-                  value={loginInput.name}
-                  type="password"
-                  placeholder="please enter your password.."
-                />
-                <span>{loginInput.error_list.password}</span>
+                
                 <button
                   style={{ width: "100%" }}
                   className="app-btn review-sent"
                 >
-                  Log In
+                 sent reset link
                 </button>
-                <br />
-                <Link to="/forgot_your_password">
-                <button
-                  style={{ width: "100%" }}
-                  className="app-btn review-sent"
-                >
-                  Forgot Your Password
-                </button>
-                </Link>
-              
+            
               </div>
             </form>
           </div>

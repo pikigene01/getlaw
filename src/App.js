@@ -28,6 +28,7 @@ import Notfound from "./assets/components/notfound/notfound";
 import WholeApp from "./assets/components/home/WholeApp";
 import BlogApp from "./assets/components/blog/BlogApp";
 import Add_files from "./assets/components/dashboard/Add_files";
+import ForgotPass from "./pages/auth/forgotpassword";
 
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
@@ -67,6 +68,8 @@ function App() {
        
         <Route path="/auth" element=
           { <Login/>}/>
+        <Route path="/forgot_your_password" element=
+          { <ForgotPass/>}/>
           <Route exact path="/dashboard" element=
         {<Dashboard />}/>
         <Route exact path="/dashboard/password" element={<Password />} />
@@ -89,3 +92,4 @@ function App() {
 }
 
 export default App;
+
