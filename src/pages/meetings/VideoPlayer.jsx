@@ -92,7 +92,7 @@ export default function VideoPlayer() {
               </>
           )}
     </div>
-    <div className='abs header_phone' onClick={toggleMode} ><div><Notifications/>{messagesUser.length}</div><div><Message/>{messagesUser.length}</div><div><NetworkCell/><small>GeneLaw</small></div></div>
+    <div className='abs header_phone' onClick={toggleMode} ><div><Notifications/>{messagesUser.length}</div><div><Message/>{messagesUser.length}</div><div><NetworkCell/><small>GivLaw</small></div></div>
     {!tabletHome && userToken.response && (
       <>
     <div className='abs phone_notificats'>

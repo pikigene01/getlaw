@@ -43,16 +43,26 @@
   justify-content: center;
   align-items: center;
 }
+.pagination_btns button{
+margin: 0 10px;
+border: none;
+padding: 10px 8px;
+background: var(--first-color);
+color: var(--first-color-lighter);
+cursor: pointer;
+}
 .card{
     width: 100%;
     border-radius: 10px;
-    background: rgb(246, 244, 244);
+    /* background: rgb(246, 244, 244); */
     /* background: #2c2c6c; */
     color: var(--title-color);
     height: 100%;
     cursor: pointer;
-    box-shadow: 0 0 40px 10px 10px rgb(0 0 0 /25%);
+    /* box-shadow: 0 0 40px 10px 10px rgb(0 0 0 /25%); */
+    box-shadow: 2px 5px 15px #000000;
     z-index: 9999;
+    margin: 10px;
   }
   .card:hover{
     transform: scale(0.9);

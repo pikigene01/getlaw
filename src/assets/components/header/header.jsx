@@ -263,22 +263,36 @@ menu_toggle = (
   const logoutSubmit = (e) => {
     e.preventDefault();
     setLoading({ ...loading, isLoading: true });
+try{
+  localStorage.removeItem('user_profile');
+  localStorage.removeItem("auth_token");
+  localStorage.removeItem("auth_name");
+  localStorage.removeItem("auth_user_id");
+  setLoading({ ...loading, isLoading: false });
+  axios.post("/api/logout").then((res) => {
+    if (res.status === 200) {
+      localStorage.removeItem('user_profile');
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("auth_name");
+      localStorage.removeItem("auth_user_id");
+      navigate("/");
+      setLoading({ ...loading, isLoading: false });
+    } else if (res.data.status === 401) {
+      setLoading({ ...loading, isLoading: false });
+      // swal("Warning", res.data.message,"warning");
+    } else {
+      setLoading({ ...loading, isLoading: false });
+    }
+  });
+}catch(e){
+  localStorage.removeItem('user_profile');
+  localStorage.removeItem("auth_token");
+  localStorage.removeItem("auth_name");
+  localStorage.removeItem("auth_user_id");
+  setLoading({ ...loading, isLoading: false });
 
-    axios.post("/api/logout").then((res) => {
-      if (res.status === 200) {
-        localStorage.removeItem('user_profile');
-        localStorage.removeItem("auth_token");
-        localStorage.removeItem("auth_name");
-        localStorage.removeItem("auth_user_id");
-        navigate("/");
-        setLoading({ ...loading, isLoading: false });
-      } else if (res.data.status === 401) {
-        setLoading({ ...loading, isLoading: false });
-        // swal("Warning", res.data.message,"warning");
-      } else {
-        setLoading({ ...loading, isLoading: false });
-      }
-    });
+}
+    
   };
  
 
@@ -322,7 +336,7 @@ Gene_menu = (
   <>
   <div className="side_menu draggable" onMouseDown={startMoveFunction}>
     <div className="menu_header">
-      <h2>Gene<LayersTwoTone/>Law</h2>
+      <h2>Giv<LayersTwoTone/>Law</h2>
     </div>
     <div className="menu_body">
      <ul>
@@ -374,7 +388,7 @@ Gene_menu = (
           <div className="logo_wrapper">
             <Link to="/">
               {" "}
-              <span><span className="logo_bold">Gene</span><><LayersTwoTone/></><span className="logo_italic">Law</span></span>
+              <span><span className="logo_bold">Giv</span><><LayersTwoTone/></><span className="logo_italic">Law</span></span>
               {/* <h1 >title="gene law">GL</h1> */}
               {/* <img src={Logo} alt="GeneLaw logo" style={{height: "100%"}} /> */}
             </Link>
@@ -392,7 +406,7 @@ Gene_menu = (
  onChange={searchLawfirms}
  onFocus={onFocus}
  type="search"
- placeholder="Search GeneLaw..."
+ placeholder="Search GivLaw..."
  className="search"
 />
 
@@ -423,7 +437,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Gene<LayersTwoTone/>Law Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Giv<LayersTwoTone/>Law Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (

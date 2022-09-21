@@ -19,6 +19,14 @@ export default function Lawyers() {
     const [skeletonLoader, setSkeletonLoader] = useState(false);
     const [allLawyers, setAllLawyers] = useState([]);
   const [localStorageData,setLocalStorageData] = useState(localStorage.getItem('all_lawyers'));
+  const [load,setLoad] = useState({
+    querySet: allLawyers,
+    page: 1,
+    rows: 2,
+    window: 5,
+
+  });
+ 
 
   let i = 0;
     useEffect(() => {
@@ -54,8 +62,9 @@ export default function Lawyers() {
           });
         });
       }else{
-  setSkeletonLoader(true);
   setAllLawyers(JSON.parse(localStorage.getItem('all_lawyers')))
+  setSkeletonLoader(true);
+
       }
     
     }, [refresh,localStorageData]);
@@ -69,7 +78,86 @@ export default function Lawyers() {
       localStorage.removeItem('all_lawyers');
 
      }
-    },[allLawyers,skeletonLoader])
+    },[allLawyers,skeletonLoader]);
+
+    useEffect(()=>{
+      setLoad({...load, querySet: allLawyers});
+     },[allLawyers]);
+    
+   
+     const getPageData = (querySet, page, rows)=>{
+  
+      var trimStart = (page - 1) * rows;
+      var trimEnd  = trimStart + rows;
+   
+      var trimedData = allLawyers.slice(trimStart, trimEnd);
+      var pages = Math.ceil(querySet.length /rows);
+   
+      return {
+       querySet: trimedData,
+       pages: pages
+      }
+     }
+    
+
+     const paginationBtns =(pages)=>{
+     var wrapper = document.querySelector('.pagination_btns');
+     wrapper.innerHTML = '';
+     var maxLeft = (load.page - Math.floor(load.window / 2))
+     var maxRight = (load.page + Math.floor(load.window / 2))
+     if(maxLeft < 2){
+      maxLeft = 1;
+      maxRight = (load.window - 1);
+
+     }
+     if(maxRight > pages){
+      maxLeft = pages - (load.window);
+
+      maxRight = pages;
+
+      if(maxLeft < 1){
+        maxLeft = 1;
+      }
+     }
+
+     
+     for(var page=maxLeft; page <= maxRight; page++){
+
+     wrapper.innerHTML +=  `<button data-value=${page} class='btns-pagination'>${page}</button> `;
+     }
+     if(load.page != 1){
+      wrapper.innerHTML = `<button data-value=${1} class='btns-pagination'> First</button>` + wrapper.innerHTML;
+     }
+     if(load.page != pages){
+      wrapper.innerHTML += `<button data-value=${pages} class='btns-pagination'> Last</button>`;
+     }
+     }
+   
+     const buildData = () => {
+   
+       var data = getPageData(allLawyers, load.page, load.rows);
+       paginationBtns(data.pages);
+       setLoad({...load,querySet: data.querySet});
+
+       const btns = document.querySelectorAll('.btns-pagination');
+       btns.forEach((btn)=>{
+        btn.onclick = ()=>{
+         
+        setLoad({...load, page: btn.dataset.value,querySet: data.querySet});
+           
+        }
+       })
+       console.log(data);
+    
+
+     }
+   
+    
+
+    useEffect(()=>{
+      buildData();
+      
+    }, [allLawyers,load.page]);
 
     var Skeleton_loader = "";
 
@@ -101,7 +189,7 @@ export default function Lawyers() {
      <div className='lawyers_body centered'>
      {skeletonLoader && (
               <>
-        {allLawyers?.map((row)=>{
+        {load.querySet?.map((row)=>{
           i++;
             return (
              
@@ -130,7 +218,11 @@ export default function Lawyers() {
         {Skeleton_loader}
         </>
      )}
-
+     <div className='pagination_btns'>
+      <button>Next</button>
+      <button>1</button>
+      <button>Prev</button>
+     </div>
      </div>
      </div>
    

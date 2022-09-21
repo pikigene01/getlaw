@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { HomeContext } from "./HomeContext";
+import { LocationCity, Map } from "@material-ui/icons";
 
 export default function Featured() {
   const {refresh,setRefresh} = useContext(HomeContext);
@@ -12,11 +13,51 @@ export default function Featured() {
   const [allFeatured, setAllFeatured] = useState([]);
   const [numberReviews, setNumberReviews] = useState([]);
   const [localStorageData,setLocalStorageData] = useState(localStorage.getItem('featured_lawfirms'));
+  const [location,setLocation] = useState({
+    latitude: '',
+    longitude: ''
+  })
 
 let i =0;
+
+var x = document.getElementById("location_btn");
+
+const getLocation =()=> {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+const showPosition=(position)=> {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+  setLocation({...location,latitude:position.coords.latitude,longitude:position.coords.longitude})
+}
+
+const showError=(error)=> {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+
   useEffect(() => {
     const data = {
       role: "1",
+      latitude: location.latitude,
+      longitude: location.longitude
     };
     if(refresh){
       setLocalStorageData(null);
@@ -52,7 +93,7 @@ let i =0;
    setNumberReviews(JSON.parse(localStorage.getItem("numberReviews")));
    setAllFeatured(JSON.parse(localStorage.getItem("featured_lawfirms")));
   }
-  }, [refresh,localStorageData]);
+  }, [refresh,localStorageData,location]);
 
   useEffect(()=>{
     if(!localStorageData){
@@ -99,7 +140,7 @@ let i =0;
     <div>
       <div className="featured">
         <div className="featured_head">
-          Get In touch with our lawfirms nearest in your area
+          Get In touch with our lawfirms nearest in your area <button id="location_btn" style={{display:'flex',alignItems: 'center',justifyContent: 'center'}} className="btn app-btn" onClick={()=>getLocation()} >Search Lawfirm <Map/> {'latitude' + location.latitude + 'longitude' + location.longitude}</button>
         </div>
       </div>
       <div className="featured_body">

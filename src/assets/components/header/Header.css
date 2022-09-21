@@ -9,6 +9,7 @@
     align-items: center;
     position: sticky;
     box-shadow: 0 4px 30px rgba(20, 20, 20);
+    border-radius: 0 50%;
     z-index: var(--z-modal);
   }
   .side_menu{
