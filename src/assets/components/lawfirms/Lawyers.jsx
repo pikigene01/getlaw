@@ -22,7 +22,7 @@ export default function Lawyers() {
   const [load,setLoad] = useState({
     querySet: allLawyers,
     page: 1,
-    rows: 2,
+    rows: 3,
     window: 5,
 
   });
@@ -146,8 +146,7 @@ export default function Lawyers() {
         setLoad({...load, page: btn.dataset.value,querySet: data.querySet});
            
         }
-       })
-       console.log(data);
+       });
     
 
      }

@@ -9,7 +9,13 @@ export default function Welcome_Meet() {
 
    const [lawyers,setLawyers] = useState([]);
   const [skeletonLoader, setSkeletonLoader] = useState(false);
+  const [load,setLoad] = useState({
+    querySet: lawyers,
+    page: 1,
+    rows: 8,
+    window: 5,
 
+  });
    useEffect(()=>{
     const data = {
     //role 2 thats for fetching lawyers available
@@ -62,6 +68,80 @@ export default function Welcome_Meet() {
     <button className='enter_meeting_btn skeleton'>Enter Meeting</button>
   </div>
    );
+
+     
+   const getPageData = (querySet, page, rows)=>{
+  
+    var trimStart = (page - 1) * rows;
+    var trimEnd  = trimStart + rows;
+ 
+    var trimedData = lawyers.slice(trimStart, trimEnd);
+    var pages = Math.ceil(querySet.length /rows);
+ 
+    return {
+     querySet: trimedData,
+     pages: pages
+    }
+   }
+  
+
+   const paginationBtns =(pages)=>{
+   var wrapper = document.querySelector('.pagination_btns');
+   wrapper.innerHTML = '';
+   var maxLeft = (load.page - Math.floor(load.window / 2))
+   var maxRight = (load.page + Math.floor(load.window / 2))
+   if(maxLeft < 2){
+    maxLeft = 1;
+    maxRight = (load.window - 1);
+
+   }
+   if(maxRight > pages){
+    maxLeft = pages - (load.window);
+
+    maxRight = pages;
+
+    if(maxLeft < 1){
+      maxLeft = 1;
+    }
+   }
+
+   
+   for(var page=maxLeft; page <= maxRight; page++){
+
+   wrapper.innerHTML +=  `<button data-value=${page} class='btns-pagination'>${page}</button> `;
+   }
+   if(load.page != 1){
+    wrapper.innerHTML = `<button data-value=${1} class='btns-pagination'> First</button>` + wrapper.innerHTML;
+   }
+   if(load.page != pages){
+    wrapper.innerHTML += `<button data-value=${pages} class='btns-pagination'> Last</button>`;
+   }
+   }
+ 
+   const buildData = () => {
+ 
+     var data = getPageData(lawyers, load.page, load.rows);
+     paginationBtns(data.pages);
+     setLoad({...load,querySet: data.querySet});
+
+     const btns = document.querySelectorAll('.btns-pagination');
+     btns.forEach((btn)=>{
+      btn.onclick = ()=>{
+       
+      setLoad({...load, page: btn.dataset.value,querySet: data.querySet});
+         
+      }
+     });
+  
+
+   }
+ 
+  
+
+  useEffect(()=>{
+    buildData();
+    
+  }, [lawyers,load.page]);
   return (
     <div>
     <Header/>
@@ -78,7 +158,7 @@ export default function Welcome_Meet() {
         <div className='lawyers_all_wrapper'>
             {skeletonLoader? (
                 <>
-            {lawyers.map((data)=>{
+            {load.querySet.map((data)=>{
                 return ( 
             <div key={data.id.toString()} className='lawyer_profile'>
               <div className='lawyer_avatar'>
@@ -104,7 +184,13 @@ export default function Welcome_Meet() {
                       })}
                 </>
             )}
+      
         </div>
+        <div className='pagination_btns' style={{width: '100%', display: 'flex',justifyContent: 'center',margin: '20px 0'}}>
+      <button>Next</button>
+      <button>1</button>
+      <button>Prev</button>
+     </div>
        </div>
         
     </div>

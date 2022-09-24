@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import axios from "axios";
-import { ArrowDownward, ArrowForwardIos, ExitToApp, LayersTwoTone } from "@material-ui/icons";
+import { ArrowDownward, ArrowForwardIos, ExitToApp, LayersTwoTone, Mic } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { Search, Cancel } from "@material-ui/icons";
 import Logo from '../../imgs/logo.png';
@@ -21,6 +21,7 @@ function Header() {
     phone: '',
     received_token: ''
   });
+  const [ searchMic,setSearchMic] = useState(false);
   const [loggedIn,setLoggedIn] = useState(false);
   useEffect(()=>{
     const logged_in = localStorage.getItem('auth_token');
@@ -82,6 +83,20 @@ function Header() {
     setTime({...time,time_html: `${hour}:${minute}:${second}`,hour:hour,minute:minute,second:second,day: weekday[day]});
   
   }
+  useEffect(()=>{
+    if(searchMic){
+     window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+     const recognition = new window.SpeechRecognition();
+     recognition.interimResults = true;
+
+     recognition.addEventListener('result', (e)=>{
+    console.log(e.results)
+     });
+     recognition.start();
+
+    }
+  },[searchMic])
 const startMoveFunction = () => {
   const draggable = document.querySelectorAll('.draggable');
 
@@ -402,6 +417,7 @@ Gene_menu = (
          <Search className="search_icon" onClick={()=> getSearch()} style={{"cursor": "pointer","fontSize": "40px","color": "var(--first-color)"}}/>
           )}
          {isSearch&&(
+          <>
  <input
  onChange={searchLawfirms}
  onFocus={onFocus}
@@ -409,7 +425,8 @@ Gene_menu = (
  placeholder="Search GivLaw..."
  className="search"
 />
-
+<Mic className={searchMic?"search_icon":''} onClick={()=> setSearchMic(!searchMic)}/>
+</>
          )}
          
          {!isSearch&&(
