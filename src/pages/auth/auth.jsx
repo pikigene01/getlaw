@@ -30,9 +30,58 @@ export default function Auth() {
      confirm_password: '',
      password: '',
      token: '',
+     latitude: '',
+     longitude: '',
      picture: file,
      error_list: [],
   });
+
+  const [location,setLocation] = useState({
+    latitude: '',
+    longitude: ''
+  })
+
+
+const getLocation =()=> {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+   console.log("Geolocation is not supported by this browser.");
+
+  }
+}
+
+const showPosition=(position)=> {
+ 
+  setLocation({...location,latitude:position.coords.latitude,longitude:position.coords.longitude})
+}
+
+const showError=(error)=> {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+    console.log("User denied the request for Geolocation.");
+    alert('GivLaw need your location to quickly locate you');
+      break;
+    case error.POSITION_UNAVAILABLE:
+    console.log("Location information is unavailable.");
+    alert('GivLaw need your location to quickly locate you');
+
+      break;
+    case error.TIMEOUT:
+    console.log("The request to get user location timed out.");
+    alert('GivLaw need your location to quickly locate you');
+
+      break;
+    case error.UNKNOWN_ERROR:
+    console.log("An unknown error occurred.");
+    alert('GivLaw need your location to quickly locate you');
+
+      break;
+  }
+}
+useEffect(()=>{
+  getLocation();
+},[]);
 
 
   const handleInput = (e) => {
@@ -88,19 +137,6 @@ export default function Auth() {
   const registerSubmit = (e) => {
     e.preventDefault();
    
-        // const dataSent =  {
-        //   email: registerInput.email,
-        //   name: registerInput.name,
-        //   phone: registerInput.phone,
-        //   description: registerInput.description,
-        //   price: registerInput.price,
-        //   role: registerInput.role,
-        //   confirm_password: registerInput.confirm_password,
-        //   password: registerInput.password,
-        //   token: registerInput.token,
-        //   picture_law: file,
-        
-        // };
     const formData = new FormData();
     formData.append('token', registerInput.token);
     formData.append('email', registerInput.email);
@@ -111,6 +147,8 @@ export default function Auth() {
     formData.append('role', registerInput.role);
     formData.append('confirm_password', registerInput.confirm_password);
     formData.append('password', registerInput.password);
+    formData.append('latitude', location.latitude);
+    formData.append('longitude', location.longitude);
     formData.append('picture_law', file);
     setLoading({...loading, isLoading:true});
     // let settings = { headers: { 'content-type': 'multipart/form-data' } };

@@ -140,7 +140,7 @@ const showError=(error)=> {
     <div>
       <div className="featured">
         <div className="featured_head">
-          Get In touch with our lawfirms nearest in your area <button id="location_btn" style={{display:'flex',alignItems: 'center',justifyContent: 'center'}} className="btn app-btn" onClick={()=>getLocation()} >Search Lawfirm <Map/> {'latitude' + location.latitude + 'longitude' + location.longitude}</button>
+          Get In touch with our lawfirms nearest in your area <button id="location_btn" style={{display:'flex',alignItems: 'center',justifyContent: 'center',width: '200px'}} className="btn app-btn" onClick={()=>getLocation()} >Search Lawfirm <Map/></button>
         </div>
       </div>
       <div className="featured_body">

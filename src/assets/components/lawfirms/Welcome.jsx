@@ -6,14 +6,14 @@ import './Card.css'
 
 export default function Welcome() {
   return (
-    <div className='welcome_container'>
+    <div draggable="false" className='welcome_container'>
         <div className='welcome_left'>
 <h1>You got into trouble for no reason get in touch with our best lawfirms</h1>
 <p>GivLaw will help you with instant meetings with our best lawyers available</p>
 <Link to="/contact"><button>Help <ContactSupport/></button></Link>
         </div>
-        <div className='welcome_right'>
-<img className='responsive_img' src={gene_law} style={{height: "400px"}}/>
+        <div className='welcomeN_right'>
+<img className='responsive_img' draggable="false" src={gene_law} style={{height: "400px"}}/>
         </div>
     </div>
   )

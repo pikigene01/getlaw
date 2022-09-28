@@ -15,10 +15,13 @@ function Header() {
     user_funds: "...",
   });
   const [isSearch, setIsSearch] = useState(false);
+  const [currency, setCurrency] = useState('usd');
+
   const [withdrawmoneyform, setWithdrawmoneyform] = useState({
     name: '',
     surname: '',
     phone: '',
+    currency: currency,
     received_token: ''
   });
   const [ searchMic,setSearchMic] = useState(false);
@@ -45,6 +48,15 @@ function Header() {
     second: second,
     day: weekday[day],
   });
+
+  useEffect(()=>{
+   const profiless = JSON.parse(localStorage.getItem('user_profile'));
+
+   profiless?.map((data)=>{
+    setWithdrawmoneyform({...withdrawMoneyForm, name: data.name,surname: data.surname,currency: currency,phone: data.phone});
+   });
+   
+  },[currency]);
    // clock render start
    const drawTime =() =>{
     var now = new Date();
@@ -98,43 +110,49 @@ function Header() {
     }
   },[searchMic])
 const startMoveFunction = () => {
-  const draggable = document.querySelectorAll('.draggable');
+  const draggable = document.querySelectorAll(".draggable");
 
 
   draggable.forEach((drag)=>{
-    drag.addEventListener('mousedown', mousedown);
-
+    drag.addEventListener("mousedown", mousedown);
+    
     function mousedown(e){
-       window.addEventListener('mousemove', mousemove);
-       window.addEventListener('mouseup', mouseup);
-  
+
+      window.addEventListener("mousemove", mousemove);
+      window.addEventListener("mouseup", mouseup);
+
        let prevX = e.clientX;
        let prevY = e.clientY;
 
 
-
        function mousemove(e){
-      let newX = prevX - e.clientX;
-      let newY = prevX - e.clientY;
+    
+
+      let newX =  prevX -e.clientX;
+      let newY = prevY -  e.clientY;
 
       const rect = drag.getBoundingClientRect();
-
-      drag.style.position = "absolute";
-      drag.style.left = rect.left - newX + "px";
-      drag.style.top = rect.top - newY + "px";
+      drag.style.cursor = 'move';
+      drag.style.left = `${rect.left - newX}px`;
+      drag.style.top = `${rect.top - newY}px`;
 
       prevX = e.clientX;
       prevY = e.clientY;
       
        }
        function mouseup(){
-  window.removeEventListener('mousemove', mousemove);
-  window.removeEventListener('mouseup', mouseup);
+         window.removeEventListener("mousemove", mousemove);
+         window.removeEventListener("mouseup", mouseup);
+         
 
        }
-    }
-  })
-}
+      }
+  
+ });
+};
+useEffect(()=>{
+  startMoveFunction();
+},[]);
 
 
   useEffect(()=>{
@@ -231,7 +249,7 @@ menu_toggle = (
       user_id: localStorage.getItem("auth_user_id"),
       currency: e.target.value
     };
-
+setCurrency(e.target.value);
 
     axios.post("/api/getfunds", data_funds).then((res) => {
       if (res.status === 200) {
