@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import axios from "axios";
-import { ArrowDownward, ArrowForwardIos, ExitToApp, LayersTwoTone, Mic } from "@material-ui/icons";
+import { ArrowDownward, ArrowForwardIos, Dashboard, ExitToApp, LayersTwoTone, MeetingRoom, Mic, More } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { Search, Cancel } from "@material-ui/icons";
 import Logo from '../../imgs/logo.png';
@@ -451,13 +451,13 @@ Gene_menu = (
 
           <div className="other_links">
           <Link to="/dashboard">
-              <button className="withdrawal_btn link">Dashboard</button>
+              <button className="withdrawal_btn link"><Dashboard className="icon" style={{fontSize: '20px'}}/></button>
             </Link>
             <Link to="/meetings">
-              <button className="withdrawal_btn link">Meeting</button>
+              <button className="withdrawal_btn link"><MeetingRoom className="icon" style={{fontSize: '20px'}}/></button>
             </Link>
             <Link to="/about">
-              <button className="withdrawal_btn link">About</button>
+              <button className="withdrawal_btn link"><More className="icon" style={{fontSize: '20px'}}/></button>
             </Link>
           </div>
          )}

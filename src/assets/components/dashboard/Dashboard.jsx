@@ -54,7 +54,7 @@ export default function Dashboard() {
 
       <div className="dashboard_body">
       <div className='header_dash'>
-        <h2>Welcome to GeneLaw.com</h2>
+        <h2>Welcome to givlaw.com</h2>
       </div>
       <div className='dash_body_icon'>
        <DataUsage className='icon'/>

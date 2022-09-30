@@ -105,6 +105,9 @@
     margin: 0px 5px;
     width: 100px;
   }
+  .link .icon{
+    color: var(--first-color-lighter);
+  }
  .search_results{
     position: absolute;
     margin-top: 0px;
