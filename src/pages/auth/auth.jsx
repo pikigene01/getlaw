@@ -20,6 +20,11 @@ export default function Auth() {
  let isCancel = false;
  const [file, setFile] = useState(null);
  const [fileDataURL, setFileDataURL] = useState(null);
+ 
+ const [location,setLocation] = useState({
+  latitude: '',
+  longitude: ''
+});
   const [registerInput, setRegister] = useState({
      email: '',
      name: '',
@@ -30,16 +35,12 @@ export default function Auth() {
      confirm_password: '',
      password: '',
      token: '',
-     latitude: '',
-     longitude: '',
+     latitude: location.latitude,
+     longitude: location.longitude,
      picture: file,
      error_list: [],
   });
 
-  const [location,setLocation] = useState({
-    latitude: '',
-    longitude: ''
-  })
 
 
 const getLocation =()=> {
@@ -53,7 +54,8 @@ const getLocation =()=> {
 
 const showPosition=(position)=> {
  
-  setLocation({...location,latitude:position.coords.latitude,longitude:position.coords.longitude})
+  setLocation({latitude:position.coords.latitude,longitude:position.coords.longitude});
+  alert(position.coords.latitude+''+''+position.coords.longitude);
 }
 
 const showError=(error)=> {
@@ -147,8 +149,8 @@ useEffect(()=>{
     formData.append('role', registerInput.role);
     formData.append('confirm_password', registerInput.confirm_password);
     formData.append('password', registerInput.password);
-    formData.append('latitude', location.latitude);
-    formData.append('longitude', location.longitude);
+    formData.append('latitude', registerInput.latitude);
+    formData.append('longitude', registerInput.longitude);
     formData.append('picture_law', file);
     setLoading({...loading, isLoading:true});
     // let settings = { headers: { 'content-type': 'multipart/form-data' } };
