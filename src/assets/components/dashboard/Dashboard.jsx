@@ -9,7 +9,7 @@ import { ContextProvider } from './SideContext';
 
 
 export default function Dashboard() {
-    document.title = "Dashboard | GetLaw By Gene Piki";
+    document.title = "Dashboard | GivLaw By Gene Piki";
     
     const navigate = useNavigate();
     const [loggedIn,setLoggedIn] = useState(false);

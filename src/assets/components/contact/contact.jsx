@@ -11,6 +11,8 @@ export default function Contact() {
   const [loading, setLoading] = useState({
     isLoading: false,
   });
+  document.title = "Welcome to GivLaw | Contact Us";
+
   const sentEmail = (e) => {
     e.preventDefault();
     setLoading({...loading,isLoading:true});

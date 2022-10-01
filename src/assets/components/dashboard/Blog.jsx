@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Blog_dash() {
-  document.title = "Add / Edit Your Blog Post Here | GetLaw";
+  document.title = "Add / Edit Your Blog Post Here | GivLaw";
 
   const navigate = useNavigate();
   const imageMimeType = /image\/(png|jpg|jpeg)/i;

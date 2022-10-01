@@ -13,7 +13,7 @@ export default function Report_bug() {
   const [loggedIn,setLoggedIn] = useState(false);
   useEffect(()=>{
     const logged_in = localStorage.getItem('auth_token');
-    document.title = "Report Bug | GetLaw";
+    document.title = "Report Bug | GivLaw";
 
   if(logged_in){
     setLoggedIn(true)

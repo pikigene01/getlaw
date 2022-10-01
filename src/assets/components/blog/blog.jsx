@@ -12,7 +12,7 @@ import { Refresh } from '@material-ui/icons'
 export default function Blog() {
   const {refresh,setRefresh} = useContext(HomeContext);
 
-  document.title = "Welcome to GetLaw Blogs | GetLaw";
+  document.title = "Welcome to GivLaw Blogs | GivLaw";
 
    const [url,setUrl] = useState('');
    const [page,setPage] = useState('');

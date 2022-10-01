@@ -35,8 +35,6 @@ export default function Auth() {
      confirm_password: '',
      password: '',
      token: '',
-     latitude: location.latitude,
-     longitude: location.longitude,
      picture: file,
      error_list: [],
   });
@@ -83,7 +81,7 @@ const showError=(error)=> {
 }
 useEffect(()=>{
   getLocation();
-},[]);
+},[location.latitude,location.longitude]);
 
 
   const handleInput = (e) => {
@@ -149,8 +147,8 @@ useEffect(()=>{
     formData.append('role', registerInput.role);
     formData.append('confirm_password', registerInput.confirm_password);
     formData.append('password', registerInput.password);
-    formData.append('latitude', registerInput.latitude);
-    formData.append('longitude', registerInput.longitude);
+    formData.append('latitude', location.latitude);
+    formData.append('longitude', location.longitude);
     formData.append('picture_law', file);
     setLoading({...loading, isLoading:true});
     // let settings = { headers: { 'content-type': 'multipart/form-data' } };

@@ -10,7 +10,7 @@ import swal from "sweetalert";
 
 
 export default function Edit_account() {
-  document.title = "Manage / edit account info | GetLaw";
+  document.title = "Manage / edit account info | GivLaw";
 
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);

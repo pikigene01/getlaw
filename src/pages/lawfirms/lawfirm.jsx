@@ -1052,7 +1052,7 @@ scheduled_btn.forEach((btn)=>{
       axios.post("/api/lawfirms/view", data).then((res) => {
         if (res.data.posts[0]) {
           setPosts(res.data.posts[0]);
-          document.title = res.data.posts[0].name + " Lawfirm | GetLaw";
+          document.title = res.data.posts[0].name + " Lawfirm | GivLaw";
         } else {
           navigate("/");
         }

@@ -7,7 +7,7 @@ import Options from './Options';
 import Footer from '../../assets/components/footer/footer';
 
 export default function meet() {
-  document.title = "GetLaw Room Space For Meetings | GetLaw";
+  document.title = "GivLaw Room Space For Meetings | GivLaw";
   
   return (
     <>

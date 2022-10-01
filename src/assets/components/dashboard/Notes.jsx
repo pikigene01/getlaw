@@ -10,7 +10,7 @@ import { ContextProvider } from './SideContext';
 
 
 export default function Notes() {
-  document.title = "Add / Edit Notes | GetLaw";
+  document.title = "Add / Edit Notes | GivLaw";
 
   const navigate = useNavigate();
   const [loggedIn,setLoggedIn] = useState(false);

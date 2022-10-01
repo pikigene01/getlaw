@@ -5,7 +5,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 export default function Welcome_Meet() {
-  document.title = "Choose Lawyer Which You Want to have talks with | GetLaw";
+  document.title = "Choose Lawyer Which You Want to have talks with | GivLaw";
 
    const [lawyers,setLawyers] = useState([]);
   const [skeletonLoader, setSkeletonLoader] = useState(false);
