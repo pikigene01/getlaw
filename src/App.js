@@ -29,6 +29,7 @@ import WholeApp from "./assets/components/home/WholeApp";
 import BlogApp from "./assets/components/blog/BlogApp";
 import Add_files from "./assets/components/dashboard/Add_files";
 import ForgotPass from "./pages/auth/forgotpassword";
+import Policy from "./assets/components/policy/Policy";
 
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
@@ -56,6 +57,7 @@ function App() {
         <Route exact path="/subcription/:id" element={<Lawyerssub />} />
         {/* <Route exact path="/lawfirm/auth" element={<Auth />} /> */}
         <Route exact path="/about" element={<About />} />
+        <Route exact path="/privacy/policy" element={<Policy />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/support" element={<Support/>} />
         <Route exact path="/pricing" element={<Pricing/>} />

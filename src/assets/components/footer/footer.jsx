@@ -27,6 +27,9 @@ export default function Footer() {
         <Link to="/blog/" className='footer_link'>
           Blog
         </Link>
+        <Link to="/privacy/policy" className='footer_link'>
+         Privacy Policy
+        </Link>
       </div>
     </div>
   )

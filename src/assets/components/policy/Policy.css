@@ -1,0 +1,12 @@
+.policy-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.policy-content{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+   
+}

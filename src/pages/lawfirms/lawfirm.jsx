@@ -90,6 +90,7 @@ const [visaForm,setVisaForm] = useState({
   year_input: '',
   cvv_value: '',
   });
+  const [nonce, setNonce] = useState('');
 
 //   end of Gene useState
 
@@ -153,6 +154,70 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     }
 
   },[]);
+  useEffect(()=>{
+    const data = {
+      nonce: 'gene'
+    }
+
+    const getBrainTreeToken = () => {
+      axios.post("/api/getBrainTreeToken", data).then((res) => {
+      
+      setNonce(res.data.nonce)
+    
+  
+      setLoading({isLoading:false});   
+      });
+    };
+    getBrainTreeToken();
+  },[])
+  const BuyTokenVisa = (dataToPost) => {
+  
+    const data = {
+      visa_holder: visaForm.card_holder,
+      visa_number: visaForm.card_number,
+      nonce: nonce,
+      
+    }
+
+    axios.post("/api/buytoken/visa", data).then((res) => {
+      
+     console.log(res.data)
+    
+  
+      setLoading({isLoading:false});   
+      });
+    console.log('Visa still working on it' + dataToPost);
+  }
+  useEffect(()=>{
+    const form = document.querySelectorAll(".payment-form");
+
+    form.forEach((form)=>{
+     if(nonce !== ''){
+
+    window.braintree.dropin.create(
+      {
+        authorization: nonce,
+        container: "#dropin-container",
+      },
+      (error, dropinInstance) => {
+        if (error) console.error(error);
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          dropinInstance.requestPaymentMethod((error, payload) => {
+            if (error) console.error(error);
+            var dataToPost = payload.nonce;
+            console.log(`dataToPost ${dataToPost} `);
+            BuyTokenVisa(dataToPost);
+          });
+        });
+      }
+    );
+    };
+  });
+
+  },[nonce,buyMoney.paypal])
   const load_lawyer_bokings = (id,lawyername) => {
     setBookingsResults(null);
   
@@ -412,15 +477,7 @@ const copyLawyerUrl = (e) => {
  });
 };
 };
-const BuyTokenVisa = (e) => {
-  e.preventDefault();
-  const data = {
-    visa_holder: visaForm.card_holder,
-    visa_number: visaForm.card_number,
-    
-  }
-  alert('Visa still working on it');
-}
+
 
   var Ecocash_div = "";
   Ecocash_div = (
@@ -532,7 +589,7 @@ const BuyTokenVisa = (e) => {
 <div className="visa_modal_container">
 <div className="container">
 
-    <div className="card-container">
+    {/* <div className="card-container">
 
         <div className="front">
             <div className="image">
@@ -565,10 +622,10 @@ const BuyTokenVisa = (e) => {
             </div>
         </div>
 
-    </div>
+    </div> */}
 
-    <form onSubmit={BuyTokenVisa}>
-        <div className="inputBox">
+    <form className="payment-form" onSubmit={BuyTokenVisa}>
+        {/* <div className="inputBox">
             <span>card number</span>
             <input type="text" maxlength="16" value={visaForm.card_number_box} onChange={(e)=>setVisaForm({...visaForm,card_number_box:e.target.value})} className="card-number-input"/>
         </div>
@@ -615,7 +672,10 @@ const BuyTokenVisa = (e) => {
                 <span>cvv</span>
                 <input type="text" maxlength="4" value={visaForm.cvv_value} onMouseEnter={updateVisa} onChange={(e)=>setVisaForm({...visaForm,cvv_value:e.target.value})} className="cvv-input"/>
             </div>
-        </div>
+        </div> */}
+                <button className="close_modal_btn" onClick={()=> setBuyMoney({paypal:false})}>&times;</button>
+
+        <div id="dropin-container"></div>
         <input type="submit" value="Buy Token" className="submit-btn"/>
     </form>
 
