@@ -164,7 +164,7 @@ const showError=(error)=> {
                       <img
                         src={row.picture}
                         alt={row.description}
-                        style={{ width: "100px" }}
+                        style={{ width: "100px",'border': '2px solid red' }}
                       />
                     </div>
                   </div>

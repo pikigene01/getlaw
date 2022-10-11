@@ -176,12 +176,20 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
       visa_holder: visaForm.card_holder,
       visa_number: visaForm.card_number,
       nonce: nonce,
+      lawfirm_id: param_id,
+      lawfirm_price: posts.price,
       
     }
 
     axios.post("/api/buytoken/visa", data).then((res) => {
-      
+      if(res.data.status !== 200){
      console.log(res.data)
+     setUserReceivedToken({...userreceivedtoken,token:res.data.token});
+
+      }else{
+        setUserReceivedToken({...userreceivedtoken,token:res.data.token});
+
+      }
     
   
       setLoading({isLoading:false});   
@@ -189,8 +197,19 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     console.log('Visa still working on it' + dataToPost);
   }
   useEffect(()=>{
-    const form = document.querySelectorAll(".payment-form");
-
+    const form = document.querySelectorAll(".payment-form"),
+    dropin_get = document.querySelectorAll('#dropin-container');
+    dropin_get.forEach((dropin_get)=>{
+      setInterval(()=>{
+        if(dropin_get.innerHTML != ''){
+          const submit_bts = document.querySelectorAll('.submit-btn');
+          submit_bts.forEach((btn)=>{
+            btn.style.display = 'block';
+          })
+        }
+      },1000)
+    
+          })
     form.forEach((form)=>{
      if(nonce !== ''){
 
@@ -204,6 +223,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
 
         form.addEventListener("submit", (event) => {
           event.preventDefault();
+       
 
           dropinInstance.requestPaymentMethod((error, payload) => {
             if (error) console.error(error);
@@ -676,7 +696,13 @@ const copyLawyerUrl = (e) => {
                 <button className="close_modal_btn" onClick={()=> setBuyMoney({paypal:false})}>&times;</button>
 
         <div id="dropin-container"></div>
-        <input type="submit" value="Buy Token" className="submit-btn"/>
+
+        <input type="submit" value="Buy Token" style={{display: 'none'}} className="submit-btn"/>
+        <div className="token_input" style={{display:'flex',justifyContent: 'space-between'}}>
+    <input type="text" className="token" value=
+  {userreceivedtoken.token?userreceivedtoken.token:'Pay and get your track token here'} />
+  <span onClick={copyToken}><FileCopy/></span>
+  </div>
     </form>
 
 </div>  

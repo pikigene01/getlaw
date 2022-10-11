@@ -1,10 +1,8 @@
-import React, {useContext,useState} from 'react';
+import React, {useContext} from 'react';
 import { SocketContext } from './SocketContext';
 import { CallEnd, Camera, Message, MicNone, NetworkCell, Note, Notifications, Phone, Redo, RingVolume } from '@material-ui/icons';
 import ringtone from '../../assets/ring.mp3';
 import notification_music from '../../assets/notification.mp3';
-import { toHaveFormValues } from '@testing-library/jest-dom/dist/matchers';
-
 
 export default function VideoPlayer() {
   const {me,userMe,messagesUser, callAccepted, myVideo, userVideo, callEnded, answerCall, call,camera,setCamera,setAudio,audio,userToken,setUserToken,msg,setMsg,tabletHome,toggleMode,loggedIn,idToCall,user} = useContext(SocketContext);
