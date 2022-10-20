@@ -1150,7 +1150,7 @@ scheduled_btn.forEach((btn)=>{
     // function to retrieve all lawfirms
 
     getLawyers();
-    function getLawyers() {
+    function getLawyers(){
       let data = {
         post_id: param_id,
       };

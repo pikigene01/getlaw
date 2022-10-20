@@ -24,6 +24,11 @@ function Header() {
     currency: currency,
     received_token: ''
   });
+  const [search, setSearch] = useState({
+    search: "",
+    searching: false,
+    show_dialog: false
+  });
   const [ searchMic,setSearchMic] = useState(false);
   const [loggedIn,setLoggedIn] = useState(false);
   useEffect(()=>{
@@ -101,11 +106,18 @@ function Header() {
 
      const recognition = new window.SpeechRecognition();
      recognition.interimResults = true;
+     recognition.start();
 
      recognition.addEventListener('result', (e)=>{
-    console.log(e.results)
+      const text = Array.from(e.results).map(result => result[0])
+      .map(result => result.transcript).join('');
+if(e.results[0].isFinal){
+  searchLawfirms(text);
+  setSearchMic(false);
+}
+
+     
      });
-     recognition.start();
 
     }
   },[searchMic])
@@ -260,11 +272,7 @@ setCurrency(e.target.value);
       }
     });
   };
-  const [search, setSearch] = useState({
-    search: "",
-    searching: false,
-    show_dialog: false
-  });
+
   const hideDialog = (e) => {
     setSearch({ show_dialog:false });
   };
@@ -272,14 +280,22 @@ setCurrency(e.target.value);
     setSearch({...search, show_dialog:true });
   }
   const [searched, setSearched] = useState([]);
+ 
   // Search Lawfirms by Gene Piki
+
   const searchLawfirms = (e) => {
-    setSearch({ search: e.target.value,searching: true,show_dialog:true });
-    if(e.target.value === ''){
+    let value = e;
+  if(searchMic){
+value = e;
+  }else{
+value = e.target.value;
+  }
+    setSearch({ search: value,searching: true,show_dialog:true });
+    if(value === ''){
       setSearch({ searching: false,show_dialog:false });
     }
     const data_search = {
-      search: e.target.value,
+      search: value,
     };
     axios.post("/api/search", data_search).then((res) => {
       if (res.status === 200) {
@@ -440,6 +456,7 @@ Gene_menu = (
  onChange={searchLawfirms}
  onFocus={onFocus}
  type="search"
+ value={search.search}
  placeholder="Search GivLaw..."
  className="search"
 />
