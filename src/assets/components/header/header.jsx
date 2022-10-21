@@ -460,7 +460,29 @@ Gene_menu = (
  placeholder="Search GivLaw..."
  className="search"
 />
-<Mic className={searchMic?"search_icon":''} onClick={()=> setSearchMic(!searchMic)}/>
+<span className={searchMic?"search_icon":''} onClick={()=> setSearchMic(!searchMic)}>
+<Mic style={{cursor:'pointer'}} title='Search using your mic' />
+
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/>
+      <span/></span>
 </>
          )}
          

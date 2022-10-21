@@ -288,6 +288,127 @@ border-bottom: 3px solid #333;
    margin: 2px 20px;
 }
 
+/* Mic Style By Gene Piki */
+.search_icon span{
+  background: var(--first-color);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid  var(--first-color);
+  animation: moving 2.5s linear infinite reverse forwards;
+ 
+}
+@keyframes moving {
+  0% {
+   transform: scale(0);
+
+  }
+  10%{
+      transform: scale(1.1);
+  }
+  100%{
+ margin-top: 50%;
+ margin-left: 50%;
+  
+  }
+}
+.search_icon span:nth-child(1){
+  margin-top: -90px;
+  margin-left: -30px;
+}
+.search_icon span:nth-child(2){
+  margin-top: 90px;
+  margin-left: 30px;
+}
+.search_icon span:nth-child(3){
+  margin-top: -100px;
+  margin-left: -40px;
+}
+.search_icon span:nth-child(4){
+  margin-top: -30px;
+  margin-left: -90px;
+  background: transparent;
+
+}
+.search_icon span:nth-child(5){
+  margin-top: -60px;
+  margin-left: -160px;
+}
+.search_icon span:nth-child(6){
+  margin-top: -120px;
+  margin-left: -0px;
+}
+.search_icon span:nth-child(7){
+  margin-top: 120px;
+  margin-left: 0px;
+}
+.search_icon span:nth-child(8){
+  margin-top: 140px;
+  margin-left: -50px;
+  background: transparent;
+
+}
+.search_icon span:nth-child(9){
+  margin-top: 60px;
+  margin-left: -30px;
+}
+.search_icon span:nth-child(10){
+  margin-top: 60px;
+  margin-left: 100px;
+}
+.search_icon span:nth-child(11){
+  margin-top: 90px;
+  margin-left: 130px;
+  background: transparent;
+}
+.search_icon span:nth-child(12){
+  margin-top: 120px;
+  margin-left: 100px;
+}
+.search_icon span:nth-child(13){
+  margin-top: -80px;
+  margin-left: 100px;
+}
+.search_icon span:nth-child(14){
+  margin-top: -60px;
+  margin-left: 80px;
+}
+.search_icon span:nth-child(15){
+  margin-top: -20px;
+  margin-left: 80px;
+}
+.search_icon span:nth-child(16){
+  margin-top: 80px;
+  margin-left: -80px;
+}
+.search_icon span:nth-child(17){
+  margin-top: 10px;
+  margin-left: -80px;
+}
+.search_icon span:nth-child(18){
+  margin-top: 3px;
+  margin-left: -80px;
+  background: transparent;
+
+}
+.search_icon span:nth-child(19){
+  margin-top: 7px;
+  margin-left: -80px;
+}
+.search_icon span:nth-child(20){
+  margin-top: 100px;
+  margin-left: -80px;
+}
+.search_icon span:nth-child(21){
+  margin-top: 100px;
+  margin-left: 80px;
+}
+.search_icon span:nth-child(22){
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
 @media screen and (max-width:890px){
   .lawyer_funds{
     display: none;
