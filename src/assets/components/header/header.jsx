@@ -62,6 +62,37 @@ function Header() {
    });
    
   },[currency]);
+
+  const [cookieStatus,setCookieStatus] = useState(false);
+  useEffect(()=>{
+    const getCookie = localStorage.getItem('cookieStatus');
+     if(getCookie){
+      setCookieStatus(true);
+     }
+  },[cookieStatus]);
+  const setCookie =()=> {
+   const getCookie = localStorage.getItem('cookieStatus');
+   if(getCookie){
+setCookieStatus(true);
+   }else{
+    localStorage.setItem('cookieStatus', true);
+setCookieStatus(true);
+
+   }
+  }
+ var cookie_div = "";
+ if(!cookieStatus){
+  cookie_div = (
+    <div style={{zIndex: '99999',display: 'flex',width:'100%',background: 'rgb(231, 210, 210)',justifyContent: 'space-around',left:'0px',padding:'20px 30px',position:'fixed',bottom:'0px'}}>
+  <p style={{width:'70%'}}>This website uses cookies to enhance site navigation and improve 
+    functionality, analyze site usage, and assist in our marketing and 
+    advertising efforts. Please click "I accept cookies" to let us know 
+    you're okay with our use of all cookies. For more information please 
+    see the cookies section of our Privacy Policy.</p>
+    <button onClick={setCookie} style={{background: 'grey',padding: '10px 30px'}}>i accept cookies</button>
+    </div>
+   );
+ };
    // clock render start
    const drawTime =() =>{
     var now = new Date();
@@ -592,6 +623,7 @@ Gene_menu = (
        </>
       )}
     </div>
+    {cookie_div}
    </>
   );
 }
