@@ -29,7 +29,6 @@ let i = 0;
         // url = window.location.pathname;
         // page = url.substring(url.lastIndexOf('/') + 1);
     }
-
    
     useEffect(()=>{
         let urlss = window.location.pathname;
@@ -47,18 +46,7 @@ let i = 0;
       useEffect(()=>{
         setBlogs([]);
     
-        const blog_get = () =>{
-            const data = {
-              category: page
-            }
-
-            axios.post("api/blog/get/all", data).then((res) => {
-            setSkeletonLoaderBlogs(true);
-            setBlogs(res.data.blogs);
-            });
-           
-          }
-        blog_get();
+      
         if(refresh){
           setLocalStorageData(null);
          }
@@ -81,8 +69,22 @@ let i = 0;
        
       });
     };
-      },[url,page])
+      },[page])
 
+      useEffect(()=>{
+        const blog_get = () =>{
+          const data = {
+            category: page
+          }
+
+          axios.post("api/blog/get/all", data).then((res) => {
+          setSkeletonLoaderBlogs(true);
+          setBlogs(res.data.blogs);
+          });
+         
+        }
+      blog_get();
+      },[url]);
       useEffect(()=>{
         const blog_get_lat = () =>{
           const data = {
