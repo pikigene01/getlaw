@@ -11,25 +11,12 @@ export default function Contact() {
   const [loading, setLoading] = useState({
     isLoading: false,
   });
-  document.title = "Welcome to GivLaw | Contact Us";
+  document.title = "Welcome to GenePiki | Contact Us";
 
   const sentEmail = (e) => {
     e.preventDefault();
-    setLoading({...loading,isLoading:true});
-    emailjs.sendForm('service_g69iq3f', 'template_n4wgrlu', form.current, 'mR69KpPUPXOU0bVdM')
-    .then((result) => {
-    setLoading({...loading,isLoading:false});
-
-      swal("Success", result.text+" Message have been sent successfully","success");
-        console.log(result.text);
-        e.target.reset();
-    }, (error) => {
-      swal("Warning", error.text+" Message not sent...","warning");
-    setLoading({...loading,isLoading:false});
-      
-        console.log(error.text);
-      
-    });
+  const form_current = form.current;
+  alert(form_current);
 
   }
   return (

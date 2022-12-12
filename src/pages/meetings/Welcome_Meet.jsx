@@ -5,7 +5,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 export default function Welcome_Meet() {
-  document.title = "Choose Lawyer Which You Want to have talks with | GivLaw";
+  document.title = "Choose Lawyer Which You Want to have talks with | GenePiki";
 
    const [lawyers,setLawyers] = useState([]);
   const [skeletonLoader, setSkeletonLoader] = useState(false);
@@ -151,7 +151,7 @@ export default function Welcome_Meet() {
                 <input type="search" className="search_input" onChange={liveSearch} placeholder='Search lawyer here using your token'/><Search className="icon search_icon"/> 
             </div>
             <div className='right_header'>
-                Welcome to GivLaw meeting Rooms
+                Welcome to GenePiki meeting Rooms
             </div>
         </div>
 

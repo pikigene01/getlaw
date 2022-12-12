@@ -9,7 +9,7 @@ export default function Welcome() {
     <div draggable="false" className='welcome_container'>
         <div className='welcome_left'>
 <h1>You got into trouble for no reason get in touch with our best lawfirms</h1>
-<p>GivLaw will help you with instant meetings with our best lawyers available</p>
+<p>GenePiki will help you with instant meetings with our best lawyers available</p>
 <Link to="/contact"><button>Help <ContactSupport/></button></Link>
         </div>
         <div className='welcomeN_right'>

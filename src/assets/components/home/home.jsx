@@ -13,7 +13,7 @@ import Sponsors from '../lawfirms/Sponsors';
 export default function Home() {
   const {refresh,setRefresh} = useContext(HomeContext);
 
-  document.title = "GivLaw Home Page | GivLaw";
+  document.title = "GenePiki Home Page | GenePiki";
 
   return (
     <>

@@ -60,21 +60,21 @@ const showError=(error)=> {
   switch(error.code) {
     case error.PERMISSION_DENIED:
     console.log("User denied the request for Geolocation.");
-    alert('GivLaw need your location to quickly locate you');
+    alert('GenePiki need your location to quickly locate you');
       break;
     case error.POSITION_UNAVAILABLE:
     console.log("Location information is unavailable.");
-    alert('GivLaw need your location to quickly locate you');
+    alert('GenePiki need your location to quickly locate you');
 
       break;
     case error.TIMEOUT:
     console.log("The request to get user location timed out.");
-    alert('GivLaw need your location to quickly locate you');
+    alert('GenePiki need your location to quickly locate you');
 
       break;
     case error.UNKNOWN_ERROR:
     console.log("An unknown error occurred.");
-    alert('GivLaw need your location to quickly locate you');
+    alert('GenePiki need your location to quickly locate you');
 
       break;
   }

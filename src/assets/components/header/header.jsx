@@ -416,7 +416,7 @@ Gene_menu = (
   <>
   <div className="side_menu draggable" onMouseDown={startMoveFunction}>
     <div className="menu_header">
-      <h2>Giv<LayersTwoTone/>Law</h2>
+      <h2>Gene<LayersTwoTone/>Piki</h2>
     </div>
     <div className="menu_body">
      <ul>
@@ -468,7 +468,7 @@ Gene_menu = (
           <div className="logo_wrapper">
             <Link to="/">
               {" "}
-              <span><span className="logo_bold">Giv</span><><LayersTwoTone/></><span className="logo_italic">Law</span></span>
+              <span><span className="logo_bold">Gene</span><><LayersTwoTone/></><span className="logo_italic">Piki</span></span>
               {/* <h1 >title="gene law">GL</h1> */}
               {/* <img src={Logo} alt="GeneLaw logo" style={{height: "100%"}} /> */}
             </Link>
@@ -488,7 +488,7 @@ Gene_menu = (
  onFocus={onFocus}
  type="search"
  value={search.search}
- placeholder="Search GivLaw..."
+ placeholder="Search GenePiki..."
  className="search"
 />
 <span className={searchMic?"search_icon":''} onClick={()=> setSearchMic(!searchMic)}>
@@ -542,7 +542,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Giv<LayersTwoTone/>Law Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Gene<LayersTwoTone/>Piki Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (

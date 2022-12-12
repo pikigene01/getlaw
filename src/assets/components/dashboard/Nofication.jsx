@@ -10,7 +10,7 @@ import axios from 'axios'
 
 
 export default function Nofication() {
-  document.title = "View Notifications | GivLaw";
+  document.title = "View Notifications | GenePiki";
 
   const navigate = useNavigate();
   const [loggedIn,setLoggedIn] = useState(false);

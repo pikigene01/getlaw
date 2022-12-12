@@ -11,7 +11,7 @@ import swal from "sweetalert";
 
 
 export default function Money() {
-  document.title = "Get To know Money transferes into your account | GivLaw";
+  document.title = "Get To know Money transferes into your account | GenePiki";
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState({

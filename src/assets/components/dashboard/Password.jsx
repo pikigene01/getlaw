@@ -14,7 +14,7 @@ export default function Password() {
   const [loading,setLoading] = useState({
     isLoading: false
   });
-  document.title = "Change Your Password | GivLaw";
+  document.title = "Change Your Password | GenePiki";
 
   const user_id = localStorage.getItem('auth_user_id');
   const changePass = (e) => {

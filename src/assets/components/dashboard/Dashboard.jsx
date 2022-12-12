@@ -9,7 +9,7 @@ import { ContextProvider } from './SideContext';
 
 
 export default function Dashboard() {
-    document.title = "Dashboard | GivLaw By Gene Piki";
+    document.title = "Dashboard | GenePiki By Gene Piki";
     
     const navigate = useNavigate();
     const [loggedIn,setLoggedIn] = useState(false);
@@ -54,7 +54,7 @@ export default function Dashboard() {
 
       <div className="dashboard_body">
       <div className='header_dash'>
-        <h2>Welcome to givlaw.com</h2>
+        <h2>Welcome to GenePiki.com</h2>
       </div>
       <div className='dash_body_icon'>
        <DataUsage className='icon'/>

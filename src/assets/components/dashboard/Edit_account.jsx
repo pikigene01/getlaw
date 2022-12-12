@@ -10,7 +10,7 @@ import swal from "sweetalert";
 
 
 export default function Edit_account() {
-  document.title = "Manage / edit account info | GivLaw";
+  document.title = "Manage / edit account info | GenePiki";
 
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);

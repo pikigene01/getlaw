@@ -10,7 +10,7 @@ import { ContextProvider } from './SideContext';
 
 
 export default function Add_lawyer() {
-  document.title = "Manage Lawyers | GivLaw";
+  document.title = "Manage Lawyers | GenePiki";
 
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);
