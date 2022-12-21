@@ -11,6 +11,7 @@ import 'swiper/css/pagination';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import { HomeContext } from './HomeContext';
+import { lawyersgetgeneapi } from '../../../apis/api';
 
 
 export default function Lawyers() {
@@ -42,7 +43,7 @@ export default function Lawyers() {
        }
       if(!localStorageData){
         axios.get("/sanctum/csrf-cookie").then((response) => {
-          axios.post("/api/lawyers/get/gene", data).then((res) => {
+          axios.post(lawyersgetgeneapi, data).then((res) => {
             setSkeletonLoader(true);
             setRefresh(false);
 

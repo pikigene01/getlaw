@@ -8,6 +8,7 @@ import about_img from '../../imgs/msg.svg';
 import about_img_2 from '../../imgs/video-creation.jpg';
 import video_img from '../../imgs/build-audience.jpg'
 import axios from 'axios'
+import { lawfirmsmoreinfoapi } from '../../../apis/api'
 
 export default function About() {
   const [about,setAbout] = useState({
@@ -23,7 +24,7 @@ experience:'1'
         gene: 'genepiki'
       }
 
-      axios.post("api/lawfirms/more_info", data).then((res) => {
+      axios.post(lawfirmsmoreinfoapi, data).then((res) => {
          if(res.data.status === 200){
           setAbout({...about,lawyers:res.data.lawyers,lawfirms:res.data.lawfirms})
          }

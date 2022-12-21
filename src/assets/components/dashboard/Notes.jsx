@@ -7,6 +7,7 @@ import swal from 'sweetalert'
 import axios from 'axios'
 import { Delete } from '@material-ui/icons'
 import { ContextProvider } from './SideContext';
+import { noteaddapi, notedeleteapi, notegetapi, noteupdateapi } from '../../../apis/api'
 
 
 export default function Notes() {
@@ -45,7 +46,7 @@ export default function Notes() {
     const data = {
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("/api/note/get", data).then((res) => {
+    axios.post(notegetapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
   
       setNotes(res.data.notes);
@@ -57,7 +58,7 @@ export default function Notes() {
     const data = {
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("/api/note/get", data).then((res) => {
+    axios.post(notegetapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
   
       setNotes(res.data.notes);
@@ -75,7 +76,7 @@ export default function Notes() {
     const data = {
       id: id,
     }
-    axios.post("/api/note/delete", data).then((res) => {
+    axios.post(notedeleteapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
       setNote({...note,note:""});
       if(res.data.status == 200){
@@ -97,7 +98,7 @@ export default function Notes() {
         note: editor.value,
         post_id: editor.post_id
       }
-      axios.post("/api/note/update", data).then((res) => {
+      axios.post(noteupdateapi, data).then((res) => {
         setLoading({ ...loading, isLoading: false });
     
         setNote({...note,note:""});
@@ -113,7 +114,7 @@ export default function Notes() {
       user_id: note.user_id,
       note: note.note
     }
-    axios.post("/api/note/add", data).then((res) => {
+    axios.post(noteaddapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
   
       setNote({...note,note:""});

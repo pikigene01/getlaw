@@ -5,12 +5,13 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import axios from "axios";
 import swal from "sweetalert";
+import { checktokenapi, sockethost } from "../../apis/api";
 const SocketContext = createContext();
 
 
 const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [socket,setSocket] = useState(io('http://localhost:5000'));
+  const [socket,setSocket] = useState(io(sockethost));
   // const [socket,setSocket] = useState(io('https://getlaw.herokuapp.com'));
   const [messagesUser,setMessagesUser] = useState([]);
 
@@ -343,7 +344,7 @@ const token_submit = (e) => {
     token: userToken.token,
     lawyer_id: idToCall
   }
-  axios.post("/api/check/token", data).then((res) => {
+  axios.post(checktokenapi, data).then((res) => {
        if(res.data.status == 200){
         setUserToken({...userToken,response:true});
        }else{

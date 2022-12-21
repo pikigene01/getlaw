@@ -7,6 +7,7 @@ import { useState } from "react";
 import swal from 'sweetalert'
 import axios from 'axios'
 import { ContextProvider } from './SideContext';
+import { lawyersgetgenedashapi, registerapi, userdeleteapi } from "../../../apis/api";
 
 
 export default function Add_lawyer() {
@@ -57,7 +58,7 @@ export default function Add_lawyer() {
     const data = {
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("/api/lawyers/get/gene/dash", data).then((res) => {
+    axios.post(lawyersgetgenedashapi, data).then((res) => {
       setSkeletonLoader(true);
 
       setLawyers(res.data.posts);
@@ -117,7 +118,7 @@ export default function Add_lawyer() {
     isAuthenticated: true
    }
 
-    axios.post("/api/user/delete", data).then((res) => {
+    axios.post(userdeleteapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
       setUpdate(!update);
       if(res.data.status == 200){
@@ -164,7 +165,7 @@ export default function Add_lawyer() {
     let settings = { headers: { 'content-type': 'multipart/form-data' } };
     axios.get('/sanctum/csrf-cookie').then(response => {
      
-    axios.post('/api/register',formData,settings).then(res => {
+    axios.post(registerapi,formData,settings).then(res => {
       setUpdate(!update);
       if(res.data.status === 200){
      

@@ -11,6 +11,7 @@ import { Email, FileCopy, LocationCity, MeetingRoom, Phone, Share } from "@mater
 import './Visa.css';
 import Chip from '../../assets/imgs/chip.png';
 import Visa from '../../assets/imgs/visa.png';
+import { buytokenvisaapi, getBrainTreeTokenapi, gettokenecoapi, resetavailabilityapi, schedulegetapi, schedulesentapi, setavailabilityapi } from "../../apis/api";
 
 export default function Lawfirm(props) {
   const [loading, setLoading] = useState({
@@ -160,7 +161,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     }
 
     const getBrainTreeToken = () => {
-      axios.post("/api/getBrainTreeToken", data).then((res) => {
+      axios.post(getBrainTreeTokenapi, data).then((res) => {
       
       setNonce(res.data.nonce)
     
@@ -181,7 +182,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
       
     }
 
-    axios.post("/api/buytoken/visa", data).then((res) => {
+    axios.post(buytokenvisaapi, data).then((res) => {
       if(res.data.status !== 200){
      console.log(res.data)
      setUserReceivedToken({...userreceivedtoken,token:res.data.token});
@@ -283,7 +284,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     type: '1'
   }
  
-  axios.post("/api/set/availability", data).then((res) => {
+  axios.post(setavailabilityapi, data).then((res) => {
     setLoading({ ...loading, isLoading: false });
     if(res.data.status === 200){
       swal('Success',res.data.message,'success');
@@ -311,7 +312,7 @@ useEffect(()=>{
       lawyer_id: id,
     
     };
-    axios.post("/api/schedule/get", data).then((res) => {
+    axios.post(schedulegetapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
   
       setBookingsForm({...bookingsForm, token: ""});
@@ -374,7 +375,7 @@ const resetAvailability = (e) => {
     type: '1'
   }
  
-  axios.post("/api/reset/availability", data).then((res) => {
+  axios.post(resetavailabilityapi, data).then((res) => {
     setLoading({ ...loading, isLoading: false });
     if(res.data.status === 200){
       swal('Success',res.data.message,'success');
@@ -401,7 +402,7 @@ const Schedule_sent = (e)=> {
   };
   setLoading({ ...loading, isLoading: true });
 
-  axios.post("/api/schedule/sent", data).then((res) => {
+  axios.post(schedulesentapi, data).then((res) => {
     setLoading({ ...loading, isLoading: false });
  if(res.data.status === 200){
     setBookingsForm({...bookingsForm, token: ""});
@@ -426,7 +427,7 @@ const Schedule_sent = (e)=> {
       lawfirm_price: posts.price
     }
     
-    axios.post("/api/get/token/eco", data).then((res) => {
+    axios.post(gettokenecoapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
       if(res.data.status == 200){
       setUserReceivedToken({token:res.data.token})

@@ -4,6 +4,7 @@ import "./Auth.css";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate,Link } from "react-router-dom";
+import { loginapi } from "../../apis/api";
 
 export default function Login() {
   document.title = "Lawyers Login Page | GetLaw";
@@ -42,7 +43,7 @@ export default function Login() {
       password: loginInput.password,
     };
     axios.get("/sanctum/csrf-cookie").then((response) => {
-      axios.post("/api/login", data).then((res) => {
+      axios.post(loginapi, data).then((res) => {
         if (res.data.status === 200) {
           localStorage.setItem("auth_token", res.data.token);
           localStorage.setItem("auth_name", res.data.username);

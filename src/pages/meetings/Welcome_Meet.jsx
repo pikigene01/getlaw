@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import Header from '../../assets/components/header/header'
 import axios from 'axios';
 import swal from 'sweetalert';
+import { lawyersgetallapi } from '../../apis/api';
 
 export default function Welcome_Meet() {
   document.title = "Choose Lawyer Which You Want to have talks with | GenePiki";
@@ -21,7 +22,7 @@ export default function Welcome_Meet() {
     //role 2 thats for fetching lawyers available
  role: '2'
     };
-    axios.post("/api/lawyers/get/all", data).then((res) => {
+    axios.post(lawyersgetallapi, data).then((res) => {
         setSkeletonLoader(true)
          if (res.data.status === 200) {
            setLawyers(res.data.posts);

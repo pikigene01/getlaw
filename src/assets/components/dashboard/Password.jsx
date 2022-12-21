@@ -6,6 +6,7 @@ import { ContextProvider } from './SideContext';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import swal from 'sweetalert';
+import { changepasswordapi } from '../../../apis/api';
 
 
 
@@ -29,7 +30,7 @@ export default function Password() {
     }
    
 
-    axios.post('/api/changePassword/user',data).then((res)=>{
+    axios.post(changepasswordapi,data).then((res)=>{
       setLoading({ ...loading, isLoading: false });
 
       if(res.data.status == 200){

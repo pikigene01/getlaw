@@ -6,6 +6,7 @@ import { ArrowDownward, ArrowForwardIos, Dashboard, ExitToApp, LayersTwoTone, Me
 import { useNavigate } from "react-router-dom";
 import { Search, Cancel } from "@material-ui/icons";
 import Logo from '../../imgs/logo.png';
+import { getfundsapi, logoutapi, searchapi } from "../../../apis/api";
 
 function Header() {
   const [loading, setLoading] = useState({
@@ -231,7 +232,7 @@ const ecocashHandle = (e) => {
       user_id: localStorage.getItem("auth_user_id"),
       currency: 'usd'
     };
-    axios.post("/api/getfunds", data_funds).then((res) => {
+    axios.post(getfundsapi, data_funds).then((res) => {
      
         setLoading({ ...loading, isLoading: false });
         //  swal("Success", res.data.message,"success");
@@ -294,7 +295,7 @@ menu_toggle = (
     };
 setCurrency(e.target.value);
 
-    axios.post("/api/getfunds", data_funds).then((res) => {
+    axios.post(getfundsapi, data_funds).then((res) => {
       if (res.status === 200) {
         setLoading({ ...loading, isLoading: false });
         //  swal("Success", res.data.message,"success");
@@ -328,7 +329,7 @@ value = e.target.value;
     const data_search = {
       search: value,
     };
-    axios.post("/api/search", data_search).then((res) => {
+    axios.post(searchapi, data_search).then((res) => {
       if (res.status === 200) {
         setSearch({ searching: false,show_dialog:true });
        
@@ -349,7 +350,7 @@ try{
   localStorage.removeItem("auth_name");
   localStorage.removeItem("auth_user_id");
   setLoading({ ...loading, isLoading: false });
-  axios.post("/api/logout").then((res) => {
+  axios.post(logoutapi).then((res) => {
     if (res.status === 200) {
       localStorage.removeItem('user_profile');
       localStorage.removeItem("auth_token");

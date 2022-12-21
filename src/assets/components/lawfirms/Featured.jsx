@@ -6,6 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { HomeContext } from "./HomeContext";
 import { LocationCity, Map } from "@material-ui/icons";
+import { lawfirmsgetapi } from "../../../apis/api";
 
 export default function Featured() {
   const {refresh,setRefresh} = useContext(HomeContext);
@@ -68,7 +69,7 @@ const showError=(error)=> {
      }
     if(!localStorageData){
     axios.get("/sanctum/csrf-cookie").then((response) => {
-      axios.post("/api/lawfirms/get", data).then((res) => {
+      axios.post(lawfirmsgetapi, data).then((res) => {
         setSkeletonLoader(true);
         setRefresh(false);
 

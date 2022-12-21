@@ -8,6 +8,7 @@ import { Timeline } from '@material-ui/icons'
 import { ContextProvider } from './SideContext';
 import axios from 'axios';
 import swal from "sweetalert";
+import { moneyrateaddapi, moneyrategetapi } from '../../../apis/api';
 
 
 export default function Money() {
@@ -38,7 +39,7 @@ export default function Money() {
     const data = {
       [e.target.name]:e.target.value,
     }
-    axios.post('/api/money/rate/get',data).then((res)=>{
+    axios.post(moneyrategetapi,data).then((res)=>{
       setLoading({ ...loading, isLoading: false });
 
       if(res.data.status == 200){
@@ -60,7 +61,7 @@ export default function Money() {
       const data = {
         currency:rate.currency,
       }
-      axios.post('/api/money/rate/get',data).then((res)=>{
+      axios.post(moneyrategetapi,data).then((res)=>{
         setLoading({ ...loading, isLoading: false });
   
         if(res.data.status == 200){
@@ -82,7 +83,7 @@ export default function Money() {
       currency: rate.currency,
       user_token: rate.user_token
     }
-    axios.post('/api/money/rate/add',data).then((res)=>{
+    axios.post(moneyrateaddapi,data).then((res)=>{
       setLoading({ ...loading, isLoading: false });
 
       if(res.data.status == 200){

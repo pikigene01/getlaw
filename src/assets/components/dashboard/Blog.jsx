@@ -7,6 +7,7 @@ import { ContextProvider } from './SideContext';
 import swal from 'sweetalert';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { blogaddapi, blogdeleteapi, bloggetapi } from '../../../apis/api';
 
 
 
@@ -70,7 +71,7 @@ export default function Blog_dash() {
     const data = {
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("api/blog/get", data).then((res) => {
+    axios.post(bloggetapi, data).then((res) => {
     setBlogs(res.data.blogs);
     });
   }
@@ -115,7 +116,7 @@ export default function Blog_dash() {
     }
     setLoading({...loading, isLoading:true});
 
-    axios.post("api/blog/delete", data).then((res) => {
+    axios.post(blogdeleteapi, data).then((res) => {
       setLoading({...loading, isLoading:false});
 
       if(res.data.status == 200){
@@ -148,7 +149,7 @@ export default function Blog_dash() {
     formData.append('user_id', localStorage.getItem('auth_user_id'));
     let settings = { headers: { 'content-type': 'multipart/form-data' } };
 
-    axios.post("api/blog/add", formData,settings).then((res) => {
+    axios.post(blogaddapi, formData,settings).then((res) => {
       setLoading({...loading, isLoading:false});
 
       if(res.data.status == 200){

@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../assets/components/footer/footer";
 import support_svg from '../../assets/imgs/support.svg';
+import { registerapi } from "../../apis/api";
 
 
 export default function Auth() {
@@ -154,7 +155,7 @@ useEffect(()=>{
     // let settings = { headers: { 'content-type': 'multipart/form-data' } };
     axios.get('/sanctum/csrf-cookie').then(response => {
      
-    axios.post('/api/register',formData,{
+    axios.post(registerapi,formData,{
       headers: {
         'content-type': 'multipart/form-data'
       }}).then(res => {

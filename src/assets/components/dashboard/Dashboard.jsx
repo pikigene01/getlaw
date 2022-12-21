@@ -6,6 +6,7 @@ import Sidebar from './Sidebar';
 import { BookOutlined, BugReport, Comment, DataUsage } from '@material-ui/icons';
 import axios from 'axios';
 import { ContextProvider } from './SideContext';
+import { dashboardallapi } from '../../../apis/api';
 
 
 export default function Dashboard() {
@@ -33,7 +34,7 @@ export default function Dashboard() {
       const data = {
         lawyer_id: localStorage.getItem('auth_user_id')
       }
-      axios.post("/api/dashboard/all", data).then((res) => {
+      axios.post(dashboardallapi, data).then((res) => {
       
         setDashboardCount({...dashboardCount,bookings:res.data.bookings,reports:res.data.reports,reviews:res.data.reviews});
   

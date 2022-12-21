@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { lawfirmsgetapi } from "../../../apis/api";
 
 export default function Card() {
   const {refresh,setRefresh} = useContext(HomeContext);
@@ -53,7 +54,7 @@ let [loaderkey, setLoaderkey] = useState('100');
     }
     if(!localStorageData){
       axios.get("/sanctum/csrf-cookie").then(() => {
-        axios.post("/api/lawfirms/get", data).then((res) => {
+        axios.post(lawfirmsgetapi, data).then((res) => {
          setSkeletonLoader(true)
          setRefresh(false);
           if (res.data.status === 200) {

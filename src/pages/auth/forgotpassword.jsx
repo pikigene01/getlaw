@@ -4,6 +4,7 @@ import "./Auth.css";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import { forgotpasswordapi } from "../../apis/api";
 
 export default function ForgotPass() {
   document.title = "Lawyers Login Page | GetLaw";
@@ -41,7 +42,7 @@ export default function ForgotPass() {
       password: loginInput.password,
     };
     axios.get("/sanctum/csrf-cookie").then((response) => {
-      axios.post("/api/forgot-password", data).then((res) => {
+      axios.post(forgotpasswordapi, data).then((res) => {
         if (res.data.status === 200) {
           
           swal("Success", res.data.message ?? "error", "success");

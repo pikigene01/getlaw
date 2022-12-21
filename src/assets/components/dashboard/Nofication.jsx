@@ -6,6 +6,7 @@ import { DataUsage, StayCurrentLandscapeOutlined } from '@material-ui/icons'
 import { ContextProvider } from './SideContext';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { notificationsgetapi } from '../../../apis/api'
 
 
 
@@ -31,7 +32,7 @@ export default function Nofication() {
     const data = {
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("/api/notifications/get", data).then((res) => {
+    axios.post(notificationsgetapi, data).then((res) => {
   
     if(res.data.status === 200){
       setNotifications(res.data.notifications);

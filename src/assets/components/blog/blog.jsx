@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { HomeContext } from '../lawfirms/HomeContext'
 import { Refresh } from '@material-ui/icons'
+import { bloggetalllatestapi,bloggetallapi } from '../../../apis/api'
 
 
 export default function Blog() {
@@ -77,7 +78,7 @@ let i = 0;
             category: page
           }
 
-          axios.post("api/blog/get/all", data).then((res) => {
+          axios.post(bloggetallapi, data).then((res) => {
           setSkeletonLoaderBlogs(true);
           setBlogs(res.data.blogs);
           });
@@ -92,7 +93,7 @@ let i = 0;
           }
           
 
-            axios.post("api/blog/get/all/latest", data).then((res) => {
+            axios.post(bloggetalllatestapi, data).then((res) => {
               setSkeletonLoader(true);
               setRefresh(false)
               setBlogsLatest(res.data.blogs);

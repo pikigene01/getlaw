@@ -7,6 +7,7 @@ import './Edit_account.css'
 import axios from "axios";
 import { ContextProvider } from './SideContext';
 import swal from "sweetalert";
+import { lawyersgetinfoapi, userupdateapi } from "../../../apis/api";
 
 
 export default function Edit_account() {
@@ -46,7 +47,7 @@ export default function Edit_account() {
     const data = {
       user_id: localStorage.getItem('auth_user_id')
     }
-    axios.post("/api/lawyers/get/info", data).then((res) => {
+    axios.post(lawyersgetinfoapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
   
       setLawyerinfo(res.data.posts);
@@ -129,7 +130,7 @@ export default function Edit_account() {
       location: lawyerform.location,
     }
 
-    axios.post("/api/user/update", data).then((res) => {
+    axios.post(userupdateapi, data).then((res) => {
       setLoading({ ...loading, isLoading: false });
 
       if(res.data.status == 200){
