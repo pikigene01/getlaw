@@ -1,4 +1,4 @@
-export const apihost = "http://127.0.0.1:8000/";
+export const apihost = "http://127.0.0.1:8000/api/";
 export const sockethost = "";
 export const registerapi = "register";
 export const loginapi = "login";
