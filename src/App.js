@@ -30,9 +30,10 @@ import BlogApp from "./assets/components/blog/BlogApp";
 import Add_files from "./assets/components/dashboard/Add_files";
 import ForgotPass from "./pages/auth/forgotpassword";
 import Policy from "./assets/components/policy/Policy";
+import { apihost } from "./apis/api";
 
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/";
+axios.defaults.baseURL = apihost;
 // axios.defaults.headers.post["content-type"] = "application/json";
 // // axios.defaults.headers.post["content-type"] = "multipart/form-data: boundary=add-random-characters";
 // axios.defaults.headers.post["Accept"] = "application/json";
