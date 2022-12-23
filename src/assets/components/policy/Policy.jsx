@@ -6,6 +6,7 @@ export default function Policy() {
   return (
     <div>
         <Header/>
+        < br/>
         <section className='policy-section'>
        Read Our Policy Page
 
