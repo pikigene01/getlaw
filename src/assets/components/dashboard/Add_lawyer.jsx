@@ -26,6 +26,7 @@ export default function Add_lawyer() {
   const navigate = useNavigate();
   const [loggedIn,setLoggedIn] = useState(false);
   useEffect(()=>{
+  
     const logged_in = localStorage.getItem('auth_token');
   if(logged_in){
     setLoggedIn(true)

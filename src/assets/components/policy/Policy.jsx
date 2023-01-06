@@ -12,7 +12,7 @@ export default function Policy() {
 
        <br/>
        <div className='policy-content'>
-       <h2>Banking And Cards</h2>
+      
        </div>
      
         </section>
