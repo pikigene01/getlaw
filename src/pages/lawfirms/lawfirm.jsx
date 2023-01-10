@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../assets/components/header/header";
 import Logo from "../../assets/imgs/logo.jfif";
-import { AiOutlineStar, AiFillHeart } from "react-icons/ai";
+import { AiOutlineStar, AiFillHeart, AiFillClockCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "./Lawfirm.css";
 import axios from "axios";
@@ -238,12 +238,19 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     };
   });
 
-  },[nonce,buyMoney.paypal])
+  },[nonce,buyMoney.paypal]);
+  const onclickSchedule =(lawyer_id, lawyer_name)=>{
+
+    load_lawyer_bokings(lawyer_id,lawyer_name);
+    setLawyerToView({...lawyertoview,view:false});
+
+  }
   const load_lawyer_bokings = (id,lawyername) => {
     setBookingsResults(null);
   
     setLawyerToView({...lawyertoview,view:true,id: id,name:lawyername});
-   navigate(`/lawfirm/${lawyername.toLowerCase()}/${param_id}`);
+      navigate(`/lawfirm/${lawyername.toLowerCase()}/${param_id}`);
+
     const btnsall = document.querySelectorAll('tr button');
     for(var i = 0; i< btnsall.length;i++){
         btnsall[i].classList.remove('scheduled-btn')
@@ -562,6 +569,7 @@ const copyLawyerUrl = (e) => {
     )}
     <div className="grid_lawyer_btns" style={{padding:"10px"}}>
       <a href={"/meetings/"+lawyerviewing?.id}><button className="law_prof_btn">room <MeetingRoom/> </button></a>
+      <button className="law_prof_btn lawyer_url_btn" onClick={()=> onclickSchedule(lawyerviewing?.id,lawyerviewing?.name) }>Schedule <AiFillClockCircle style={{fontSize:"20px",marginLeft:"4px"}}/></button>
       <button className="law_prof_btn lawyer_url_btn" onClick={(e)=> copyLawyerUrl(e)}>share <Share/></button>
     </div>
   </div>
@@ -1139,7 +1147,7 @@ scheduled_btn.forEach((btn)=>{
       axios.post("/api/lawfirms/view", data).then((res) => {
         if (res.data.posts[0]) {
           setPosts(res.data.posts[0]);
-          document.title = res.data.posts[0].name + " Lawfirm | GenePiki";
+          document.title = res.data.posts[0].name + " Lawfirm | GrinIt";
         } else {
           navigate("/");
         }

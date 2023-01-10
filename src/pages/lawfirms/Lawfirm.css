@@ -136,11 +136,12 @@ color: var(--first-color);
     height: 20px;
     justify-content: center;
     align-items: center;
+    color: var(--first-color-lighter);
     font-size: var(--h2-font-size);
-    border-radius: 50%;
-    background: var(--first-color);
+    /* border-radius: 50%; */
+    /* background: var(--first-color); */
     cursor: pointer;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 .input{
     outline: none;
@@ -361,7 +362,8 @@ color: var(--first-color);
   position: absolute;
   width: 100px;
   color: var(--first-color);
-  transform: translateX(80px) translateY(-8px) rotate(45deg);
+  transform: translateX(185px) translateY(-8px) rotate(45deg);
+  /* transform: translateX(80px) translateY(-8px) rotate(45deg); */
  
 }
 .lawyer_url_input{

@@ -11,7 +11,7 @@ import { lawyersgetgenedashapi, registerapi, userdeleteapi } from "../../../apis
 
 
 export default function Add_lawyer() {
-  document.title = "Manage Lawyers | GenePiki";
+  document.title = "Manage Lawyers | GrinIt";
 
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);

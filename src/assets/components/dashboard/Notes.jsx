@@ -11,7 +11,7 @@ import { noteaddapi, notedeleteapi, notegetapi, noteupdateapi } from '../../../a
 
 
 export default function Notes() {
-  document.title = "Add / Edit Notes | GenePiki";
+  document.title = "Add / Edit Notes | GrinIt";
 
   const navigate = useNavigate();
   const [loggedIn,setLoggedIn] = useState(false);

@@ -1,5 +1,5 @@
 import { Email, Message, WhatsApp } from '@material-ui/icons'
-import React,{useRef,useState} from 'react'
+import React,{useRef,useState,useEffect} from 'react'
 import Footer from '../footer/footer'
 import Header from '../header/header'
 import './Contact.css'
@@ -11,7 +11,14 @@ export default function Contact() {
   const [loading, setLoading] = useState({
     isLoading: false,
   });
-  document.title = "Welcome to GenePiki | Contact Us";
+  const [userForm, setUserForm] = useState({
+    name: '',
+    surname: '',
+    phone: '',
+    email: '',
+    readyOnly: false
+  });
+  document.title = "Welcome to GrinIt | Contact Us";
 
   const sentEmail = (e) => {
     e.preventDefault();
@@ -19,6 +26,18 @@ export default function Contact() {
   alert(form_current);
 
   }
+  const dataChange = (e) =>{
+    e.preventDefault();
+    setUserForm({...userForm,[e.target.name]:e.target.value});
+  }
+  useEffect(()=>{
+    const profiless = JSON.parse(localStorage.getItem('user_profile'));
+ 
+    profiless?.map((data)=>{
+      setUserForm({...userForm, name: data.name,surname: data.surname,phone: data.phone,email: data.email,readyOnly: true});
+    });
+    
+   },[]);
   return (
     <>
     <Header/>
@@ -73,9 +92,9 @@ export default function Contact() {
 </div>
 <div>
   <form ref={form} onSubmit={sentEmail} className='contact_form'>
-    <input type="text" name="name" required className='input_contact' placeholder="Enter your name" />
-    <input type="email" name="email" required className='input_contact' placeholder="Enter your name" />
-    <textarea rows="7" name="message" required className='message_input input_contact' placeholder="Enter your message here" />
+    <input type="text" disabled={userForm.readyOnly} onChange={dataChange} name="name" value={userForm.name} required className='input_contact' placeholder="Enter your name" />
+    <input type="email" disabled={userForm.readyOnly} onChange={dataChange}  name="email" value={userForm.email} required className='input_contact' placeholder="Enter your email" />
+    <textarea rows="7" onChange={dataChange} name="message" required className='message_input input_contact' placeholder="Enter your message here" />
     <button type="submit" className='btn_contact'>Send Your Message</button>
   </form>
 </div>

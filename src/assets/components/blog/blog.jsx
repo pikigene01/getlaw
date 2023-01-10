@@ -13,7 +13,7 @@ import { bloggetalllatestapi,bloggetallapi } from '../../../apis/api'
 export default function Blog() {
   const {refresh,setRefresh} = useContext(HomeContext);
 
-  document.title = "Welcome to GenePiki Blogs | GenePiki";
+  document.title = "Welcome to GrinIt Blogs | GrinIt";
 
    const [url,setUrl] = useState('');
    const [page,setPage] = useState('');

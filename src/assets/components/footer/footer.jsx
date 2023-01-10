@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="logo_wrapper">
             <Link to="/">
               {" "}
-              <span><span className="logo_bold">Gene</span><><LayersTwoTone/></><span className="logo_italic">Piki</span></span>
+              <span><span className="logo_bold">Grin</span><><LayersTwoTone className='logo_color'/></><span className="logo_italic">It</span></span>
               {/* <h1 >title="gene law">GL</h1> */}
               {/* <img src={Logo} alt="GeneLaw logo" style={{height: "100%"}} /> */}
             </Link>

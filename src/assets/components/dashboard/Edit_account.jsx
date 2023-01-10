@@ -11,7 +11,7 @@ import { lawyersgetinfoapi, userupdateapi } from "../../../apis/api";
 
 
 export default function Edit_account() {
-  document.title = "Manage / edit account info | GenePiki";
+  document.title = "Manage / edit account info | GrinIt";
 
   const imageMimeType = /image\/(png|jpg|jpeg)/i;
   const [file, setFile] = useState(null);

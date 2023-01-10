@@ -11,7 +11,7 @@ import { notificationsgetapi } from '../../../apis/api'
 
 
 export default function Nofication() {
-  document.title = "View Notifications | GenePiki";
+  document.title = "View Notifications | GrinIt";
 
   const navigate = useNavigate();
   const [loggedIn,setLoggedIn] = useState(false);

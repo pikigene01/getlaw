@@ -12,7 +12,7 @@ import { moneyrateaddapi, moneyrategetapi } from '../../../apis/api';
 
 
 export default function Money() {
-  document.title = "Get To know Money transferes into your account | GenePiki";
+  document.title = "Get To know Money transferes into your account | GrinIt";
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState({

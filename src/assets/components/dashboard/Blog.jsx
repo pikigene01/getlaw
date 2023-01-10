@@ -12,7 +12,7 @@ import { blogaddapi, blogdeleteapi, bloggetapi } from '../../../apis/api';
 
 
 export default function Blog_dash() {
-  document.title = "Add / Edit Your Blog Post Here | GenePiki";
+  document.title = "Add / Edit Your Blog Post Here | GrinIt";
 
   const navigate = useNavigate();
   const imageMimeType = /image\/(png|jpg|jpeg)/i;

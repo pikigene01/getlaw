@@ -6,7 +6,7 @@
     justify-content: space-between;
 }
 .footer::after{
-    content: 'Copywrite c 2022 GenePiki All rights reserved.';
+    content: 'Copywrite c 2022 GrinIt All rights reserved.';
     display: flex;
     justify-content: center;
     color: var(--first-color);

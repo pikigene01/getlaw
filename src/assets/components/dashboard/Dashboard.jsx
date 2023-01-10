@@ -10,7 +10,7 @@ import { dashboardallapi } from '../../../apis/api';
 
 
 export default function Dashboard() {
-    document.title = "Dashboard | GenePiki By Gene Piki";
+    document.title = "Dashboard | GrinIt By Gene Piki";
     
     const navigate = useNavigate();
     const [loggedIn,setLoggedIn] = useState(false);
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
       <div className="dashboard_body">
       <div className='header_dash'>
-        <h2>Welcome to GenePiki.com</h2>
+        <h2>Welcome to GrinIt.com</h2>
       </div>
       <div className='dash_body_icon'>
        <DataUsage className='icon'/>

@@ -1,3 +1,4 @@
+
 .header{
     top: 0;
     width: 100%;
@@ -12,12 +13,16 @@
     border-radius: 0 50%;
     z-index: var(--z-modal);
   }
+  .logo_color{
+    color: var(--first-color-lighter);
+  }
   .side_menu{
-    height: 400px;
+    height: auto;
     width: 300px;
     position: fixed;
     top: 9%;
     right: 5px;
+    padding: 20px 0;
     background: var(--first-color-lighter);
     box-shadow: 2px 5px 15px #000000;
     border-radius: 10px;

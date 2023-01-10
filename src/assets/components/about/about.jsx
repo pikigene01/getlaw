@@ -21,7 +21,7 @@ experience:'1'
 
     const more_info = () =>{
       const data = {
-        gene: 'genepiki'
+        gene: 'GrinIt'
       }
 
       axios.post(lawfirmsmoreinfoapi, data).then((res) => {
@@ -39,20 +39,20 @@ experience:'1'
     <section className='about'>
       <div className='about_head'>
       <h5>Get to know</h5>
-      <h2>GenePiki</h2>
+      <h2>GrinIt</h2>
 
       <div className='about_info'>
-          <p>GenePiki is where you will find lawyers and create rooms with them.
-          GenePiki is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
+          <p>GrinIt is where you will find lawyers and create rooms with them.
+          GrinIt is an interactive online platform that makes it faster and easier to find and hire the best Lawyers in any city / court in All Countries.
 
 We are not a law firm, do not provide any legal services, legal advice or "Lawyer referral services" and do not provide or participate in any legal representation.
           </p>
           <div className='four_grid'>
             <div className='inner inner_img'> <img draggable={false} src={video_img} alt="" style={{"width": "200px"}} /></div>
-            <div className='inner inner_text'>GenePiki allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
+            <div className='inner inner_text'>GrinIt allows clients to schedule meetings with available lawyers and secure your video and chat we provide in our meeting space.</div>
             <div className='inner inner_img_2'><img draggable={false} src={about_img_2} alt="" style={{"width": "200px"}} /></div>
             <div className='inner inner_text_2'> 
-            <p>GenePiki have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
+            <p>GrinIt have rooms created for all lawyers available and if you have a token with specified scheduled time quickly jump and have a consultation meeting with your best lawyer.</p>
             <Link to="/meetings" title='browse our lawfirms available'><button>Enter Meetings</button></Link>
             
             </div>

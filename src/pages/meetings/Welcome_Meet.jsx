@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import { lawyersgetallapi } from '../../apis/api';
 
 export default function Welcome_Meet() {
-  document.title = "Choose Lawyer Which You Want to have talks with | GenePiki";
+  document.title = "Choose Lawyer Which You Want to have talks with | GrinIt";
 
    const [lawyers,setLawyers] = useState([]);
   const [skeletonLoader, setSkeletonLoader] = useState(false);
@@ -152,7 +152,7 @@ export default function Welcome_Meet() {
                 <input type="search" className="search_input" onChange={liveSearch} placeholder='Search lawyer here using your token'/><Search className="icon search_icon"/> 
             </div>
             <div className='right_header'>
-                Welcome to GenePiki meeting Rooms
+                Welcome to GrinIt meeting Rooms
             </div>
         </div>
 

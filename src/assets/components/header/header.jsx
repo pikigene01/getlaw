@@ -356,7 +356,6 @@ try{
       localStorage.removeItem("auth_token");
       localStorage.removeItem("auth_name");
       localStorage.removeItem("auth_user_id");
-      navigate("/");
       setLoading({ ...loading, isLoading: false });
     } else if (res.data.status === 401) {
       setLoading({ ...loading, isLoading: false });
@@ -371,6 +370,13 @@ try{
   localStorage.removeItem("auth_name");
   localStorage.removeItem("auth_user_id");
   setLoading({ ...loading, isLoading: false });
+
+}
+if(window.location.pathname == '/'){
+  window.location = window.location;
+
+}else{
+  navigate("/");
 
 }
     
@@ -417,10 +423,30 @@ Gene_menu = (
   <>
   <div className="side_menu draggable" onMouseDown={startMoveFunction}>
     <div className="menu_header">
-      <h2>Gene<LayersTwoTone/>Piki</h2>
+      <h2>Screen<LayersTwoTone/>It   {time.time_html}</h2>
     </div>
     <div className="menu_body">
      <ul>
+     <div className="lawyer_funds" style={{width:'100%',display:'flex',justifyContent: 'center'}}>
+          <span title="here is your money" className="money">
+            <button className="money-btn first_btn" type="text">
+              {money.user_funds? money.user_funds : "0.00"}
+            </button>
+          </span>
+          <div className="inline">
+            <select
+              name="currency"
+              value={currencyInput.currency}
+              onChange={calculateMoney}
+              className="btn_gene"
+            >
+              <option value={"usd"}>USD</option>
+              <option value={"rtgs"}>RTGS</option>
+            </select>
+              <button className="withdrawal_btn" onClick={()=> setWithdrawMoney(true)}>Withdraw Funds</button>
+           
+          </div>
+        </div>
       <Link to="/dashboard"><li>Dashboard <ArrowForwardIos/></li></Link>
       <Link to="/meetings"><li>Meetings <ArrowForwardIos/></li></Link>
       <li  onClick={()=> setWithdrawMoney(true)}>Withdraw Funds <ArrowForwardIos/></li>
@@ -469,7 +495,7 @@ Gene_menu = (
           <div className="logo_wrapper">
             <Link to="/">
               {" "}
-              <span><span className="logo_bold">Gene</span><><LayersTwoTone/></><span className="logo_italic">Piki</span></span>
+              <span><span className="logo_bold">Grin</span><><LayersTwoTone className="logo_color"/></><span className="logo_italic">It</span></span>
               {/* <h1 >title="gene law">GL</h1> */}
               {/* <img src={Logo} alt="GeneLaw logo" style={{height: "100%"}} /> */}
             </Link>
@@ -489,7 +515,7 @@ Gene_menu = (
  onFocus={onFocus}
  type="search"
  value={search.search}
- placeholder="Search GenePiki..."
+ placeholder="Search GrinIt..."
  className="search"
 />
 <span className={searchMic?"search_icon":''} onClick={()=> setSearchMic(!searchMic)}>
@@ -543,7 +569,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Gene<LayersTwoTone/>Piki Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Screen<LayersTwoTone/>It Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (
@@ -587,7 +613,7 @@ Gene_menu = (
             })}
           </div>
         </div>
-        
+        <div className="hide" style={{display: 'none'}}>
         <div className="lawyer_funds">
           <span title="here is your money" className="money">
             <button className="money-btn first_btn" type="text">
@@ -612,11 +638,8 @@ Gene_menu = (
         {time.time_html}
         </div>
         <div className="app_auth" style={{"marginLeft": "5px"}}>{AuthButtons}</div>
-      {withdrawMoney && (
-      <>
-     {Withdraw_money}
-      </>
-      )}
+     
+</div>
       {menu_toggle}
       {toggle && (
         <>
@@ -625,6 +648,11 @@ Gene_menu = (
       )}
     </div>
     {cookie_div}
+    {withdrawMoney && (
+      <>
+     {Withdraw_money}
+      </>
+      )}
    </>
   );
 }
