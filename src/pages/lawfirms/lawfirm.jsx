@@ -11,7 +11,9 @@ import { Email, FileCopy, LocationCity, MeetingRoom, Phone, Share } from "@mater
 import './Visa.css';
 import Chip from '../../assets/imgs/chip.png';
 import Visa from '../../assets/imgs/visa.png';
-import { buytokenvisaapi, getBrainTreeTokenapi, gettokenecoapi, resetavailabilityapi, schedulegetapi, schedulesentapi, setavailabilityapi } from "../../apis/api";
+import { buytokenvisaapi, getBrainTreeTokenapi, getreviewsapi, gettokenecoapi, lawfirmsviewapi, lawyersgetapi, postreviewapi, resetavailabilityapi, schedulegetapi, schedulesentapi, setavailabilityapi } from "../../apis/api";
+import { apiDataPost } from "../../services/repository";
+import { getDefaultNormalizer } from "@testing-library/react";
 
 export default function Lawfirm(props) {
   const [loading, setLoading] = useState({
@@ -171,7 +173,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     };
     getBrainTreeToken();
   },[])
-  const BuyTokenVisa = (dataToPost) => {
+  const BuyTokenVisa = async (dataToPost) => {
   
     const data = {
       visa_holder: visaForm.card_holder,
@@ -182,19 +184,32 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
       
     }
 
-    axios.post(buytokenvisaapi, data).then((res) => {
-      if(res.data.status !== 200){
-     console.log(res.data)
-     setUserReceivedToken({...userreceivedtoken,token:res.data.token});
+    // axios.post(buytokenvisaapi, data).then((res) => {
+    //   if(res.data.status !== 200){
+    //  console.log(res.data)
+    //  setUserReceivedToken({...userreceivedtoken,token:res.data.token});
 
-      }else{
-        setUserReceivedToken({...userreceivedtoken,token:res.data.token});
+    //   }else{
+    //     setUserReceivedToken({...userreceivedtoken,token:res.data.token});
 
-      }
+    //   }
     
   
-      setLoading({isLoading:false});   
-      });
+    //   setLoading({isLoading:false});   
+    //   });
+
+      let sendData = await apiDataPost(buytokenvisaapi, data);
+      if(sendData){
+        setLoading({ ...loading, isLoading: false });
+      }
+      if(sendData.status === 200){
+        setUserReceivedToken({...userreceivedtoken,token:sendData.token});
+
+    
+      }else{
+        swal('Warning', sendData.message, 'warning');
+    
+      }
     console.log('Visa still working on it' + dataToPost);
   }
   useEffect(()=>{
@@ -245,7 +260,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     setLawyerToView({...lawyertoview,view:false});
 
   }
-  const load_lawyer_bokings = (id,lawyername) => {
+  const load_lawyer_bokings = async(id,lawyername) => {
     setBookingsResults(null);
   
     setLawyerToView({...lawyertoview,view:true,id: id,name:lawyername});
@@ -264,13 +279,26 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
       lawyer_id: id,
     
     };
-    axios.post("/api/schedule/get", data).then((res) => {
-      setLoading({ ...loading, isLoading: false });
+    // axios.post(schedulegetapi, data).then((res) => {
+    //   setLoading({ ...loading, isLoading: false });
   
+    //   setBookingsForm({...bookingsForm, token: ""});
+    //   setBookingsResults(res.data.bookings);
+    // setLoading({isLoading:false});   
+    // });
+
+    let sendData = await apiDataPost(schedulegetapi, data);
+    if(sendData){
       setBookingsForm({...bookingsForm, token: ""});
-      setBookingsResults(res.data.bookings);
-    setLoading({isLoading:false});   
-    });
+      setLoading({ ...loading, isLoading: false });
+    }
+    if(sendData.status === 200){
+      setBookingsResults(sendData.bookings);
+  
+    }else{
+      swal('Warning', sendData.message, 'warning');
+  
+    }
     
     if(loggedInUser.user_id == id){
       setIsYourBookings(true);
@@ -281,7 +309,7 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     }
   }
 
- const setAvailability = (e) => {
+ const setAvailability = async(e) => {
   e.preventDefault();
   setLoading({ ...loading, isLoading: true });
 
@@ -291,16 +319,28 @@ const lawyersss = getLawyer(lawyertoview.name.toLowerCase());
     type: '1'
   }
  
-  axios.post(setavailabilityapi, data).then((res) => {
+  // axios.post(setavailabilityapi, data).then((res) => {
+  //   setLoading({ ...loading, isLoading: false });
+  //   if(res.data.status === 200){
+  //     swal('Success',res.data.message,'success');
+
+  //   }else{
+  //     swal('Warning',res.data.message,'warning');
+  //   }
+
+  // });
+
+  let sendData = await apiDataPost(setavailabilityapi, data);
+  if(sendData){
     setLoading({ ...loading, isLoading: false });
-    if(res.data.status === 200){
-      swal('Success',res.data.message,'success');
+  }
+  if(sendData.status === 200){
+    swal('Success',sendData.message,'success');
 
-    }else{
-      swal('Warning',res.data.message,'warning');
-    }
+  }else{
+    swal('Warning', sendData.message, 'warning');
 
-  });
+  }
 
  }
 
@@ -314,17 +354,29 @@ const Schedule_handler = (e) => {
 
 useEffect(()=>{
 
-  const Schedule_get = (id) => {
+  const Schedule_get = async(id) => {
     const data = {
       lawyer_id: id,
     
     };
-    axios.post(schedulegetapi, data).then((res) => {
-      setLoading({ ...loading, isLoading: false });
+    // axios.post(schedulegetapi, data).then((res) => {
+    //   setLoading({ ...loading, isLoading: false });
   
-      setBookingsForm({...bookingsForm, token: ""});
-      setBookingsResults(res.data.bookings);
-    });
+    //   setBookingsForm({...bookingsForm, token: ""});
+    //   setBookingsResults(res.data.bookings);
+    // });
+
+    let sendData = await apiDataPost(schedulegetapi, data);
+    if(sendData){
+      setLoading({ ...loading, isLoading: false });
+    }
+    if(sendData.status === 200){
+      setBookingsResults(sendData.bookings);
+
+    }else{
+      swal('Warning', 'Something Went Wrong', 'warning');
+
+    }
   };
   Schedule_get(lawyertoview.id);
 }, []);
@@ -373,7 +425,7 @@ useEffect(()=>{
 
 
 
-const resetAvailability = (e) => {
+const resetAvailability = async(e) => {
   e.preventDefault();
   setLoading({ ...loading, isLoading: true });
 
@@ -382,21 +434,36 @@ const resetAvailability = (e) => {
     type: '1'
   }
  
-  axios.post(resetavailabilityapi, data).then((res) => {
-    setLoading({ ...loading, isLoading: false });
-    if(res.data.status === 200){
-      swal('Success',res.data.message,'success');
-      load_lawyer_bokings(lawyertoview.id,lawyertoview.name);
-      setLawyerToView({...lawyertoview,view:true});
-    }else{
-      swal('Warning',res.data.message,'warning');
-    }
+  // axios.post(resetavailabilityapi, data).then((res) => {
+  //   setLoading({ ...loading, isLoading: false });
+  //   if(res.data.status === 200){
+  //     swal('Success',res.data.message,'success');
+  //     load_lawyer_bokings(lawyertoview.id,lawyertoview.name);
+  //     setLawyerToView({...lawyertoview,view:true});
+  //   }else{
+  //     swal('Warning',res.data.message,'warning');
+  //   }
 
-  });
+  // });
+  let sendData = await apiDataPost(resetavailabilityapi, data);
+if(sendData){
+  setLoading({ ...loading, isLoading: false });
+
+}
+  if(sendData.status === 200){
+    load_lawyer_bokings(lawyertoview.id,lawyertoview.name);
+    setLawyerToView({...lawyertoview,view:true});
+    swal("Success", sendData.message, "success");
+  }else{
+    swal("Warning", sendData.message, "warning");
+
+  }
+
+  
 
  }
 
-const Schedule_sent = (e)=> {
+const Schedule_sent = async (e) =>{
   e.preventDefault();
   const data = {
     lawyer_id: lawyertoview.id,
@@ -409,22 +476,35 @@ const Schedule_sent = (e)=> {
   };
   setLoading({ ...loading, isLoading: true });
 
-  axios.post(schedulesentapi, data).then((res) => {
-    setLoading({ ...loading, isLoading: false });
- if(res.data.status === 200){
-    setBookingsForm({...bookingsForm, token: ""});
-    swal("Success", res.data.message, "success");
- }else{
-  swal("Warning", res.data.message, "warning");
+//   axios.post(schedulesentapi, data).then((res) => {
+//     setLoading({ ...loading, isLoading: false });
+//  if(res.data.status === 200){
+//     setBookingsForm({...bookingsForm, token: ""});
+//     swal("Success", res.data.message, "success");
+//  }else{
+//   swal("Warning", res.data.message, "warning");
 
- }
-  });
+//  }
+//   });
+  let sendData = await apiDataPost(schedulesentapi, data);
+
+  if(sendData.status === 200){
+    setLoading({ ...loading, isLoading: false });
+    setBookingsForm({...bookingsForm, token: ""});
+    swal("Success", sendData.message, "success");
+  }else{
+    setLoading({ ...loading, isLoading: false });
+    swal("Warning", sendData.message, "warning");
+
+  }
+
+
+
   // alert(bookingsForm.data_event+"/"+bookingsForm.data_week+"/"+bookingsForm.lawyer_id+"/"+bookingsForm.token);
 };
 
 
-
-  const buyUsingEco = (e) => {
+  const buyUsingEco = async (e) => {
     e.preventDefault();
     const data = {
       ecocashname: ecocashform.name,
@@ -434,15 +514,25 @@ const Schedule_sent = (e)=> {
       lawfirm_price: posts.price
     }
     
-    axios.post(gettokenecoapi, data).then((res) => {
-      setLoading({ ...loading, isLoading: false });
-      if(res.data.status == 200){
-      setUserReceivedToken({token:res.data.token})
-      }else{
-        swal('Warning', 'Something Went Wrong', 'warning');
-      }
-    });
+    // axios.post(gettokenecoapi, data).then((res) => {
+    //   if(res.data.status == 200){
+    //   setUserReceivedToken({token:res.data.token})
+    //   }else{
+    //     swal('Warning', 'Something Went Wrong', 'warning');
+    //   }
+    // });
    
+    let sendData = await apiDataPost(gettokenecoapi, data);
+    if(sendData){
+      setLoading({ ...loading, isLoading: false });
+    }
+    if(sendData.status === 200){
+      setUserReceivedToken({token:sendData.token})
+
+    }else{
+      swal('Warning', 'Something Went Wrong', 'warning');
+
+    }
   }
   const copyToken = (e) => {
     let copyText = document.querySelector(".token_input");
@@ -731,7 +821,7 @@ const copyLawyerUrl = (e) => {
   };
   //function to post reviews
 
-  const postReview = (e) => {
+  const postReview = async (e) => {
     e.preventDefault();
     setLoading({ ...loading, isLoading: true });
 
@@ -741,52 +831,102 @@ const copyLawyerUrl = (e) => {
       token: reviewInput.token,
       review: reviewInput.review,
     };
-    axios.post("/api/post/review", data).then((res) => {
+    // axios.post("/api/post/review", data).then((res) => {
+    //   setLoading({ ...loading, isLoading: false });
+    //   if(res.data.status === 200){
+    //   setLoadReviews({ load: true });
+    //   setReviewInput({ token: "", rated_index: "", review: "" });
+    //   swal("Success", res.data.message, "success");
+    //   }else{
+    //   swal("Warning", res.data.message, "warning");
+
+    //   }
+    // });
+
+    let sendData = await apiDataPost(postreviewapi, data);
+    if(sendData){
       setLoading({ ...loading, isLoading: false });
-      if(res.data.status === 200){
+      setSkeletonLoader(true);
+
+    }
+    if(sendData.status === 200){
       setLoadReviews({ load: true });
       setReviewInput({ token: "", rated_index: "", review: "" });
-      swal("Success", res.data.message, "success");
-      }else{
-      swal("Warning", res.data.message, "warning");
+      swal("Success", sendData.message, "success");
 
-      }
-    });
+    }else{
+      
+      swal('Warning', sendData.message, 'warning');
+  
+    }
   };
   if (loadReviews.load) {
-    getReviews();
-    // function to get all reviews from the api
+    
 
-    function getReviews() {
+    const getReviews = async()=> {
       let data = {
         post_id: param_id,
       };
-      axios.post("/api/get/reviews", data).then((res) => {
-        const reviews_count = res.data.count;
-        setLoadReviews({ load: false });
+      // axios.post("/api/get/reviews", data).then((res) => {
+      //   const reviews_count = res.data.count;
+      //   setLoadReviews({ load: false });
 
-        const one = res.data.one_perc;
-        const two = res.data.two_perc;
-        const three = res.data.three_perc;
-        const four = res.data.four_perc;
-        const five = res.data.five_perc;
-        setReviewsRatings({
-          one_perc: one,
-          two_perc: two,
-          three_perc: three,
-          four_perc: four,
-          five_perc: five,
-          total_ratings: reviews_count,
-        });
+      //   const one = res.data.one_perc;
+      //   const two = res.data.two_perc;
+      //   const three = res.data.three_perc;
+      //   const four = res.data.four_perc;
+      //   const five = res.data.five_perc;
+      //   setReviewsRatings({
+      //     one_perc: one,
+      //     two_perc: two,
+      //     three_perc: three,
+      //     four_perc: four,
+      //     five_perc: five,
+      //     total_ratings: reviews_count,
+      //   });
 
-        if (res.data.posts) {
-          setReviews(res.data.posts);
-        } else {
-        }
+      //   if (res.data.posts) {
+      //     setReviews(res.data.posts);
+      //   } else {
+      //   }
 
+      //   setLoading({ ...loading, isLoading: false });
+      // });
+
+      let sendData = await apiDataPost(getreviewsapi, data);
+      if(sendData){
         setLoading({ ...loading, isLoading: false });
-      });
+      
+      }
+        if(sendData.status === 200){
+          const reviews_count = sendData.count;
+          setLoadReviews({ load: false });
+  
+          const one = sendData.one_perc;
+          const two = sendData.two_perc;
+          const three = sendData.three_perc;
+          const four = sendData.four_perc;
+          const five = sendData.five_perc;
+          setReviewsRatings({
+            one_perc: one,
+            two_perc: two,
+            three_perc: three,
+            four_perc: four,
+            five_perc: five,
+            total_ratings: reviews_count,
+          });
+  
+          if (sendData.posts) {
+            setReviews(sendData.posts);
+          } else {
+          }
+        }else{
+          swal("Warning", sendData.message, "warning");
+      
+        }
     }
+    getReviews();
+    // function to get all reviews from the api
   } else {
   }
   if(bookingsResults){
@@ -1142,37 +1282,61 @@ scheduled_btn.forEach((btn)=>{
       post_id: param_id,
     };
     // function to retrieve all lawfirms
-    getLawfirms(data);
-    function getLawfirms(data) {
-      axios.post("/api/lawfirms/view", data).then((res) => {
-        if (res.data.posts[0]) {
-          setPosts(res.data.posts[0]);
-          document.title = res.data.posts[0].name + " Lawfirm | GrinIt";
-        } else {
-          navigate("/");
-        }
+    const getLawfirms = async(data)=> {
 
+      let sendData = await apiDataPost(lawfirmsviewapi, data);
+if(sendData){
+  setLoading({ ...loading, isLoading: false });
         setSkeletonLoader(true);
-      });
+
+}
+      if(sendData.status === 200){
+        setPosts(sendData.posts[0]);
+          document.title = sendData.posts[0].name + " Lawfirm | GrinIt";
+      }else{
+        navigate("/");
+
+        setLoading({ ...loading, isLoading: false });
+        swal("Warning", sendData.message, "warning");
+    
+      }
     }
+    getLawfirms(data);
 
     // function to retrieve all lawfirms
 
-    getLawyers();
-    function getLawyers(){
+    const getLawyers = async ()=>{
       let data = {
         post_id: param_id,
       };
-      axios.post("/api/lawyers/get", data).then((res) => {
-        if (res.data.posts) {
-          setLawyers(res.data.posts);
-        } else {
-          navigate("/");
-        }
+    // await  axios.post(lawyersgetapi, data).then((res) => {
+    //     if (res.data.posts) {
+    //       setLawyers(res.data.posts);
+    //     } else {
+    //       navigate("/");
+    //     }
 
+    //     setSkeletonLoader(true);
+    //   });
+
+      let sendData = await apiDataPost(lawyersgetapi, data);
+      if(sendData){
+        setLoading({ ...loading, isLoading: false });
         setSkeletonLoader(true);
-      });
+
+      }
+      if(sendData.status === 200){
+        setLawyers(sendData.posts);
+
+      }else{
+        navigate("/");
+        // swal('Warning', sendData.message, 'warning');
+    
+      }
     }
+
+    getLawyers();
+
   }, []);
   return (
     <>

@@ -423,7 +423,7 @@ Gene_menu = (
   <>
   <div className="side_menu draggable" onMouseDown={startMoveFunction}>
     <div className="menu_header">
-      <h2>Screen<LayersTwoTone/>It   {time.time_html}</h2>
+      <h2>Grin<LayersTwoTone/>It   {time.time_html}</h2>
     </div>
     <div className="menu_body">
      <ul>
@@ -569,7 +569,7 @@ Gene_menu = (
 
               </div>
             </div>
-           <div className="gene"> Screen<LayersTwoTone/>It Results <span onClick={hideDialog}>&times;</span></div>
+           <div className="gene"> Grin<LayersTwoTone/>It Results <span onClick={hideDialog}>&times;</span></div>
             {searched.map((post) => {
               if(post.role == '1'){
               return (
